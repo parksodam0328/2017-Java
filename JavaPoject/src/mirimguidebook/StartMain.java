@@ -1,6 +1,7 @@
 package mirimguidebook;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -11,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class StartMain extends JFrame {
 
@@ -33,23 +35,23 @@ public class StartMain extends JFrame {
 	 * Create the frame.
 	 */
 	public StartMain() {
-		JFrame frame = new JFrame("미림가이드북");
+		setTitle("미림가이드북");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(850, 698);
+		setSize(850, 630);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		contentPane.setLayout(new FlowLayout(0, 0, 0));
-		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		getContentPane().add(contentPane);
 		
 		JLabel label = new JLabel("");
 		label.setSize(850,600);
 		Image img = new ImageIcon(this.getClass().getResource("/MainImage.png")).getImage();
-		label.setIcon(new ImageIcon(img));
 		JButton mbutton = new JButton("New button");
-		mbutton.setSize(100,200);
-		mbutton.setBounds(300,250,300);
+		mbutton.setSize(200,40);
+		mbutton.setBounds(325,450,200,40);
 		contentPane.add(mbutton);
+		label.setIcon(new ImageIcon(img));
 		contentPane.add(label);
 	}
 
