@@ -46,12 +46,11 @@ public class StartMain extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setSize(850,600);
+		JButton mbutton = new JButton("");
 		Image img = new ImageIcon(this.getClass().getResource("/MainImage.png")).getImage();
-		JButton mbutton = new JButton("New button");
-		mbutton.setSize(200,40);
-		mbutton.setBounds(325,450,200,40);
+		mbutton.setSize(850,600);
 		contentPane.add(mbutton);
-		label.setIcon(new ImageIcon(img));
+		mbutton.setIcon(new ImageIcon(img));
 		contentPane.add(label);
 	}
 
