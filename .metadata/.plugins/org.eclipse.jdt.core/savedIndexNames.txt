@@ -7,7 +7,6 @@ INDEX VERSION 1.130+C:\MirimGuideBook\.metadata\.plugins\org.eclipse.jdt.core
 2997567257.index
 3643810303.index
 2561179376.index
-1833661301.index
 91472061.index
 2221491804.index
 1199826107.index
