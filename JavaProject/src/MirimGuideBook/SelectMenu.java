@@ -48,14 +48,14 @@ public class SelectMenu extends JFrame implements ActionListener{
 		
 		// 크기 조절
 		label.setSize(1280,720);
-		menubtn1.setBounds(3,50,214,93);
-		menubtn2.setBounds(3,190,214,93);
-		menubtn3.setBounds(3,330,214,93);
-		menubtn4.setBounds(3,465,214,93);
-		menubtn5.setBounds(630,50,214,93);
-		menubtn6.setBounds(630,190,214,93);
-		menubtn7.setBounds(630,330,214,93);
-		menubtn8.setBounds(630,465,214,93);
+		menubtn1.setBounds(50,85,214,93);
+		menubtn2.setBounds(50,235,214,93);
+		menubtn3.setBounds(50,385,214,93);
+		menubtn4.setBounds(50,535,214,93);
+		menubtn5.setBounds(1000,85,214,93);
+		menubtn6.setBounds(1000,235,214,93);
+		menubtn7.setBounds(1000,385,214,93);
+		menubtn8.setBounds(1000,535,214,93);
 		
 		//이미지
 		Image lbimg = new ImageIcon(this.getClass().getResource("/MenuSelect.png")).getImage();
