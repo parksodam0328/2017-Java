@@ -25,12 +25,12 @@ public class SelectMenu extends JFrame implements ActionListener{
 	private JButton menubtn8;
 	
 	public SelectMenu() {
-		
 		//mbutton.setVisible(false);
 		setTitle("¹Ì¸²°¡ÀÌµåºÏ");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
+		setLocationRelativeTo(null); //Ã¢ Áß¾Ó¿¡ ¶ç¿ì±â
 		jp = new JPanel();
 		jp.setBorder(new EmptyBorder(0, 0, 0, 0));
 		jp.setLayout(null);

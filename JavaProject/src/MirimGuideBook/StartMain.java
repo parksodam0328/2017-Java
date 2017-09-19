@@ -23,11 +23,11 @@ public class StartMain extends JFrame implements ActionListener{
 	private JButton mbutton;
 	
 	public StartMain() {
-		
 		setTitle("¹Ì¸²°¡ÀÌµåºÏ");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
+		setLocationRelativeTo(null); //Ã¢ Áß¾Ó¿¡ ¶ç¿ì±â
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(null);
