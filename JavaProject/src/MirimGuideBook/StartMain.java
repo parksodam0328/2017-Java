@@ -48,6 +48,7 @@ public class StartMain extends JFrame implements ActionListener{
 		sm.setVisible(true);
 		setVisible(false);
 	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

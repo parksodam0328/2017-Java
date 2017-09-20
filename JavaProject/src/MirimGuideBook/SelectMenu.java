@@ -114,6 +114,7 @@ public class SelectMenu extends JFrame implements ActionListener{
 		menubtn6.setBorderPainted(false);
 		menubtn6.setContentAreaFilled(false);
 		menubtn6.setFocusPainted(false);
+		menubtn6.addActionListener(this);
 		
 		menubtn7.setIcon(new ImageIcon(btnimg8));
 		menubtn7.setBorderPainted(false);
@@ -125,19 +126,15 @@ public class SelectMenu extends JFrame implements ActionListener{
 		menubtn8.setContentAreaFilled(false);
 		menubtn8.setFocusPainted(false);
 		
-		menubtn6.addActionListener(this);
-		
 	}
-	
-	@Override
+
 	public void actionPerformed(ActionEvent e) { // 버튼 클릭시 취업으로 이동
 		menubtn6.setVisible(false);
 		MirimEmployment me = new MirimEmployment();
 		me.setVisible(true);
 		setVisible(false);
 	}
-	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
