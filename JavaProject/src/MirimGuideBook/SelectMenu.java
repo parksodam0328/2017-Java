@@ -15,14 +15,12 @@ import javax.swing.border.EmptyBorder;
 public class SelectMenu extends JFrame implements ActionListener{
 	private JLabel label;
 	private JPanel jp;
-	private JButton menubtn1;
-	private JButton menubtn2;
-	private JButton menubtn3;
-	private JButton menubtn4;
-	private JButton menubtn5;
-	private JButton menubtn6;
-	private JButton menubtn7;
-	private JButton menubtn8;
+	private JButton menubtn[] = new JButton[8];
+	private String[] img = {"/button_subject.png","/button_rule.png","/button_club.png",
+			"/button_location.png", "/button_entrance.png", "/button_experience.png", 
+			"/button_ employment.png","/button_ event.png"
+			};
+	Image[] btnimg = new Image[8];
 	
 	public SelectMenu() {
 		//mbutton.setVisible(false);
@@ -36,108 +34,80 @@ public class SelectMenu extends JFrame implements ActionListener{
 		jp.setLayout(null);
 		getContentPane().add(jp);
 		
-		label = new JLabel("");
-		menubtn1 = new JButton("");
-		menubtn2 = new JButton("");
-		menubtn3 = new JButton("");
-		menubtn4 = new JButton("");
-		menubtn5 = new JButton("");
-		menubtn6 = new JButton("");
-		menubtn7 = new JButton("");
-		menubtn8 = new JButton("");
+		label = new JLabel(""); // 라벨 생성
+		for(int i=0;i<8;i++) { // 버튼 생성
+		menubtn[i] = new JButton("");
+		}
 		
 		// 크기 조절
 		label.setSize(1280,720);
-		menubtn1.setBounds(50,85,214,93);
-		menubtn2.setBounds(50,235,214,93);
-		menubtn3.setBounds(50,385,214,93);
-		menubtn4.setBounds(50,535,214,93);
-		menubtn5.setBounds(1000,85,214,93);
-		menubtn6.setBounds(1000,235,214,93);
-		menubtn7.setBounds(1000,385,214,93);
-		menubtn8.setBounds(1000,535,214,93);
+		menubtn[0].setBounds(50,85,214,93);
+		menubtn[1].setBounds(50,235,214,93);
+		menubtn[2].setBounds(50,385,214,93);
+		menubtn[3].setBounds(50,535,214,93);
+		menubtn[4].setBounds(1000,85,214,93);
+		menubtn[5].setBounds(1000,235,214,93);
+		menubtn[6].setBounds(1000,385,214,93);
+		menubtn[7].setBounds(1000,535,214,93);
 		
-		//이미지
-		Image lbimg = new ImageIcon(this.getClass().getResource("/MenuSelect.png")).getImage();
-		Image btnimg1 = new ImageIcon(this.getClass().getResource("/button_subject.png")).getImage();
-		Image btnimg2 = new ImageIcon(this.getClass().getResource("/button_rule.png")).getImage();
-		Image btnimg3 = new ImageIcon(this.getClass().getResource("/button_club.png")).getImage();
-		Image btnimg4 = new ImageIcon(this.getClass().getResource("/button_location.png")).getImage();
-		Image btnimg5 = new ImageIcon(this.getClass().getResource("/button_entrance.png")).getImage();
-		Image btnimg6 = new ImageIcon(this.getClass().getResource("/button_experience.png")).getImage();
-		Image btnimg7 = new ImageIcon(this.getClass().getResource("/button_ employment.png")).getImage();
-		Image btnimg8 = new ImageIcon(this.getClass().getResource("/button_ event.png")).getImage();
+		//라벨 이미지
+		Image lbimg = new ImageIcon(SelectMenu.class.getResource("/MenuSelect.png")).getImage();
 		
-		jp.add(menubtn1);
-		jp.add(menubtn2);
-		jp.add(menubtn3);
-		jp.add(menubtn4);
-		jp.add(menubtn5);
-		jp.add(menubtn6);
-		jp.add(menubtn7);
-		jp.add(menubtn8);
-		jp.add(label);
+		for(int i=0;i<8;i++) {
+			//jp.add(menubtn[i]); // 판넬에 버튼 추가
+			btnimg[i] = new ImageIcon(SelectMenu.class.getResource(img[i])).getImage();
+		}
+		
+		
+		for(int i=0;i<8;i++) {
+		menubtn[i].setIcon(new ImageIcon(btnimg[i]));
+		//System.out.println(menubtn[i]);
+		menubtn[i].setBorderPainted(false);
+		menubtn[i].setContentAreaFilled(false);
+		menubtn[i].setFocusPainted(false);
+		//menubtn[i].addActionListener(this);
+		}
+		
+		
+		jp.add(label); // 판넬에 라벨 추가
 		
 		//이미지 넣기, 버튼 설정
 		label.setIcon(new ImageIcon(lbimg));
-		menubtn1.setIcon(new ImageIcon(btnimg1));
-		menubtn1.setBorderPainted(false);
-		menubtn1.setContentAreaFilled(false);
-		menubtn1.setFocusPainted(false);
 		
-		menubtn2.setIcon(new ImageIcon(btnimg2));
-		menubtn2.setBorderPainted(false);
-		menubtn2.setContentAreaFilled(false);
-		menubtn2.setFocusPainted(false);
+		for(int i=0;i<8;i++) {
+			label.add(menubtn[i]);
+		}
 		
-		menubtn3.setIcon(new ImageIcon(btnimg3));
-		menubtn3.setBorderPainted(false);
-		menubtn3.setContentAreaFilled(false);
-		menubtn3.setFocusPainted(false);
+		MirimSubject ms = new MirimSubject();
+		MirimRule mr = new MirimRule();
+		MirimClub mc = new MirimClub();
+		MirimLocation ml = new MirimLocation();
+		MirimEntrance met = new MirimEntrance();
+		MirimExperience mex = new MirimExperience();
+		MirimEmployment mem = new MirimEmployment();
+		MirimEvent mev = new MirimEvent();
 		
-		menubtn4.setIcon(new ImageIcon(btnimg4));
-		menubtn4.setBorderPainted(false);
-		menubtn4.setContentAreaFilled(false);
-		menubtn4.setFocusPainted(false);
 		
-		menubtn5.setIcon(new ImageIcon(btnimg5));
-		menubtn5.setBorderPainted(false);
-		menubtn5.setContentAreaFilled(false);
-		menubtn5.setFocusPainted(false);
+		menubtn[0].addActionListener(this);
+		menubtn[1].addActionListener(this);
+		menubtn[2].addActionListener(this);
+		menubtn[3].addActionListener(this);
+		menubtn[4].addActionListener(this);
+		menubtn[5].addActionListener(this);
+		menubtn[6].addActionListener(this);
+		menubtn[7].addActionListener(this);
 		
-		menubtn5.setIcon(new ImageIcon(btnimg6));
-		menubtn5.setBorderPainted(false);
-		menubtn5.setContentAreaFilled(false);
-		menubtn5.setFocusPainted(false);
-		
-		menubtn6.setIcon(new ImageIcon(btnimg7));
-		menubtn6.setBorderPainted(false);
-		menubtn6.setContentAreaFilled(false);
-		menubtn6.setFocusPainted(false);
-		
-		menubtn7.setIcon(new ImageIcon(btnimg8));
-		menubtn7.setBorderPainted(false);
-		menubtn7.setContentAreaFilled(false);
-		menubtn7.setFocusPainted(false);
-		
-		menubtn8.setIcon(new ImageIcon(btnimg1));
-		menubtn8.setBorderPainted(false);
-		menubtn8.setContentAreaFilled(false);
-		menubtn8.setFocusPainted(false);
-		
-		menubtn6.addActionListener(this);
 		
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e) { // 버튼 클릭시 취업으로 이동
-		menubtn6.setVisible(false);
-		MirimEmployment me = new MirimEmployment();
-		me.setVisible(true);
-		setVisible(false);
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		setVisible(true);
+		this.setVisible(false);
 	}
 	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
