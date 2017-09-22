@@ -21,7 +21,6 @@ public class StartMain extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	//private JLabel label;
 	private JButton mbutton;
-	
 	public StartMain() {
 		setTitle("미림가이드북");
 		setResizable(false);

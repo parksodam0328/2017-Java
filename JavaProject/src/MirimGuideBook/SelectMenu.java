@@ -78,6 +78,7 @@ public class SelectMenu extends JFrame implements ActionListener{
 			label.add(menubtn[i]);
 		}
 		
+<<<<<<< HEAD
 		MirimSubject ms = new MirimSubject();
 		MirimRule mr = new MirimRule();
 		MirimClub mc = new MirimClub();
@@ -86,6 +87,13 @@ public class SelectMenu extends JFrame implements ActionListener{
 		MirimExperience mex = new MirimExperience();
 		MirimEmployment mem = new MirimEmployment();
 		MirimEvent mev = new MirimEvent();
+=======
+		menubtn6.setIcon(new ImageIcon(btnimg7));
+		menubtn6.setBorderPainted(false);
+		menubtn6.setContentAreaFilled(false);
+		menubtn6.setFocusPainted(false);
+		menubtn6.addActionListener(this);
+>>>>>>> c0a42daf6ca8f0447a448bb947b83e077943f666
 		
 		
 		menubtn[0].addActionListener(this);
@@ -97,6 +105,7 @@ public class SelectMenu extends JFrame implements ActionListener{
 		menubtn[6].addActionListener(this);
 		menubtn[7].addActionListener(this);
 		
+<<<<<<< HEAD
 		
 	}
 
@@ -108,6 +117,17 @@ public class SelectMenu extends JFrame implements ActionListener{
 	}
 	
 
+=======
+	}
+
+	public void actionPerformed(ActionEvent e) { // 버튼 클릭시 취업으로 이동
+		menubtn6.setVisible(false);
+		MirimEmployment me = new MirimEmployment();
+		me.setVisible(true);
+		setVisible(false);
+	}
+	
+>>>>>>> c0a42daf6ca8f0447a448bb947b83e077943f666
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
