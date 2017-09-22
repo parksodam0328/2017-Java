@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package test;
 
 import java.awt.event.ActionEvent;
@@ -92,4 +91,4 @@ public class UI extends JFrame implements ActionListener {
 				} 
 		} 
 	}	
->>>>>>> c0a42daf6ca8f0447a448bb947b83e077943f666
+

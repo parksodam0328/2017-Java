@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class SelectMenu extends JFrame implements ActionListener{
+public class SelectMenu extends JFrame{
 	private JLabel label;
 	private JPanel jp;
 	private JButton menubtn[] = new JButton[8];
@@ -23,8 +23,7 @@ public class SelectMenu extends JFrame implements ActionListener{
 	Image[] btnimg = new Image[8];
 	
 	public SelectMenu() {
-		//mbutton.setVisible(false);
-		setTitle("미림가이드북");
+		setTitle("메뉴선택");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -34,12 +33,13 @@ public class SelectMenu extends JFrame implements ActionListener{
 		jp.setLayout(null);
 		getContentPane().add(jp);
 		
-		label = new JLabel(""); // 라벨 생성
+		label = new JLabel(""); // 레이블 생성
 		for(int i=0;i<8;i++) { // 버튼 생성
 		menubtn[i] = new JButton("");
+		btnimg[i] = new ImageIcon(SelectMenu.class.getResource(img[i])).getImage();
 		}
 		
-		// 크기 조절
+		// 레이블 크기 및 버튼 위치, 크기 조정
 		label.setSize(1280,720);
 		menubtn[0].setBounds(50,85,214,93);
 		menubtn[1].setBounds(50,235,214,93);
@@ -53,81 +53,87 @@ public class SelectMenu extends JFrame implements ActionListener{
 		//라벨 이미지
 		Image lbimg = new ImageIcon(SelectMenu.class.getResource("/MenuSelect.png")).getImage();
 		
-		for(int i=0;i<8;i++) {
-			//jp.add(menubtn[i]); // 판넬에 버튼 추가
-			btnimg[i] = new ImageIcon(SelectMenu.class.getResource(img[i])).getImage();
-		}
+		jp.add(label); // 판넬에 레이블 추가
 		
+		//레이블에 이미지 넣기
+		label.setIcon(new ImageIcon(lbimg));
 		
+		//버튼에 이미지 넣고, 설정
 		for(int i=0;i<8;i++) {
 		menubtn[i].setIcon(new ImageIcon(btnimg[i]));
-		//System.out.println(menubtn[i]);
 		menubtn[i].setBorderPainted(false);
 		menubtn[i].setContentAreaFilled(false);
 		menubtn[i].setFocusPainted(false);
-		//menubtn[i].addActionListener(this);
+		label.add(menubtn[i]);
 		}
 		
-		
-		jp.add(label); // 판넬에 라벨 추가
-		
-		//이미지 넣기, 버튼 설정
-		label.setIcon(new ImageIcon(lbimg));
-		
-		for(int i=0;i<8;i++) {
-			label.add(menubtn[i]);
-		}
-		
-<<<<<<< HEAD
-		MirimSubject ms = new MirimSubject();
-		MirimRule mr = new MirimRule();
-		MirimClub mc = new MirimClub();
-		MirimLocation ml = new MirimLocation();
-		MirimEntrance met = new MirimEntrance();
-		MirimExperience mex = new MirimExperience();
-		MirimEmployment mem = new MirimEmployment();
-		MirimEvent mev = new MirimEvent();
-=======
-		menubtn6.setIcon(new ImageIcon(btnimg7));
-		menubtn6.setBorderPainted(false);
-		menubtn6.setContentAreaFilled(false);
-		menubtn6.setFocusPainted(false);
-		menubtn6.addActionListener(this);
->>>>>>> c0a42daf6ca8f0447a448bb947b83e077943f666
-		
-		
-		menubtn[0].addActionListener(this);
-		menubtn[1].addActionListener(this);
-		menubtn[2].addActionListener(this);
-		menubtn[3].addActionListener(this);
-		menubtn[4].addActionListener(this);
-		menubtn[5].addActionListener(this);
-		menubtn[6].addActionListener(this);
-		menubtn[7].addActionListener(this);
-		
-<<<<<<< HEAD
-		
+		//버튼에 클릭 이벤트 넣어주기
+		menubtn[0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[0].setVisible(false);
+                setVisible(false);
+                MirimSubject ms = new MirimSubject();
+                ms.setVisible(true);
+            }
+        });
+		menubtn[1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[1].setVisible(false);
+                setVisible(false);
+                MirimRule mr = new MirimRule();
+                mr.setVisible(true);
+            }
+        });
+		menubtn[2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[2].setVisible(false);
+                setVisible(false);
+                MirimClub mc = new MirimClub();
+                mc.setVisible(true);
+            }
+        });
+		menubtn[3].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[3].setVisible(false);
+                setVisible(false);
+                MirimLocation ml = new MirimLocation();
+                ml.setVisible(true);
+            }
+        });
+		menubtn[4].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[4].setVisible(false);
+                setVisible(false);
+                MirimEntrance met = new MirimEntrance();
+                met.setVisible(true);
+            }
+        });
+		menubtn[5].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[5].setVisible(false);
+                setVisible(false);
+                MirimExperience mex = new MirimExperience();
+                mex.setVisible(true);
+            }
+        });
+		menubtn[6].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[6].setVisible(false);
+                setVisible(false);
+                MirimEmployment mem = new MirimEmployment();
+                mem.setVisible(true);
+            }
+        });
+		menubtn[7].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menubtn[7].setVisible(false);
+                setVisible(false);
+                MirimEvent mev = new MirimEvent();
+                mev.setVisible(true);
+            }
+        });
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		setVisible(true);
-		this.setVisible(false);
-	}
-	
-
-=======
-	}
-
-	public void actionPerformed(ActionEvent e) { // 버튼 클릭시 취업으로 이동
-		menubtn6.setVisible(false);
-		MirimEmployment me = new MirimEmployment();
-		me.setVisible(true);
-		setVisible(false);
-	}
-	
->>>>>>> c0a42daf6ca8f0447a448bb947b83e077943f666
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

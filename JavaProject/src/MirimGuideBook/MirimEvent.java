@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 public class MirimEvent extends JFrame {
 	public MirimEvent() {
 		//mbutton.setVisible(false);
-		setTitle("미림가이드북");
+		setTitle("행사");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);

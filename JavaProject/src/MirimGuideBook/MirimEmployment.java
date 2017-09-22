@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 public class MirimEmployment extends JFrame{
 	public MirimEmployment() {
 		//mbutton.setVisible(false);
-		setTitle("미림가이드북");
+		setTitle("취업");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
