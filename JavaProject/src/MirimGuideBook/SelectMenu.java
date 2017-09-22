@@ -134,7 +134,7 @@ public class SelectMenu extends JFrame implements ActionListener{
 		me.setVisible(true);
 		setVisible(false);
 	}
-
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
