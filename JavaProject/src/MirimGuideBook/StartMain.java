@@ -41,7 +41,8 @@ public class StartMain extends JFrame implements ActionListener{
 		mbutton.addActionListener(this);
 	}
 	@Override
-	public void actionPerformed(ActionEvent e) { //버튼 클릭시 메뉴 화면으로 이동
+	// 버튼 클릭시 메뉴 화면으로 이동
+	public void actionPerformed(ActionEvent e) { 
 		mbutton.setVisible(false);
 		SelectMenu sm = new SelectMenu();
 		sm.setVisible(true);
