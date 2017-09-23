@@ -1,10 +1,20 @@
 package MirimGuideBook;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class MirimEmployment extends JFrame{
+	private JLabel label;
+	private JButton[] employmentbtn = new JButton[2];
+	private String[] img = {"/employment_1.png", "/employment_2.png"};
+	Image[] btnimg = new Image[2];
+	
 	public MirimEmployment() {
 		//mbutton.setVisible(false);
 		setTitle("Ãë¾÷");
@@ -16,8 +26,28 @@ public class MirimEmployment extends JFrame{
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
+		label = new JLabel("");
+		for(int i=0;i<2;i++) {
+			employmentbtn[i] = new JButton("");
+		btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+		System.out.println(btnimg[i]);
+		}
+		label.setSize(1280,720);
+		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label);
+		label.setIcon(new ImageIcon(img));
+		//mbutton.addActionListener(this);
+		employmentbtn[0].setBounds(300, 535, 214, 93);
+		employmentbtn[1].setBounds(800, 535, 214, 93);
+		
+		for(int i=0;i<2;i++) {
+			employmentbtn[i].setIcon(new ImageIcon(btnimg[i]));
+			employmentbtn[i].setBorderPainted(false);
+			employmentbtn[i].setContentAreaFilled(false);
+			employmentbtn[i].setFocusPainted(false);
+			label.add(employmentbtn[i]);
+			}
 	}
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
