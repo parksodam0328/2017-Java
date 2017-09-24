@@ -60,11 +60,11 @@ public class SelectMenu extends JFrame{
 		
 		//버튼에 이미지 넣고, 설정
 		for(int i=0;i<8;i++) {
-		menubtn[i].setIcon(new ImageIcon(btnimg[i]));
-		menubtn[i].setBorderPainted(false);
-		menubtn[i].setContentAreaFilled(false);
-		menubtn[i].setFocusPainted(false);
-		label.add(menubtn[i]);
+			menubtn[i].setIcon(new ImageIcon(btnimg[i]));
+			menubtn[i].setBorderPainted(false);
+			menubtn[i].setContentAreaFilled(false);
+			menubtn[i].setFocusPainted(false);
+			label.add(menubtn[i]);
 		}
 		
 		//버튼에 클릭 이벤트 넣어주기
