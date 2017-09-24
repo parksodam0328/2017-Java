@@ -12,8 +12,7 @@ import javax.swing.border.EmptyBorder;
 public class MirimSubject extends JFrame {
 	private JLabel label;
 	private JButton[] gradebtn = new JButton[3];
-	private String[] img = {"/subject_1.png", "/subject_2.png","/subject_3.png"
-			};
+	private String[] img = {"/subject_1.png", "/subject_2.png","/subject_3.png"};
 	Image[] btnimg = new Image[3];
 	public MirimSubject() {
 		//mbutton.setVisible(false);
@@ -27,9 +26,10 @@ public class MirimSubject extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		
 		for(int i=0;i<3;i++) {
-		gradebtn[i] = new JButton("");
-		btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+			gradebtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 		}
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
@@ -46,7 +46,7 @@ public class MirimSubject extends JFrame {
 			gradebtn[i].setContentAreaFilled(false);
 			gradebtn[i].setFocusPainted(false);
 			label.add(gradebtn[i]);
-			}
+		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
