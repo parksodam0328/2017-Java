@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
@@ -17,4 +16,5 @@
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
 </qualifiedTypeNameHistroy>
