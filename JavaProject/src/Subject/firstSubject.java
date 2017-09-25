@@ -17,15 +17,13 @@ import Main.StartMain;
 
 public class firstSubject extends JFrame{
 	private JLabel label;
-<<<<<<< HEAD
-=======
+
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
->>>>>>> 8605495407858d88fa0f580217a2076e8b240b48
+
 	public firstSubject(){
 		//공통과목: 1
 		//인미+솔루: 2
