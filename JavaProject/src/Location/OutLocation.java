@@ -66,7 +66,7 @@ public class OutLocation extends JFrame{
 			//Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
-			System.out.println("디비연결");
+			System.out.println("디비연결완료");
 			Statement stmt = con.createStatement();
 			
 			stmt.execute("use "+DBName+";");
@@ -78,6 +78,7 @@ public class OutLocation extends JFrame{
 				hymnList.add(str);
 				}
 			}
+			
 			result.close();
 			stmt.close();
 			con.close();

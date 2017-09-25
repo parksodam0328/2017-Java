@@ -55,9 +55,9 @@ public class MirimClub extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-		clubbtn[0].setBounds(250, 535, 214, 93);
-		clubbtn[1].setBounds(550, 535, 214, 93);
-		clubbtn[2].setBounds(850, 535, 214, 93);
+		clubbtn[0].setBounds(250, 565, 214, 93);
+		clubbtn[1].setBounds(550, 565, 214, 93);
+		clubbtn[2].setBounds(850, 565, 214, 93);
 		
 		for(int i=0;i<3;i++) {
 			clubbtn[i].setIcon(new ImageIcon(btnimg[i]));
