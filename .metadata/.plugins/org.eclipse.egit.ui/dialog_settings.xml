@@ -22,11 +22,11 @@
 		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
-		<item value="803" key="DIALOG_WIDTH"/>
+		<item value="1938" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
-		<item value="437" key="DIALOG_HEIGHT"/>
-		<item value="568" key="DIALOG_X_ORIGIN"/>
-		<item value="233" key="DIALOG_Y_ORIGIN"/>
+		<item value="1048" key="DIALOG_HEIGHT"/>
+		<item value="0" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.dialogs.CheckoutDialog.dialogBounds">
 		<item value="613" key="DIALOG_WIDTH"/>
