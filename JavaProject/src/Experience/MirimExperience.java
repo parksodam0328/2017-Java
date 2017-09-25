@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import Employment.ConditionEmployment;
 import Employment.EnterpriseEmployment;
+import Main.SelectMenu;
 
 public class MirimExperience extends JFrame {
 	private JLabel label;
@@ -20,6 +21,9 @@ public class MirimExperience extends JFrame {
 	private JButton[] experbtn = new JButton[3];
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimExperience() {
 		//mbutton.setVisible(false);
 		setTitle("체험");
@@ -60,7 +64,7 @@ public class MirimExperience extends JFrame {
 			experbtn[i].setFocusPainted(false);
 			label.add(experbtn[i]);
 		}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		experbtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,7 +92,26 @@ public class MirimExperience extends JFrame {
 				se.setVisible(true);
 			}
 		});
-	}		
+	}	
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

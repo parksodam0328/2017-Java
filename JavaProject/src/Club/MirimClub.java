@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Location.MirimLocation;
+import Main.SelectMenu;
 import Rule.CostumeRule;
 import Rule.DormitoryRule;
 import Rule.SchoolRule;
@@ -21,6 +23,9 @@ public class MirimClub extends JFrame {
 	private JButton[] clubbtn = new JButton[3];
 	private String[] img = {"/club_1.png", "/club_2.png","/club_3.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimClub() {
 		//mbutton.setVisible(false);
 		setTitle("동아리");
@@ -50,15 +55,9 @@ public class MirimClub extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-<<<<<<< HEAD
-		majorbtn[0].setBounds(250, 565, 214, 93);
-		majorbtn[1].setBounds(550, 565, 214, 93);
-		majorbtn[2].setBounds(850, 565, 214, 93);
-=======
 		clubbtn[0].setBounds(250, 535, 214, 93);
 		clubbtn[1].setBounds(550, 535, 214, 93);
 		clubbtn[2].setBounds(850, 535, 214, 93);
->>>>>>> d896090899d8a4ff4b23d260eba55d9245c77a05
 		
 		for(int i=0;i<3;i++) {
 			clubbtn[i].setIcon(new ImageIcon(btnimg[i]));
@@ -67,7 +66,7 @@ public class MirimClub extends JFrame {
 			clubbtn[i].setFocusPainted(false);
 			label.add(clubbtn[i]);
 		}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		clubbtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,6 +94,25 @@ public class MirimClub extends JFrame {
 				ac.setVisible(true);
 			}
 		});
+	}
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

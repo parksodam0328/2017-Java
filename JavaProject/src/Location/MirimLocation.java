@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Main.SelectMenu;
+import Main.StartMain;
 import Subject.MirimSubject;
 
 import java.sql.*;
@@ -21,6 +23,9 @@ public class MirimLocation extends JFrame{
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimLocation() {
 		//mbutton.setVisible(false);
 		setTitle("위치");
@@ -58,7 +63,7 @@ public class MirimLocation extends JFrame{
 			locationbtn[i].setFocusPainted(false);
 			label.add(locationbtn[i]);
 			}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		locationbtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,6 +84,24 @@ public class MirimLocation extends JFrame{
 		});
 	}
 
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

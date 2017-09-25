@@ -1,15 +1,24 @@
 package Club;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Employment.MirimEmployment;
+import Main.SelectMenu;
+
 public class ResearchClub extends JFrame{
 	private JLabel label;
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public ResearchClub(){
 		//mbutton.setVisible(false);
 		setTitle("리서치 동아리");
@@ -26,6 +35,30 @@ public class ResearchClub extends JFrame{
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
+		setBackbtn(backbtn);
 	}
+	
+public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+				   backbtn.setVisible(false);
+	                setVisible(false);
+	                MirimClub mc = new MirimClub();
+	                mc.setVisible(true);
+	            }
+	        });
+	}
+public static void main(String[] args) {
+	
+}
+
 
 }

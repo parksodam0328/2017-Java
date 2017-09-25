@@ -1,11 +1,13 @@
 package Location;
 
 import java.awt.Image;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
@@ -17,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import Entrance.MirimEntrance;
+import Main.SelectMenu;
 
 public class OutLocation extends JFrame{
 	private JLabel label;
@@ -24,6 +27,9 @@ public class OutLocation extends JFrame{
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	private List hymnList = new List();
 	public OutLocation(){
 		//mbutton.setVisible(false);
 		setTitle("외부위치");
@@ -42,11 +48,36 @@ public class OutLocation extends JFrame{
 		label.setSize(1280,720);
 		label_img.setSize(457,370);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
-		//contentPane.add(label_img);
-		//contentPane.add(label);
+		contentPane.add(label_img);
+		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(intro_img));
+		setBackbtn(backbtn);
 		
+		try {
+			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
+			String DBName = "MirimGuideBook";
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+			String SQL = "select * from location_out;";
+			Connection con = null;
+			con = DriverManager.getConnection(dbURL,"root","mirim546");
+			java.sql.Statement st = null;
+			ResultSet result = null;
+			st = con.createStatement();
+			st.execute("use mirimguidebook;");
+			result = st.executeQuery(SQL);
+			
+			while(result.next()) {
+				String str = result.getNString(1);
+				hymnList.add(str);
+			}
+		}catch(SQLException sqle) {
+			System.out.println("SQLException: "+sqle.getMessage());
+			System.out.println("SQLState: "+sqle.getSQLState());
+			
+			}
+			
+		}
 		/* 소담이가할거
 		JTextArea textArea = new JTextArea("outLocation",30,40);
 		
@@ -54,6 +85,24 @@ public class OutLocation extends JFrame{
 		label.add(textArea);
 		*/
 
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                MirimLocation ml = new MirimLocation();
+                ml.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		

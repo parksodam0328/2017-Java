@@ -12,12 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Employment.ConditionEmployment;
+import Main.SelectMenu;
 
 public class MirimEvent extends JFrame {
 	private JLabel label;
 	private JButton eventbtn;
-	private String img = "/event.png";
+	private JLabel label_img;
 	Image btnimg;
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimEvent() {
 		//mbutton.setVisible(false);
 		setTitle("행사");
@@ -30,12 +34,23 @@ public class MirimEvent extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		label_img = new JLabel("");
+		label_img.setLocation(270, 0);
+		Image title_img = new ImageIcon(this.getClass().getResource("/event_title.png")).getImage();
+
+		
 		eventbtn = new JButton("");
-		btnimg = new ImageIcon(this.getClass().getResource(img)).getImage();
+		
+		btnimg = new ImageIcon(this.getClass().getResource("/event.png")).getImage();
 		label.setSize(1280,720);
+		label_img.setSize(756,550);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label_img);
 		contentPane.add(label);
+		
 		label.setIcon(new ImageIcon(img));
+		label_img.setIcon(new ImageIcon(title_img));
+		
 		//mbutton.addActionListener(this);
 		eventbtn.setBounds(530, 565, 214, 93);
 
@@ -44,7 +59,7 @@ public class MirimEvent extends JFrame {
 		eventbtn.setContentAreaFilled(false);
 		eventbtn.setFocusPainted(false);
 		label.add(eventbtn);
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		eventbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -55,6 +70,25 @@ public class MirimEvent extends JFrame {
 			}
 		});
 		
+	}
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
