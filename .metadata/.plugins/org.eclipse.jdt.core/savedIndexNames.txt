@@ -5,7 +5,6 @@ INDEX VERSION 1.130+D:\JAVA\MirimGuideBook\.metadata\.plugins\org.eclipse.jdt.co
 956752177.index
 3876057666.index
 39414472.index
-2868695985.index
 1012197361.index
 3163996356.index
 2273491807.index

@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Event;
 
 import java.awt.Image;
 

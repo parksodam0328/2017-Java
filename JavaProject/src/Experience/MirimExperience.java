@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Experience;
 
 import java.awt.Image;
 

@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Rule;
 
 import java.awt.Image;
 

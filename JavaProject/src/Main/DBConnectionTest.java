@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Main;
 
 import java.sql.*;
  
@@ -8,7 +8,7 @@ public class DBConnectionTest {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
-			String SQL = "select * from subject;";
+			String SQL = "select * from location_out;";
 			//String SQL = "select * from student;";
 			/* DB생성 쿼리문
 			String sqlCT = "CREATE TABLE STUDENT (" + "id varchar(20) NOT NULL, " + "name varchar(20) NOT NULL, " +
@@ -18,7 +18,7 @@ public class DBConnectionTest {
 			Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
-			System.out.println("DB연결");
+			System.out.println("디비연결");
 			Statement stmt = con.createStatement();
 			
 			//DB 생성
@@ -38,10 +38,9 @@ public class DBConnectionTest {
 			stmt.executeQuery(SQL);
 			ResultSet result = stmt.executeQuery(SQL);
 			System.out.println(result.next());
-			System.out.print(result.getString(1)+"\t");
-			System.out.print(result.getString(2)+"\t");
-			System.out.print(result.getString(3)+"\t");
-			System.out.print(result.getString(4)+"\t");
+			for(int i=2; i<=10; i++) {
+				System.out.println(result.getString(i)+"\t");
+			}
 			/*while(result.next()) {
 				System.out.print(result.getString(1)+"\t");
 				System.out.print(result.getString(2)+"\t");

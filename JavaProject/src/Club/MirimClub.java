@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Club;
 
 import java.awt.Image;
 

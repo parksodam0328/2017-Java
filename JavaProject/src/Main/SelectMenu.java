@@ -1,4 +1,4 @@
-package MirimGuideBook;
+package Main;
 
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -11,6 +11,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Club.MirimClub;
+import Employment.MirimEmployment;
+import Entrance.MirimEntrance;
+import Event.MirimEvent;
+import Experience.MirimExperience;
+import Location.MirimLocation;
+import Rule.MirimRule;
+import Subject.MirimSubject;
 
 public class SelectMenu extends JFrame{
 	private JLabel label;

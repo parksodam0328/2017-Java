@@ -1,13 +1,13 @@
-package MirimGuideBook;
+package Location;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.sql.*;
 
 public class MirimLocation extends JFrame{
 	private JLabel label;
