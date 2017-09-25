@@ -18,13 +18,13 @@ import javax.swing.border.EmptyBorder;
 
 import Entrance.MirimEntrance;
 
-public class outLocation extends JFrame{
+public class OutLocation extends JFrame{
 	private JLabel label;
 	private JLabel label_img;
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
-	public outLocation(){
+	public OutLocation(){
 		//mbutton.setVisible(false);
 		setTitle("외부위치");
 		setResizable(false);

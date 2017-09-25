@@ -1,22 +1,18 @@
-package Location;
+package Rule;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
-public class InLocation extends JFrame{
+public class CostumeRule extends JFrame{
 	private JLabel label;
-	public InLocation(){
+	public CostumeRule(){
 		//mbutton.setVisible(false);
-		setTitle("내부위치");
+		setTitle("용의복장 규정");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -30,10 +26,6 @@ public class InLocation extends JFrame{
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
-	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

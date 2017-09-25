@@ -1,6 +1,8 @@
 package Club;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,10 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Rule.CostumeRule;
+import Rule.DormitoryRule;
+import Rule.SchoolRule;
+
 public class MirimClub extends JFrame {
 	private JLabel label;
 	private JLabel label_img;
-	private JButton[] majorbtn = new JButton[3];
+	private JButton[] clubbtn = new JButton[3];
 	private String[] img = {"/club_1.png", "/club_2.png","/club_3.png"};
 	Image[] btnimg = new Image[3];
 	public MirimClub() {
@@ -31,7 +37,7 @@ public class MirimClub extends JFrame {
 		label_img.setLocation(270, 0);
 		Image title_img = new ImageIcon(this.getClass().getResource("/club_title.png")).getImage();
 		for(int i=0;i<3;i++) {
-			majorbtn[i] = new JButton("");
+			clubbtn[i] = new JButton("");
 			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 		}
 		label.setSize(1280,720);
@@ -44,17 +50,45 @@ public class MirimClub extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-		majorbtn[0].setBounds(250, 535, 214, 93);
-		majorbtn[1].setBounds(550, 535, 214, 93);
-		majorbtn[2].setBounds(850, 535, 214, 93);
+		clubbtn[0].setBounds(250, 535, 214, 93);
+		clubbtn[1].setBounds(550, 535, 214, 93);
+		clubbtn[2].setBounds(850, 535, 214, 93);
 		
 		for(int i=0;i<3;i++) {
-			majorbtn[i].setIcon(new ImageIcon(btnimg[i]));
-			majorbtn[i].setBorderPainted(false);
-			majorbtn[i].setContentAreaFilled(false);
-			majorbtn[i].setFocusPainted(false);
-			label.add(majorbtn[i]);
+			clubbtn[i].setIcon(new ImageIcon(btnimg[i]));
+			clubbtn[i].setBorderPainted(false);
+			clubbtn[i].setContentAreaFilled(false);
+			clubbtn[i].setFocusPainted(false);
+			label.add(clubbtn[i]);
 		}
+		
+		//버튼에 클릭 이벤트 넣어주기
+		clubbtn[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clubbtn[0].setVisible(false);
+				setVisible(false);
+				CaClub cc = new CaClub();
+				cc.setVisible(true);
+			}
+		});
+				
+		clubbtn[1].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clubbtn[1].setVisible(false);
+				setVisible(false);
+				ResearchClub rc=new ResearchClub();
+				rc.setVisible(true);
+			}
+		});
+				
+		clubbtn[2].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clubbtn[2].setVisible(false);
+				setVisible(false);
+				AllClub ac = new AllClub();
+				ac.setVisible(true);
+			}
+		});
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -1,22 +1,18 @@
-package Location;
+package Experience;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
-public class InLocation extends JFrame{
+public class DesignExper extends JFrame{
 	private JLabel label;
-	public InLocation(){
+	public DesignExper(){
 		//mbutton.setVisible(false);
-		setTitle("내부위치");
+		setTitle("디자인");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
