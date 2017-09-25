@@ -11,9 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Main.SelectMenu;
+
 
 public class InLocation extends JFrame{
 	private JLabel label;
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public InLocation(){
 		//mbutton.setVisible(false);
 		setTitle("내부위치");
@@ -30,6 +35,26 @@ public class InLocation extends JFrame{
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
+		setBackbtn(backbtn);
+	}
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                MirimLocation ml = new MirimLocation();
+                ml.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

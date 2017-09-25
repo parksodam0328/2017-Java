@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 
 import Employment.ConditionEmployment;
 import Employment.EnterpriseEmployment;
+import Main.SelectMenu;
+import Main.StartMain;
 
 public class MirimEntrance extends JFrame {
 	private JLabel label;
@@ -21,6 +23,9 @@ public class MirimEntrance extends JFrame {
 	private JButton[] entrancebtn = new JButton[4];
 	private String[] img = {"/entrance_1.png", "/entrance_2.png","/entrance_3.png","/entrance_4.png"};
 	Image[] btnimg = new Image[4];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimEntrance() {
 		//mbutton.setVisible(false);
 		setTitle("¿‘«–");
@@ -50,10 +55,10 @@ public class MirimEntrance extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-		entrancebtn[0].setBounds(165, 535, 214, 93);
-		entrancebtn[1].setBounds(415, 535, 214, 93);
-		entrancebtn[2].setBounds(665, 535, 214, 93);
-		entrancebtn[3].setBounds(915, 535, 214, 93);
+		entrancebtn[0].setBounds(165, 565, 214, 93);
+		entrancebtn[1].setBounds(415, 565, 214, 93);
+		entrancebtn[2].setBounds(665, 565, 214, 93);
+		entrancebtn[3].setBounds(915, 565, 214, 93);
 		
 		for(int i=0;i<4;i++) {
 			entrancebtn[i].setIcon(new ImageIcon(btnimg[i]));
@@ -62,8 +67,28 @@ public class MirimEntrance extends JFrame {
 			entrancebtn[i].setFocusPainted(false);
 			label.add(entrancebtn[i]);
 		}
+		setBackbtn(backbtn);
 		
 
+	}
+	
+public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

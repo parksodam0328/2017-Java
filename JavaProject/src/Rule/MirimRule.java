@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Main.SelectMenu;
 import Subject.MirimSubject;
 
 public class MirimRule extends JFrame {
@@ -19,6 +20,9 @@ public class MirimRule extends JFrame {
 	private JButton[] rulebtn = new JButton[3];
 	private String[] img = {"/rule_1.png", "/rule_2.png","/rule_3.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimRule() {
 		//mbutton.setVisible(false);
 		setTitle("규정");
@@ -48,9 +52,9 @@ public class MirimRule extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-		rulebtn[0].setBounds(250, 535, 214, 93);
-		rulebtn[1].setBounds(550, 535, 214, 93);
-		rulebtn[2].setBounds(850, 535, 214, 93);
+		rulebtn[0].setBounds(250, 565, 214, 93);
+		rulebtn[1].setBounds(550, 565, 214, 93);
+		rulebtn[2].setBounds(850, 565, 214, 93);
 		
 		for(int i=0;i<3;i++) {
 			rulebtn[i].setIcon(new ImageIcon(btnimg[i]));
@@ -59,7 +63,7 @@ public class MirimRule extends JFrame {
 			rulebtn[i].setFocusPainted(false);
 			label.add(rulebtn[i]);
 		}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		rulebtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,6 +91,25 @@ public class MirimRule extends JFrame {
 				dr.setVisible(true);
 			}
 		});
+	}
+	
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                SelectMenu sm = new SelectMenu();
+                sm.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

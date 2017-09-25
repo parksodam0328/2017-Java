@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Location.InLocation;
+import Location.MirimLocation;
 import Location.OutLocation;
+import Main.SelectMenu;
 
 public class MirimEmployment extends JFrame{
 	private JLabel label;
@@ -20,6 +22,9 @@ public class MirimEmployment extends JFrame{
 	private JButton[] employmentbtn = new JButton[3];
 	private String[] img = {"/employment_1.png", "/employment_2.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public MirimEmployment() {
 		//mbutton.setVisible(false);
 		setTitle("취업");
@@ -47,8 +52,8 @@ public class MirimEmployment extends JFrame{
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		//mbutton.addActionListener(this);
-		employmentbtn[0].setBounds(300, 535, 214, 93);
-		employmentbtn[1].setBounds(800, 535, 214, 93);
+		employmentbtn[0].setBounds(300, 565, 214, 93);
+		employmentbtn[1].setBounds(800, 565, 214, 93);
 		
 		for(int i=0;i<2;i++) {
 			employmentbtn[i].setIcon(new ImageIcon(btnimg[i]));
@@ -57,7 +62,7 @@ public class MirimEmployment extends JFrame{
 			employmentbtn[i].setFocusPainted(false);
 			label.add(employmentbtn[i]);
 		}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		employmentbtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,7 +82,24 @@ public class MirimEmployment extends JFrame{
 			}
 		});
 	}		
-
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+	                backbtn.setVisible(false);
+	                setVisible(false);
+	                SelectMenu sm = new SelectMenu();
+	                sm.setVisible(true);
+	            }
+	        });
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

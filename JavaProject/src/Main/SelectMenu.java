@@ -25,11 +25,15 @@ public class SelectMenu extends JFrame{
 	private JLabel label;
 	private JPanel jp;
 	private JButton menubtn[] = new JButton[8];
+	
 	private String[] img = {"/button_subject.png","/button_rule.png","/button_club.png",
 			"/button_location.png", "/button_entrance.png", "/button_experience.png", 
 			"/button_ employment.png","/button_ event.png"
 			};
-	Image[] btnimg = new Image[8];
+	private Image[] btnimg = new Image[8];
+	
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
 	public SelectMenu() {
 		setTitle("메뉴선택");
@@ -75,7 +79,7 @@ public class SelectMenu extends JFrame{
 			menubtn[i].setFocusPainted(false);
 			label.add(menubtn[i]);
 		}
-		
+		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
 		menubtn[0].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -139,6 +143,24 @@ public class SelectMenu extends JFrame{
                 setVisible(false);
                 MirimEvent mev = new MirimEvent();
                 mev.setVisible(true);
+            }
+        });
+	}
+	public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                StartMain sm = new StartMain();
+                sm.setVisible(true);
             }
         });
 	}

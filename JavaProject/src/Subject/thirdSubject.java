@@ -12,12 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Entrance.MirimEntrance;
+import Main.SelectMenu;
 
 public class thirdSubject extends JFrame{
 	private JLabel label;
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
+	private JButton backbtn = new JButton("");
+	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
+	
 	public thirdSubject(){
 		//mbutton.setVisible(false);
 		setTitle("3ÇÐ³â");
@@ -34,6 +38,26 @@ public class thirdSubject extends JFrame{
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
+		setBackbtn(backbtn);
+	}
+	
+public void setBackbtn(JButton j) {
+		
+		j.setIcon(new ImageIcon(back_img));
+		j.setBounds(5,5,100,70);
+		j.setBorderPainted(false);
+		j.setContentAreaFilled(false);
+		j.setFocusPainted(false);
+		label.add(j);
+		
+		backbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backbtn.setVisible(false);
+                setVisible(false);
+                MirimSubject ms = new MirimSubject();
+                ms.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

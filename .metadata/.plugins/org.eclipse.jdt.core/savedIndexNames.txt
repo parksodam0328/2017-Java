@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.130+D:\JAVA\MirimGuideBook\.metadata\.plugins\org.eclipse.jdt.core
 1817446190.index
 1173945041.index
@@ -19,3 +20,27 @@ INDEX VERSION 1.130+D:\JAVA\MirimGuideBook\.metadata\.plugins\org.eclipse.jdt.co
 2341309489.index
 2725782233.index
 1417411144.index
+=======
+INDEX VERSION 1.130+D:\MirimGuideBook\.metadata\.plugins\org.eclipse.jdt.core
+1481171513.index
+3516662976.index
+3056584743.index
+238672883.index
+3037552836.index
+2868695985.index
+3863136206.index
+1281579729.index
+3172367027.index
+1612208864.index
+2332919143.index
+1644359838.index
+1102588962.index
+3494351833.index
+3593971869.index
+920174334.index
+241857209.index
+1279793078.index
+1380600312.index
+998488819.index
+2274042111.index
+>>>>>>> 8605495407858d88fa0f580217a2076e8b240b48
