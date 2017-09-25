@@ -42,8 +42,8 @@ public class OutLocation extends JFrame{
 		label.setSize(1280,720);
 		label_img.setSize(457,370);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
-		//contentPane.add(label_img);
-		//contentPane.add(label);
+		contentPane.add(label_img);
+		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(intro_img));
 		
