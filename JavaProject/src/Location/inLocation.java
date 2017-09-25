@@ -15,7 +15,6 @@ import Entrance.MirimEntrance;
 
 public class inLocation extends JFrame{
 	private JLabel label;
-	private JLabel label_img;
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
@@ -31,7 +30,6 @@ public class inLocation extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
-		label_img = new JLabel("");
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
