@@ -48,8 +48,8 @@ public class MirimLocation extends JFrame{
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		//mbutton.addActionListener(this);
-		locationbtn[0].setBounds(300, 535, 214, 93);
-		locationbtn[1].setBounds(800, 535, 214, 93);
+		locationbtn[0].setBounds(300, 565, 214, 93);
+		locationbtn[1].setBounds(800, 565, 214, 93);
 		
 		for(int i=0;i<2;i++) {
 			locationbtn[i].setIcon(new ImageIcon(btnimg[i]));

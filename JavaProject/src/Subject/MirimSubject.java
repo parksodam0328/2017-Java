@@ -43,9 +43,9 @@ public class MirimSubject extends JFrame {
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		//mbutton.addActionListener(this);
-		gradebtn[0].setBounds(250, 535, 214, 93);
-		gradebtn[1].setBounds(550, 535, 214, 93);
-		gradebtn[2].setBounds(850, 535, 214, 93);
+		gradebtn[0].setBounds(250, 565, 214, 93);
+		gradebtn[1].setBounds(550, 565, 214, 93);
+		gradebtn[2].setBounds(850, 565, 214, 93);
 		
 		for(int i=0;i<3;i++) {
 			gradebtn[i].setIcon(new ImageIcon(btnimg[i]));

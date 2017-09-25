@@ -20,7 +20,7 @@ public class inLocation extends JFrame{
 	Image[] btnimg = new Image[3];
 	public inLocation(){
 		//mbutton.setVisible(false);
-		setTitle("외부위치");
+		setTitle("내부위치");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);

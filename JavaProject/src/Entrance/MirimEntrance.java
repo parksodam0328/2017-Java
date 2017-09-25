@@ -44,10 +44,10 @@ public class MirimEntrance extends JFrame {
 		label_img.setIcon(new ImageIcon(title_img));
 		
 		//mbutton.addActionListener(this);
-		entrancebtn[0].setBounds(165, 535, 214, 93);
-		entrancebtn[1].setBounds(415, 535, 214, 93);
-		entrancebtn[2].setBounds(665, 535, 214, 93);
-		entrancebtn[3].setBounds(915, 535, 214, 93);
+		entrancebtn[0].setBounds(165, 565, 214, 93);
+		entrancebtn[1].setBounds(415, 565, 214, 93);
+		entrancebtn[2].setBounds(665, 565, 214, 93);
+		entrancebtn[3].setBounds(915, 565, 214, 93);
 		
 		for(int i=0;i<4;i++) {
 			entrancebtn[i].setIcon(new ImageIcon(btnimg[i]));
