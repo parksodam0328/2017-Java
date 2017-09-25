@@ -11,9 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 public class MirimLocation extends JFrame{
 	private JLabel label;
+	private JLabel label_img;
 	private JButton[] locationbtn = new JButton[3];
-	private String[] img = {"/location_1.png", "/location_2.png"
-			};
+	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
 	public MirimLocation() {
 		//mbutton.setVisible(false);
@@ -27,14 +27,20 @@ public class MirimLocation extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		label_img = new JLabel("");
+		label_img.setLocation(270, 0);
+		Image title_img = new ImageIcon(this.getClass().getResource("/location_title.png")).getImage();
 		for(int i=0;i<2;i++) {
-		locationbtn[i] = new JButton("");
-		btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+			locationbtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 		}
 		label.setSize(1280,720);
+		label_img.setSize(756,550);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label_img);
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
+		label_img.setIcon(new ImageIcon(title_img));
 		//mbutton.addActionListener(this);
 		locationbtn[0].setBounds(300, 535, 214, 93);
 		locationbtn[1].setBounds(800, 535, 214, 93);

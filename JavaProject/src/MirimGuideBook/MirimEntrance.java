@@ -9,13 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class MirimEntrance extends JFrame{
+public class MirimEntrance extends JFrame {
 	private JLabel label;
+	private JLabel label_img;
 	private JButton[] entrancebtn = new JButton[4];
-	private String[] img = {"/entrance_1.png", "/entrance_2.png","/entrance_3.png", "/entrance_5.png"
-			};
+	private String[] img = {"/entrance_1.png", "/entrance_2.png","/entrance_3.png","/entrance_4.png"};
 	Image[] btnimg = new Image[4];
-	
 	public MirimEntrance() {
 		//mbutton.setVisible(false);
 		setTitle("¿‘«–");
@@ -28,15 +27,22 @@ public class MirimEntrance extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		label_img = new JLabel("");
+		label_img.setLocation(270, 0);
+		Image title_img = new ImageIcon(this.getClass().getResource("/entrance_title.png")).getImage();
 		for(int i=0;i<4;i++) {
-		entrancebtn[i] = new JButton("");
-		btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
-		System.out.println(btnimg[i]);
+			entrancebtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 		}
 		label.setSize(1280,720);
+		label_img.setSize(756,550);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label_img);
 		contentPane.add(label);
+		
 		label.setIcon(new ImageIcon(img));
+		label_img.setIcon(new ImageIcon(title_img));
+		
 		//mbutton.addActionListener(this);
 		entrancebtn[0].setBounds(165, 535, 214, 93);
 		entrancebtn[1].setBounds(415, 535, 214, 93);
@@ -49,9 +55,8 @@ public class MirimEntrance extends JFrame{
 			entrancebtn[i].setContentAreaFilled(false);
 			entrancebtn[i].setFocusPainted(false);
 			label.add(entrancebtn[i]);
-			}
+		}
 	}
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

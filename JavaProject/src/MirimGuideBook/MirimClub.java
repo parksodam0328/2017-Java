@@ -11,9 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 public class MirimClub extends JFrame {
 	private JLabel label;
-	private JButton[] clubbtn = new JButton[3];
-	private String[] img = {"/club_1.png", "/club_2.png","/club_3.png"
-			};
+	private JLabel label_img;
+	private JButton[] majorbtn = new JButton[3];
+	private String[] img = {"/club_1.png", "/club_2.png","/club_3.png"};
 	Image[] btnimg = new Image[3];
 	public MirimClub() {
 		//mbutton.setVisible(false);
@@ -27,30 +27,38 @@ public class MirimClub extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		label_img = new JLabel("");
+		label_img.setLocation(270, 0);
+		Image title_img = new ImageIcon(this.getClass().getResource("/club_title.png")).getImage();
 		for(int i=0;i<3;i++) {
-		clubbtn[i] = new JButton("");
-		btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+			majorbtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 		}
 		label.setSize(1280,720);
+		label_img.setSize(756,550);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label_img);
 		contentPane.add(label);
+		
 		label.setIcon(new ImageIcon(img));
+		label_img.setIcon(new ImageIcon(title_img));
+		
 		//mbutton.addActionListener(this);
-		clubbtn[0].setBounds(250, 535, 214, 93);
-		clubbtn[1].setBounds(550, 535, 214, 93);
-		clubbtn[2].setBounds(850, 535, 214, 93);
+		majorbtn[0].setBounds(250, 535, 214, 93);
+		majorbtn[1].setBounds(550, 535, 214, 93);
+		majorbtn[2].setBounds(850, 535, 214, 93);
 		
 		for(int i=0;i<3;i++) {
-			clubbtn[i].setIcon(new ImageIcon(btnimg[i]));
-			clubbtn[i].setBorderPainted(false);
-			clubbtn[i].setContentAreaFilled(false);
-			clubbtn[i].setFocusPainted(false);
-			label.add(clubbtn[i]);
-			}
+			majorbtn[i].setIcon(new ImageIcon(btnimg[i]));
+			majorbtn[i].setBorderPainted(false);
+			majorbtn[i].setContentAreaFilled(false);
+			majorbtn[i].setFocusPainted(false);
+			label.add(majorbtn[i]);
+		}
 	}
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 }
