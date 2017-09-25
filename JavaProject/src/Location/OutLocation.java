@@ -66,7 +66,7 @@ public class OutLocation extends JFrame{
 			st = con.createStatement();
 			st.execute("use mirimguidebook;");
 			result = st.executeQuery(SQL);
-			
+			hymnList.setBounds(20,80,300,300);
 			while(result.next()) {
 				String str = result.getNString(1);
 				hymnList.add(str);
@@ -78,12 +78,6 @@ public class OutLocation extends JFrame{
 			}
 			
 		}
-		/* 소담이가할거
-		JTextArea textArea = new JTextArea("outLocation",30,40);
-		
-		textArea.setLocation(100,0);
-		label.add(textArea);
-		*/
 
 	
 	public void setBackbtn(JButton j) {
