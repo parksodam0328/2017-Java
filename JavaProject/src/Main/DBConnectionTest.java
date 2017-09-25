@@ -48,6 +48,8 @@ public class DBConnectionTest {
 				System.out.print(result.getString(4)+"\n");
 				System.out.print("출력완료");
             }*/
+			result.close();
+			stmt.close();
 			con.close();
 		}
 		catch(Exception e){

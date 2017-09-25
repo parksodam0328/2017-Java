@@ -1,6 +1,7 @@
 package Location;
 
 import java.awt.Image;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -21,9 +22,7 @@ import Entrance.MirimEntrance;
 public class OutLocation extends JFrame{
 	private JLabel label;
 	private JLabel label_img;
-	private JButton[] locationbtn = new JButton[3];
-	private String[] img = {"/location_1.png", "/location_2.png"};
-	Image[] btnimg = new Image[3];
+	JTextArea textArea = new JTextArea("outLocation",30,40);
 	public OutLocation(){
 		//mbutton.setVisible(false);
 		setTitle("외부위치");
@@ -38,21 +37,17 @@ public class OutLocation extends JFrame{
 		label = new JLabel("");
 		label_img = new JLabel("");
 		label_img.setLocation(50, 150);
+		textArea.setLocation(100,0);
 		Image intro_img = new ImageIcon(this.getClass().getResource("/public_location.png")).getImage();
 		label.setSize(1280,720);
 		label_img.setSize(457,370);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label_img);
 		contentPane.add(label);
+		label.add(textArea);
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(intro_img));
 		
-		/* 소담이가할거
-		JTextArea textArea = new JTextArea("outLocation",30,40);
-		
-		textArea.setLocation(100,0);
-		label.add(textArea);
-		*/
 
 	}
 	public static void main(String[] args) {

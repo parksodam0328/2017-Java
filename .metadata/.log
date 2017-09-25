@@ -3804,3 +3804,9 @@ JavaProject/src/Entrance/MirimEntrance.java
 	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:449)
 	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:297)
 	... 10 more
+
+!ENTRY org.eclipse.jface.text 2 0 2017-09-26 00:17:15.337
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-09-26 00:17:15.353
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
