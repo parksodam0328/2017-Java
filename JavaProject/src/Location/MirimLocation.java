@@ -64,16 +64,16 @@ public class MirimLocation extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				locationbtn[0].setVisible(false);
 				setVisible(false);
-				outLocation ol = new outLocation();
+				OutLocation ol = new OutLocation();
 				ol.setVisible(true);
 			}
 		});
 		
 		locationbtn[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				locationbtn[0].setVisible(false);
+				locationbtn[1].setVisible(false);
 				setVisible(false);
-				inLocation il = new inLocation();
+				InLocation il = new InLocation();
 				il.setVisible(true);
 			}
 		});

@@ -1,6 +1,8 @@
 package Subject;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -54,6 +56,32 @@ public class MirimSubject extends JFrame {
 			gradebtn[i].setFocusPainted(false);
 			label.add(gradebtn[i]);
 		}
+		
+		//버튼에 클릭 이벤트 넣어주기
+		gradebtn[0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	gradebtn[0].setVisible(false);
+                setVisible(false);
+                firstSubject fs = new firstSubject();
+                fs.setVisible(true);
+            }
+        });
+		gradebtn[1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	gradebtn[1].setVisible(false);
+                setVisible(false);
+                secondSubject ss = new secondSubject();
+                ss.setVisible(true);
+            }
+        });
+		gradebtn[2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	gradebtn[2].setVisible(false);
+                setVisible(false);
+                thirdSubject ts = new thirdSubject();
+                ts.setVisible(true);
+            }
+        });
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

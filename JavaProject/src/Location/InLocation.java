@@ -1,4 +1,4 @@
-package Event;
+package Location;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,16 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Employment.ConditionEmployment;
 
-public class MirimEvent extends JFrame {
+public class InLocation extends JFrame{
 	private JLabel label;
-	private JButton eventbtn;
-	private String img = "/event.png";
-	Image btnimg;
-	public MirimEvent() {
+	public InLocation(){
 		//mbutton.setVisible(false);
-		setTitle("행사");
+		setTitle("내부위치");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -30,31 +26,10 @@ public class MirimEvent extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
-		eventbtn = new JButton("");
-		btnimg = new ImageIcon(this.getClass().getResource(img)).getImage();
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
-		//mbutton.addActionListener(this);
-		eventbtn.setBounds(530, 565, 214, 93);
-
-		eventbtn.setIcon(new ImageIcon(btnimg));
-		eventbtn.setBorderPainted(false);
-		eventbtn.setContentAreaFilled(false);
-		eventbtn.setFocusPainted(false);
-		label.add(eventbtn);
-		
-		//버튼에 클릭 이벤트 넣어주기
-		eventbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				eventbtn.setVisible(false);
-				setVisible(false);
-				SchoolEvent se = new SchoolEvent();
-				se.setVisible(true);
-			}
-		});
-		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

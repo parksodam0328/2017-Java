@@ -1,6 +1,8 @@
 package Rule;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Subject.MirimSubject;
 
 public class MirimRule extends JFrame {
 	private JLabel label;
@@ -55,6 +59,34 @@ public class MirimRule extends JFrame {
 			rulebtn[i].setFocusPainted(false);
 			label.add(rulebtn[i]);
 		}
+		
+		//버튼에 클릭 이벤트 넣어주기
+		rulebtn[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rulebtn[0].setVisible(false);
+				setVisible(false);
+				SchoolRule sr = new SchoolRule();
+				sr.setVisible(true);
+			}
+		});
+		
+		rulebtn[1].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rulebtn[1].setVisible(false);
+				setVisible(false);
+				CostumeRule cr=new CostumeRule();
+				cr.setVisible(true);
+			}
+		});
+		
+		rulebtn[2].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rulebtn[2].setVisible(false);
+				setVisible(false);
+				DormitoryRule dr = new DormitoryRule();
+				dr.setVisible(true);
+			}
+		});
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

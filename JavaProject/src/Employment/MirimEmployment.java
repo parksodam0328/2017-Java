@@ -1,6 +1,8 @@
 package Employment;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Location.InLocation;
+import Location.OutLocation;
 
 public class MirimEmployment extends JFrame{
 	private JLabel label;
@@ -51,8 +56,27 @@ public class MirimEmployment extends JFrame{
 			employmentbtn[i].setContentAreaFilled(false);
 			employmentbtn[i].setFocusPainted(false);
 			label.add(employmentbtn[i]);
+		}
+		
+		//버튼에 클릭 이벤트 넣어주기
+		employmentbtn[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				employmentbtn[0].setVisible(false);
+				setVisible(false);
+				ConditionEmployment ce = new ConditionEmployment();
+				ce.setVisible(true);
 			}
-	}
+		});
+		
+		employmentbtn[1].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				employmentbtn[1].setVisible(false);
+				setVisible(false);
+				EnterpriseEmployment ee = new EnterpriseEmployment();
+				ee.setVisible(true);
+			}
+		});
+	}		
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
