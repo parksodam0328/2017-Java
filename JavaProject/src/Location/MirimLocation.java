@@ -1,12 +1,18 @@
 package Location;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Subject.MirimSubject;
+
 import java.sql.*;
 
 public class MirimLocation extends JFrame{
@@ -52,6 +58,25 @@ public class MirimLocation extends JFrame{
 			locationbtn[i].setFocusPainted(false);
 			label.add(locationbtn[i]);
 			}
+		
+		//버튼에 클릭 이벤트 넣어주기
+		locationbtn[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				locationbtn[0].setVisible(false);
+				setVisible(false);
+				outLocation ol = new outLocation();
+				ol.setVisible(true);
+			}
+		});
+		
+		locationbtn[1].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				locationbtn[0].setVisible(false);
+				setVisible(false);
+				inLocation il = new inLocation();
+				il.setVisible(true);
+			}
+		});
 	}
 
 	public static void main(String[] args) {
