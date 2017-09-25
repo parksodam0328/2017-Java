@@ -17,14 +17,19 @@ import Main.StartMain;
 
 public class firstSubject extends JFrame{
 	private JLabel label;
+
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
+
 	public firstSubject(){
-		//mbutton.setVisible(false);
+		//공통과목: 1
+		//인미+솔루: 2
+		//디자인:3
+		//인미:4
+		//솔루:5
 		setTitle("1학년");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

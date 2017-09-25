@@ -12,8 +12,8 @@ public class DBConnection {
 	
 	public DBConnection() {
 		try {
-			Class.forName("comm.mysql.jdbc.Driver");
-			con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutorial","root","mirim546");
+			Class.forName("com.mysql.jdbc.Driver");
+			con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mirimguidebook","root","mirim546");
 			st=(Statement) con.createStatement();
 			
 		}catch(Exception e) {
