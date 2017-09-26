@@ -62,6 +62,16 @@ public class OutLocation extends JFrame{
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
 			String SQL = "select * from location_out;";
+<<<<<<< HEAD
+			Connection con = null;
+			con = DriverManager.getConnection(dbURL,"root","mirim546");
+			java.sql.Statement st = null;
+			ResultSet result = null;
+			st = con.createStatement();
+			st.execute("use mirimguidebook;");
+			result = st.executeQuery(SQL);
+			hymnList.setBounds(20,80,300,300);
+=======
 			
 			//Class.forName(driverName); // 드라이버 로드
 			
@@ -72,6 +82,7 @@ public class OutLocation extends JFrame{
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
 			
+>>>>>>> e2126546dd450926ddcd431a1011e22249bfa671
 			while(result.next()) {
 				for(int i=1;i<=10;i++) {
 				String str = result.getString(i);
@@ -88,6 +99,10 @@ public class OutLocation extends JFrame{
 		}
 			
 		}
+<<<<<<< HEAD
+
+=======
+>>>>>>> e2126546dd450926ddcd431a1011e22249bfa671
 	
 	public void setBackbtn(JButton j) {
 		
