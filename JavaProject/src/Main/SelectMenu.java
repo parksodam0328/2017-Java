@@ -88,6 +88,7 @@ public class SelectMenu extends JFrame{
                 MirimSubject ms = new MirimSubject();
                 ms.setVisible(true);
             }
+            
         });
 		menubtn[1].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -85,8 +85,7 @@ public class OutLocation extends JFrame{
 		}catch(SQLException sqle) {
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
-			
-			}
+		}
 			
 		}
 	

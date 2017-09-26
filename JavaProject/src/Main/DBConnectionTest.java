@@ -44,7 +44,7 @@ public class DBConnectionTest {
 			/*while(result.next()) {
 				System.out.print(result.getString(1)+"\t");
 				System.out.print(result.getString(2)+"\t");
-				System.out.print(result.getString(3)+"\t");
+				System.out.print(result.getString(3)+"\t");      
 				System.out.print(result.getString(4)+"\n");
 				System.out.print("출력완료");
             }*/

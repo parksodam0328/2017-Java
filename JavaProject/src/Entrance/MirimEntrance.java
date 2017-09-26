@@ -1,6 +1,9 @@
 package Entrance;
 
 import java.awt.Image;
+import java.net.URI; 
+import java.net.URISyntaxException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -16,7 +19,8 @@ import Employment.ConditionEmployment;
 import Employment.EnterpriseEmployment;
 import Main.SelectMenu;
 import Main.StartMain;
-
+import Subject.MirimSubject;
+import java.awt.Desktop;
 public class MirimEntrance extends JFrame {
 	private JLabel label;
 	private JLabel label_img;
@@ -68,6 +72,48 @@ public class MirimEntrance extends JFrame {
 			label.add(entrancebtn[i]);
 		}
 		setBackbtn(backbtn);
+		
+		//버튼에 클릭 이벤트 넣어주기
+		entrancebtn[0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	entrancebtn[0].setVisible(false);
+                setVisible(false);
+                MajorEntrance me = new  MajorEntrance();
+                me.setVisible(true);
+            }
+        });
+		entrancebtn[1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	entrancebtn[1].setVisible(false);
+                setVisible(false);
+                IntroduceEntrance ie= new IntroduceEntrance();
+                ie.setVisible(true);
+            }
+        });
+		//파일다운로드받게하기
+		entrancebtn[2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//entrancebtn[2].setVisible(false);
+                //setVisible(false);
+                try { 
+                	Desktop.getDesktop().browse(new URI("https://e-mirim.hs.kr/renewal/admission/down/2018/2018%20sungjuk%20program.zip"));
+                } catch (IOException ioioe) {
+                	ioioe.printStackTrace(); 
+                	} catch (URISyntaxException ddde){ 
+                		ddde.printStackTrace(); 
+                } 
+
+            }
+        });
+		entrancebtn[3].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	entrancebtn[3].setVisible(false);
+                setVisible(false);
+                FaqEntrance fe = new  FaqEntrance();
+                fe.setVisible(true);
+            }
+        });
+
 		
 
 	}
