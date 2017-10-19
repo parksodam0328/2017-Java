@@ -21,22 +21,18 @@ import Entrance.MirimEntrance;
 import Main.SelectMenu;
 import Main.StartMain;
 
-public class firstSubject extends JFrame{
+public class firstSubject extends JFrame {
 	private JLabel label;
-
-	private JButton[] locationbtn = new JButton[3];
-	private String[] img = {"/location_1.png", "/location_2.png"};
+	private JLabel label_img;
+	private JButton[] gradebtn = new JButton[3];
+	private String[] img = {"/subject_1.png", "/subject_2.png","/subject_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private List hymnList = new List();
-	public firstSubject(){
-		//공통과목: 1
-		//인미+솔루: 2
-		//디자인:3
-		//인미:4
-		//솔루:5
-		setTitle("1학년");
+	public firstSubject() {
+		//mbutton.setVisible(false);
+		setTitle("1학년 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -46,12 +42,32 @@ public class firstSubject extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		label = new JLabel("");
+		label_img = new JLabel("");
 		hymnList.setBounds(600,100,400,500);
 		label.add(hymnList);
+		label_img.setLocation(270, 0);
+		for(int i=0;i<3;i++) {
+			gradebtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+		}
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label_img);
 		contentPane.add(label);
+		
 		label.setIcon(new ImageIcon(img));
+		//mbutton.addActionListener(this);
+		gradebtn[0].setBounds(250, 70, 214, 93);
+		gradebtn[1].setBounds(550, 70, 214, 93);
+		gradebtn[2].setBounds(850, 70, 214, 93);
+		
+		for(int i=0;i<3;i++) {
+			gradebtn[i].setIcon(new ImageIcon(btnimg[i]));
+			gradebtn[i].setBorderPainted(false);
+			gradebtn[i].setContentAreaFilled(false);
+			gradebtn[i].setFocusPainted(false);
+			label.add(gradebtn[i]);
+		}
 		setBackbtn(backbtn);
 	}
 	
