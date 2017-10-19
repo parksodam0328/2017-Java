@@ -32,7 +32,6 @@ public class OutLocation extends JFrame{
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private List hymnList = new List();
 	public OutLocation(){
-		//mbutton.setVisible(false);
 		setTitle("외부위치");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +44,7 @@ public class OutLocation extends JFrame{
 		label = new JLabel("");
 		label_img = new JLabel("");
 		label_img.setLocation(50, 150);
-		hymnList.setBounds(600,100,400,500);
+		hymnList.setBounds(600,100,500,500);
 		label.add(hymnList);
 		Image intro_img = new ImageIcon(this.getClass().getResource("/public_location.png")).getImage();
 		label.setSize(1280,720);
@@ -62,7 +61,6 @@ public class OutLocation extends JFrame{
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
 			String SQL = "select * from location_out;";
-<<<<<<< HEAD
 			Connection con = null;
 			con = DriverManager.getConnection(dbURL,"root","mirim546");
 			java.sql.Statement st = null;
@@ -70,49 +68,41 @@ public class OutLocation extends JFrame{
 			st = con.createStatement();
 			st.execute("use mirimguidebook;");
 			result = st.executeQuery(SQL);
-			hymnList.setBounds(20,80,300,300);
-=======
+			hymnList.setBounds(700,120,300,300);
 			
 			//Class.forName(driverName); // 드라이버 로드
 			
-			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
+			con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
 			Statement stmt = con.createStatement();
 			
 			stmt.execute("use "+DBName+";");
-			ResultSet result = stmt.executeQuery(SQL);
-			
->>>>>>> e2126546dd450926ddcd431a1011e22249bfa671
+			result = stmt.executeQuery(SQL);
+
 			while(result.next()) {
 				for(int i=1;i<=10;i++) {
 				String str = result.getString(i);
 				hymnList.add(str);
 				}
 			}
-			
 			result.close();
 			stmt.close();
 			con.close();
 		}catch(SQLException sqle) {
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
-		}
-			
-		}
-<<<<<<< HEAD
-
-=======
->>>>>>> e2126546dd450926ddcd431a1011e22249bfa671
+		}	
+	}
 	
 	public void setBackbtn(JButton j) {
-		
 		j.setIcon(new ImageIcon(back_img));
 		j.setBounds(5,5,100,70);
 		j.setBorderPainted(false);
 		j.setContentAreaFilled(false);
 		j.setFocusPainted(false);
-		label.add(j);
 		
+		label.add(j);
+
 		backbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 backbtn.setVisible(false);
@@ -122,6 +112,7 @@ public class OutLocation extends JFrame{
             }
         });
 	}
+	
 	public static void main(String[] args) {
 		
 	}
