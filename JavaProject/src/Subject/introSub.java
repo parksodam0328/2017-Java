@@ -1,0 +1,98 @@
+package Subject;
+
+import java.awt.Image;
+import java.awt.Label;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+
+public class introSub extends JFrame{
+	private JLabel label;
+	private JPanel contentPane;
+	private JLabel[] intro=new JLabel[6];
+	private Image[] introImg = new Image[6];
+	private String[] img = {"/introSub_1.png", "/introSub_2.png","/introSub_3.png",
+			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
+	public introSub() {
+		setTitle("과목소개");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(540, 720);
+		setVisible(true);
+		setLocationRelativeTo(null); //창 중앙에 띄우기
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		contentPane.setLayout(null);
+		getContentPane().add(contentPane);
+		
+		
+		for(int i=0; i<6; i++) {
+			intro[i]=new JLabel("");
+			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
+			intro[i].setIcon(new ImageIcon(introImg[i]));
+			intro[i].setBounds(10, 100*(i+1), 140, 70);
+			contentPane.add(intro[i]);
+		}
+		
+		label = new JLabel("");
+		label.setSize(540,720);
+		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		contentPane.add(label);
+		label.setIcon(new ImageIcon(img));
+		
+		
+		try {
+			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
+			String DBName = "MirimGuideBook";
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+			String SQL = "select * from subject;";
+			
+			//Class.forName(driverName); // 드라이버 로드
+			
+			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
+			System.out.println("디비연결완료");
+			Statement stmt = con.createStatement();
+			
+			stmt.execute("use "+DBName+";");
+			ResultSet result = stmt.executeQuery(SQL);
+			String[] sub = new String[13];
+			while(result.next()) {
+				for(int i=1;i<=7;i++) {
+					String str = result.getString(i);
+					System.out.println(str);
+					/*과목 이름 넣기
+					if(i==4) {
+						sub[i]=result.getString(i);
+						System.out.println(sub[i]);
+					}
+					*/
+				}
+			}
+			
+			result.close();
+			stmt.close();
+			con.close();
+			
+		}catch(SQLException sqle) {
+			System.out.println("SQLException: "+sqle.getMessage());
+			System.out.println("SQLState: "+sqle.getSQLState());
+		}
+	}
+	
+	public static void main(String[] args) {
+		new introSub();
+
+	}
+
+}

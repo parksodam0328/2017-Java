@@ -1,5 +1,6 @@
 package Subject;
 
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -25,14 +26,15 @@ public class firstSubject extends JFrame {
 	private JLabel label;
 	private JLabel label_img;
 	private JButton[] gradebtn = new JButton[3];
-	private String[] img = {"/subject_1.png", "/subject_2.png","/subject_3.png"};
+	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private List hymnList = new List();
+	
 	public firstSubject() {
 		//mbutton.setVisible(false);
-		setTitle("1학년 과목");
+		setTitle("인터랙티브미디어 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -69,8 +71,34 @@ public class firstSubject extends JFrame {
 			label.add(gradebtn[i]);
 		}
 		setBackbtn(backbtn);
-	}
+		
+	gradebtn[0].addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	gradebtn[0].setVisible(false);
+            setVisible(false);
+            firstSubject fs = new firstSubject();
+            fs.setVisible(true);
+        }
+    });
+	gradebtn[1].addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	gradebtn[1].setVisible(false);
+            setVisible(false);
+            secondSubject ss = new secondSubject();
+            ss.setVisible(true);
+        }
+    });
+	gradebtn[2].addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	gradebtn[2].setVisible(false);
+            setVisible(false);
+            thirdSubject ts = new thirdSubject();
+            ts.setVisible(true);
+        }
+    });
 	
+
+}
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));
@@ -103,17 +131,23 @@ public class firstSubject extends JFrame {
 		
 		stmt.execute("use "+DBName+";");
 		ResultSet result = stmt.executeQuery(SQL);
-		
+		String[] sub = new String[13];
 		while(result.next()) {
 			for(int i=1;i<=7;i++) {
-			String str = result.getString(i);
-			hymnList.add(str);
+				String str = result.getString(i);
+				hymnList.add(str);
+				//과목 이름 넣기
+				if(i==4) {
+					sub[i]=result.getString(i);
+					System.out.println(sub[i]);
+				}
 			}
 		}
 		
 		result.close();
 		stmt.close();
 		con.close();
+		
 	}catch(SQLException sqle) {
 		System.out.println("SQLException: "+sqle.getMessage());
 		System.out.println("SQLState: "+sqle.getSQLState());

@@ -24,7 +24,7 @@ public class thirdSubject extends JFrame{
 	
 	public thirdSubject(){
 		//mbutton.setVisible(false);
-		setTitle("3학년");
+		setTitle("뉴미디어솔루션 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
