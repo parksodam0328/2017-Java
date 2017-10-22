@@ -66,17 +66,10 @@ public class introSub extends JFrame{
 			
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
-			String[] sub = new String[13];
 			while(result.next()) {
-				for(int i=1;i<=7;i++) {
+				for(int i=1;i<8;i++) {
 					String str = result.getString(i);
 					System.out.println(str);
-					/*과목 이름 넣기
-					if(i==4) {
-						sub[i]=result.getString(i);
-						System.out.println(sub[i]);
-					}
-					*/
 				}
 			}
 			
