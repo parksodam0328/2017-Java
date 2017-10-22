@@ -22,7 +22,9 @@ import Rule.MirimRule;
 import Subject.MirimSubject;
 
 public class SelectMenu extends JFrame{
+	private JLabel wallpaper;
 	private JLabel label;
+	private JLabel main;
 	private JPanel jp;
 	private JButton menubtn[] = new JButton[8];
 	
@@ -48,8 +50,8 @@ public class SelectMenu extends JFrame{
 		
 		label = new JLabel(""); // 레이블 생성
 		for(int i=0;i<8;i++) { // 버튼 생성
-		menubtn[i] = new JButton("");
-		btnimg[i] = new ImageIcon(SelectMenu.class.getResource(img[i])).getImage();
+			menubtn[i] = new JButton("");
+			btnimg[i] = new ImageIcon(SelectMenu.class.getResource(img[i])).getImage();
 		}
 		
 		// 레이블 크기 및 버튼 위치, 크기 조정
@@ -63,13 +65,23 @@ public class SelectMenu extends JFrame{
 		menubtn[6].setBounds(1000,385,214,93);
 		menubtn[7].setBounds(1000,535,214,93);
 		
-		//라벨 이미지
-		Image lbimg = new ImageIcon(SelectMenu.class.getResource("/MenuSelect.png")).getImage();
+		wallpaper=new JLabel("");
+		Image wallImg = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		wallpaper.setSize(1280,720);
 		
-		jp.add(label); // 판넬에 레이블 추가
+		//라벨 이미지
+		main=new JLabel("");
+		Image lbimg = new ImageIcon(SelectMenu.class.getResource("/MenuSelect.png")).getImage();
+		main.setBounds(280,60,692,558);
+		
+		//판넬에 레이블추가
+		jp.add(main);
+		jp.add(label); 
+		jp.add(wallpaper);
 		
 		//레이블에 이미지 넣기
-		label.setIcon(new ImageIcon(lbimg));
+		main.setIcon(new ImageIcon(lbimg));
+		wallpaper.setIcon(new ImageIcon(wallImg));
 		
 		//버튼에 이미지 넣고, 설정
 		for(int i=0;i<8;i++) {
