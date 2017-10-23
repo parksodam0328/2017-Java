@@ -20,9 +20,11 @@ public class introSub extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
 	private JLabel[] intro=new JLabel[6];
+	private JLabel[] dbIntro=new JLabel[6];
 	private Image[] introImg = new Image[6];
 	private String[] img = {"/introSub_1.png", "/introSub_2.png","/introSub_3.png",
 			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
+	String str[]=new String[8];
 	public introSub() {
 		setTitle("과목소개");
 		setResizable(false);
@@ -45,6 +47,12 @@ public class introSub extends JFrame{
 			contentPane.add(intro[i]);
 		}
 		
+		for(int i=0; i<6; i++) {
+			dbIntro[i]=new JLabel("db에서 값 얻어오기");
+			dbIntro[i].setBounds(200, 100*(i+1), 140, 70);
+			contentPane.add(dbIntro[i]);
+		}
+		
 		label = new JLabel("");
 		label.setSize(540,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
@@ -57,7 +65,6 @@ public class introSub extends JFrame{
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
 			String SQL = "select * from subject;";
-			
 			//Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -68,9 +75,10 @@ public class introSub extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 			while(result.next()) {
 				for(int i=1;i<8;i++) {
-					String str = result.getString(i);
-					System.out.println(str);
+					str[i] = result.getString(i);
+					System.out.println(str[i]);
 				}
+				
 			}
 			
 			result.close();
