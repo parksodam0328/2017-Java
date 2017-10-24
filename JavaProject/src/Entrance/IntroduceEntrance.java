@@ -14,10 +14,12 @@ import javax.swing.border.EmptyBorder;
 import Main.SelectMenu;
 
 public class IntroduceEntrance extends JFrame{
+	private JPanel contentPane;
 	private JLabel label;
-	private JButton backbtn = new JButton("");
+	private JButton backbtn;
+	private JLabel notice;
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
+	private JButton Introducing[]=new JButton[6];
 	public IntroduceEntrance(){
 		//mbutton.setVisible(false);
 		setTitle("입학설명회");
@@ -25,15 +27,31 @@ public class IntroduceEntrance extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
 		setLocationRelativeTo(null); //창 중앙에 띄우기
-		JPanel contentPane = new JPanel();
+		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
+		
 		label = new JLabel("");
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
+		
+		notice = new JLabel("");
+		notice.setBounds(300,35,700,140);
+		Image img2 = new ImageIcon(this.getClass().getResource("/entrance_notice.png")).getImage();
+		
+		//버튼위치 다시 조절하기
+		for(int i=0; i<5; i++) {
+			Introducing[i]=new JButton((i+1)+"회");
+			Introducing[i].setBounds(10*i,50,50,50);
+			contentPane.add(Introducing[i]);
+		}
+		contentPane.add(notice);
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
+		notice.setIcon(new ImageIcon(img2));
+		
+		backbtn = new JButton("");
 		setBackbtn(backbtn);
 	}
 	
