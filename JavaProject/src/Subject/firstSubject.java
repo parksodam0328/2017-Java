@@ -18,20 +18,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Entrance.MirimEntrance;
+import Subject.MirimSubject;
 import Main.SelectMenu;
-import Main.StartMain;
 
 public class firstSubject extends JFrame {
 	private JLabel label;
 	private JLabel label_img;
 	private JButton[] gradebtn = new JButton[3];
+	private JButton[] subjectBtn=new JButton[13];
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	private List hymnList = new List();
-	
+	private String[] sub = new String[13]; //과목 이름
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -45,8 +44,7 @@ public class firstSubject extends JFrame {
 		getContentPane().add(contentPane);
 		label = new JLabel("");
 		label_img = new JLabel("");
-		hymnList.setBounds(600,100,400,500);
-		label.add(hymnList);
+
 		label_img.setLocation(270, 0);
 		for(int i=0;i<3;i++) {
 			gradebtn[i] = new JButton("");
@@ -78,6 +76,7 @@ public class firstSubject extends JFrame {
             setVisible(false);
             firstSubject fs = new firstSubject();
             fs.setVisible(true);
+            
         }
     });
 	gradebtn[1].addActionListener(new ActionListener() {
@@ -96,9 +95,41 @@ public class firstSubject extends JFrame {
             ts.setVisible(true);
         }
     });
-	
-
+	try {
+		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
+		String DBName = "MirimGuideBook";
+		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+		String SQL = "select name_sub from subject";
+		//Class.forName(driverName); // 드라이버 로드
+		
+		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
+		System.out.println("디비연결완료");
+		Statement stmt = con.createStatement();
+		
+		stmt.execute("use "+DBName+";");
+		ResultSet result = stmt.executeQuery(SQL);
+		
+		while(result.next()) {
+			int i=0, j=1;
+			sub[i]=result.getString(j++);
+			System.out.println(sub[i++]+"얍");
+		}
+		
+		//버튼에 값 넘기기
+		for(int i=0; i<13; i++) {
+			subjectBtn[i]=new JButton(sub[i]);
+			subjectBtn[i].setBounds(60, 300+50*i, 100, 50);
+			label.add(subjectBtn[i]);
+		}
+		result.close();
+		stmt.close();
+		con.close();
+	}catch(SQLException sqle) {
+		System.out.println("SQLException: "+sqle.getMessage());
+		System.out.println("SQLState: "+sqle.getSQLState());
+	}
 }
+
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));
@@ -117,45 +148,10 @@ public class firstSubject extends JFrame {
             }
         });
 
-	try {
-		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
-		String DBName = "MirimGuideBook";
-		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
-		String SQL = "select * from subject;";
-		
-		//Class.forName(driverName); // 드라이버 로드
-		
-		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
-		System.out.println("디비연결완료");
-		Statement stmt = con.createStatement();
-		
-		stmt.execute("use "+DBName+";");
-		ResultSet result = stmt.executeQuery(SQL);
-		String[] sub = new String[13];
-		while(result.next()) {
-			for(int i=1;i<=7;i++) {
-				String str = result.getString(i);
-				hymnList.add(str);
-				//과목 이름 넣기
-				if(i==4) {
-					sub[i]=result.getString(i);
-					System.out.println(sub[i]);
-				}
-			}
-		}
-		
-		result.close();
-		stmt.close();
-		con.close();
-		
-	}catch(SQLException sqle) {
-		System.out.println("SQLException: "+sqle.getMessage());
-		System.out.println("SQLState: "+sqle.getSQLState());
-	}
+
+	
 }
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
