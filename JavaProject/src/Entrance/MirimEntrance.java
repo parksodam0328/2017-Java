@@ -99,8 +99,8 @@ public class MirimEntrance extends JFrame {
                 	Desktop.getDesktop().browse(new URI("https://e-mirim.hs.kr/renewal/admission/down/2018/2018%20sungjuk%20program.zip"));
                 } catch (IOException ioioe) {
                 	ioioe.printStackTrace(); 
-                	} catch (URISyntaxException ddde){ 
-                		ddde.printStackTrace(); 
+                	} catch (URISyntaxException ue){ 
+                		ue.printStackTrace(); 
                 } 
 
             }
