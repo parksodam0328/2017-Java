@@ -26,12 +26,12 @@ import Main.SelectMenu;
 public class firstSubject extends JFrame{
 	private JLabel label, label_img, infor;
 	private JButton[] gradebtn = new JButton[3];
-	private JButton[] subjectBtn = new JButton[13];//수 다
+	private JButton[] subjectBtn = new JButton[66];//수 다
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	private String[] sub = new String[13]; //과목 이름
+	private String[] sub = new String[66]; //과목 이름
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -99,7 +99,7 @@ public class firstSubject extends JFrame{
 	try {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
-		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+		String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
 		String SQL = "select * from subject";
 		//Class.forName(driverName); // 드라이버 로드
 		
@@ -113,7 +113,7 @@ public class firstSubject extends JFrame{
 		int i=0;
 		while(result.next()) {
 			sub[i]=result.getString("name_sub");
-			for(int j=0;j<7;j++) {
+			for(int j=0;j<66;j++) {
 			subjectBtn[i] = new JButton(sub[i]);
 			}
 			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);

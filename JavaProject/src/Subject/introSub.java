@@ -69,7 +69,7 @@ public class introSub extends JFrame{
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
 			String SQL = "select * from subject;";
 			//Class.forName(driverName); // 드라이버 로드
 			
