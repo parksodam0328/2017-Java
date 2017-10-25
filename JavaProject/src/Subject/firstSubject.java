@@ -113,6 +113,7 @@ public class firstSubject extends JFrame {
 		int i=0;
 		while(result.next()) {
 			sub[i]=result.getString("name_sub");
+<<<<<<< HEAD
 			for(int j=0;j<13;j++) {
 				subjectBtn[j] = new JButton(sub[j]);
 			}
@@ -121,6 +122,20 @@ public class firstSubject extends JFrame {
             //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
             //infor.setBounds(400,75,500,660);
             //label.add(infor);            
+=======
+			  for(int j=0;j<13;j++) {
+				  subjectBtn[j] = new JButton(sub[j]);
+	          }
+			  subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+              label.add(subjectBtn[i]);
+              //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
+              //infor.setBounds(400,75,500,660);
+              //label.add(infor);
+              i++;
+              
+            
+
+>>>>>>> ac314413db86ea84990e729586e9c0536e26bcd7
 		}
 		result.close();
 		stmt.close();
