@@ -31,6 +31,7 @@ public class firstSubject extends JFrame {
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String[] sub = new String[13]; //과목 이름
+	private JLabel infor;
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -99,7 +100,7 @@ public class firstSubject extends JFrame {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
 		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
-		String SQL = "select name_sub from subject";
+		String SQL = "select * from subject";
 		//Class.forName(driverName); // 드라이버 로드
 		
 		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -109,17 +110,21 @@ public class firstSubject extends JFrame {
 		stmt.execute("use "+DBName+";");
 		ResultSet result = stmt.executeQuery(SQL);
 		
+		int i=0;
 		while(result.next()) {
-			int i=0, j=1;
-			sub[i]=result.getString(j++);
-			System.out.println(sub[i++]+"얍");
-		}
-		
-		//버튼에 값 넘기기
-		for(int i=0; i<13; i++) {
-			subjectBtn[i]=new JButton(sub[i]);
-			subjectBtn[i].setBounds(60, 300+50*i, 100, 50);
-			label.add(subjectBtn[i]);
+			sub[i]=result.getString("name_sub");
+			  for(int j=0;j<13;j++) {
+				  subjectBtn[j] = new JButton(sub[j]);
+	          }
+			  subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+              label.add(subjectBtn[i]);
+              //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
+              //infor.setBounds(400,75,500,660);
+              //label.add(infor);
+              i++;
+              
+            
+
 		}
 		result.close();
 		stmt.close();
