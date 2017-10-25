@@ -34,7 +34,7 @@ public class firstSubject extends JFrame {
 	private JLabel infor;
 	public firstSubject() {
 		//mbutton.setVisible(false);
-		setTitle("인터랙티브미디어 과목");
+		setTitle("1학년 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -113,18 +113,14 @@ public class firstSubject extends JFrame {
 		int i=0;
 		while(result.next()) {
 			sub[i]=result.getString("name_sub");
-			  for(int j=0;j<13;j++) {
-				  subjectBtn[j] = new JButton(sub[j]);
-	          }
-			  subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
-              label.add(subjectBtn[i]);
-              //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
-              //infor.setBounds(400,75,500,660);
-              //label.add(infor);
-              i++;
-              
-            
-
+			for(int j=0;j<13;j++) {
+				subjectBtn[j] = new JButton(sub[j]);
+			}
+			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+			label.add(subjectBtn[i++]);
+            //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
+            //infor.setBounds(400,75,500,660);
+            //label.add(infor);            
 		}
 		result.close();
 		stmt.close();

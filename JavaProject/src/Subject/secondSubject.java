@@ -24,7 +24,7 @@ public class secondSubject extends JFrame{
 	
 	public secondSubject(){
 		//mbutton.setVisible(false);
-		setTitle("뉴미디어디자인 과목");
+		setTitle("2학년 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);

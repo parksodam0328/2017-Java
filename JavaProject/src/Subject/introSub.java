@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 public class introSub extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
+	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[6];
 	private JLabel[] dbIntro=new JLabel[6];
 	private Image[] introImg = new Image[6];
@@ -53,12 +54,17 @@ public class introSub extends JFrame{
 			contentPane.add(dbIntro[i]);
 		}
 		
+		introTitle=new JLabel("");
+		introTitle.setBounds(170,8,200,100);
+		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();
+		contentPane.add(introTitle);
+		introTitle.setIcon(new ImageIcon(title));
+		
 		label = new JLabel("");
 		label.setSize(540,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
-		
 		
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
