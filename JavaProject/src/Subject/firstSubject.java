@@ -1,8 +1,6 @@
 package Subject;
 
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -27,14 +25,13 @@ public class firstSubject extends JFrame {
 	private JButton[] gradebtn = new JButton[3];
 	private JButton[] subjectBtn=new JButton[13];
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
-	Image[] btnimg = new Image[3];
+	private Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String[] sub = new String[13]; //과목 이름
-	private JLabel infor;
 	public firstSubject() {
 		//mbutton.setVisible(false);
-		setTitle("1학년 과목");
+		setTitle("인터랙티브미디어 과목");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -113,16 +110,6 @@ public class firstSubject extends JFrame {
 		int i=0;
 		while(result.next()) {
 			sub[i]=result.getString("name_sub");
-<<<<<<< HEAD
-			for(int j=0;j<13;j++) {
-				subjectBtn[j] = new JButton(sub[j]);
-			}
-			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
-			label.add(subjectBtn[i++]);
-            //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
-            //infor.setBounds(400,75,500,660);
-            //label.add(infor);            
-=======
 			  for(int j=0;j<13;j++) {
 				  subjectBtn[j] = new JButton(sub[j]);
 	          }
@@ -135,7 +122,6 @@ public class firstSubject extends JFrame {
               
             
 
->>>>>>> ac314413db86ea84990e729586e9c0536e26bcd7
 		}
 		result.close();
 		stmt.close();
