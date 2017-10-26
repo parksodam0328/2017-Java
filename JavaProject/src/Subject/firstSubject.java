@@ -10,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -134,23 +132,17 @@ public class firstSubject extends JFrame{
 	subjectBtn[0].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
     	subjectBtn[0].setVisible(true);
-    	setVisible(true);
-//    	JFrame fr = new JFrame();
-//    	fr.setVisible(true);
-//    	fr.setSize(620, 580);
-//    	fr.setTitle(subjectBtn[0].getText());
-//    	JLabel label = new JLabel();
-//    	label.setSize(500,400);
-//    	fr.add(label);
-//    	fr.setLocationRelativeTo(null);
-//    	fr.addWindowListener(new WindowAdapter() {
-//    		public void WindowClosing(WindowEvent e) {
-//    			fr.setVisible(false);
-//    			fr.dispose();
-//    		}
-//    	});
+    	//setVisible(true);
 		introSub is = new introSub();
+		is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		is.setTitle(subjectBtn[0].getText());
+		is.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+    			is.setVisible(false);
+    			is.dispose();
+            	//System.exit(0);
+    		}
+    	});
     }
 });
 	}

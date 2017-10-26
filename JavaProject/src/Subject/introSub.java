@@ -27,7 +27,6 @@ public class introSub extends JFrame{
 			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
 	String str[]=new String[8];
 	public introSub() {
-		setTitle("과목소개");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(540, 720);
@@ -38,7 +37,6 @@ public class introSub extends JFrame{
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
-		
 		
 		for(int i=0; i<6; i++) {
 			intro[i]=new JLabel("");
@@ -82,11 +80,10 @@ public class introSub extends JFrame{
 			while(result.next()) {
 				for(int i=1;i<8;i++) {
 					str[i] = result.getString(i);
-					System.out.println(str[i]);
+					//System.out.println(str[i]);
 				}
 				
 			}
-			
 			result.close();
 			stmt.close();
 			con.close();
