@@ -140,8 +140,8 @@ public class MajorEntrance extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 backbtn.setVisible(false);
                 setVisible(false);
-                MirimSubject ms = new MirimSubject();
-                ms.setVisible(true);
+                MirimEntrance mm = new MirimEntrance();
+                mm.setVisible(true);
             }
         });
 
