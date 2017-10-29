@@ -10,24 +10,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.mysql.jdbc.ResultSetMetaData;
-
 import Subject.MirimSubject;
 import Main.SelectMenu;
 
-public class firstSubject extends JFrame{
-	public static int id=0;
-	private int key[];
+public class firstSubject extends JFrame implements ActionListener{
+	private int id=0;
+	public static int key[];
 	private JLabel label, label_img, infor;
 	private JButton[] gradebtn = new JButton[3];
 	private JButton[] subjectBtn;
@@ -36,6 +31,8 @@ public class firstSubject extends JFrame{
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String[] sub; //과목 이름
+	int i=0;
+	int row;
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -103,7 +100,7 @@ public class firstSubject extends JFrame{
 	try {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
-		String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
+		String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
 		String SQL = "select * from subject where grade=1 and major='인터랙티브미디어'";
 		//Class.forName(driverName); // 드라이버 로드
 		
@@ -115,69 +112,49 @@ public class firstSubject extends JFrame{
 		ResultSet result = stmt.executeQuery(SQL);
 		java.sql.ResultSetMetaData rsmd = result.getMetaData();
 		result.last();
-		int row = result.getRow();
+		row = result.getRow();
 		result.beforeFirst();
 		sub = new String[row];
 		subjectBtn = new JButton[row];
 		key = new int[row];
-		
-		int i=0;
 		while(result.next()) {
-			key[i]=result.getInt("id");
+			id=result.getInt("id");
 			sub[i]=result.getString("name_sub");
-			System.out.println(sub[i]);
-			System.out.println(key[i]);
 			subjectBtn[i] = new JButton(sub[i]);
 			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+			subjectBtn[i].addActionListener(this);
 	        label.add(subjectBtn[i]);
-              //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
-              //infor.setBounds(400,75,500,660);
-              //label.add(infor);
-              i++;
-              //System.out.println(i);
-		}
+	        key[i]=id;
+		i++;
+		}   
 		result.close();
 		stmt.close();
 		con.close();
+		
 	}catch(SQLException sqle) {
 		System.out.println("SQLException: "+sqle.getMessage());
 		System.out.println("SQLState: "+sqle.getSQLState());
 	}
-	subjectBtn[0].addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-    	subjectBtn[0].setVisible(true);
-    	setVisible(true);
-//    	JFrame fr = new JFrame();
-//    	fr.setVisible(true);
-//    	fr.setSize(620, 580);
-//    	fr.setTitle(subjectBtn[0].getText());
-//    	JLabel label = new JLabel();
-//    	label.setSize(500,400);
-//    	fr.add(label);
-//    	fr.setLocationRelativeTo(null);
-//    	fr.addWindowListener(new WindowAdapter() {
-//    		public void WindowClosing(WindowEvent e) {
-//    			fr.setVisible(false);
-//    			fr.dispose();
-//    		}
-//		});
-    	//setVisible(true);
-		introSub is = new introSub();
-		is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		is.setTitle(subjectBtn[0].getText());
-		id=key[0];
-		System.out.println(id);
-		is.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-    			is.setVisible(false);
-    			is.dispose();
-            	//System.exit(0);
-    		}
-    	});
-    }
-});
 	}
-
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for(int j=0;j<row;j++)
+		if(e.getSource()==subjectBtn[j]){
+		introSub is = new introSub(key[j], sub[j]);
+		System.out.println(sub[j]);
+		  is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		  is.setTitle(subjectBtn[j].getText());
+		  is.addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent e) {
+				  is.setVisible(false);
+				  is.dispose();	
+			  }
+		  });
+		  
+	 }
+	}
+	
+	
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));
@@ -197,6 +174,8 @@ public class firstSubject extends JFrame{
         }); 
 }
 	public static void main(String[] args) {
-		//new firstSubject();
+		new firstSubject();
 	}
+
+	
 }
