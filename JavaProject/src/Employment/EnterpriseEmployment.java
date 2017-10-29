@@ -20,7 +20,7 @@ public class EnterpriseEmployment extends JFrame{
 	
 	public EnterpriseEmployment(){
 		//mbutton.setVisible(false);
-		setTitle("취업처");
+		setTitle("협약업체명");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);

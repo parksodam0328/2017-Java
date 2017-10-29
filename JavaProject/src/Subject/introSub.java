@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 public class introSub extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
+	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[6];
 	private JLabel[] dbIntro=new JLabel[6];
 	private Image[] introImg = new Image[6];
@@ -28,6 +29,7 @@ public class introSub extends JFrame{
 	String str[]=new String[6];
 	int count=0;
 	public introSub() {
+<<<<<<< HEAD
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
@@ -58,6 +60,8 @@ public class introSub extends JFrame{
 		}
 		for(int i=0;i<6;i++)
 		
+=======
+>>>>>>> aedbd25d2431cf5b8eb4cee52c666e484adfb6c5
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(540, 720);
@@ -68,7 +72,6 @@ public class introSub extends JFrame{
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
-		
 		
 		for(int i=0; i<6; i++) {
 			intro[i]=new JLabel("");
@@ -84,19 +87,58 @@ public class introSub extends JFrame{
 			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
 			contentPane.add(dbIntro[i]);
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> aedbd25d2431cf5b8eb4cee52c666e484adfb6c5
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();
 		contentPane.add(introTitle);
 		introTitle.setIcon(new ImageIcon(title));
+<<<<<<< HEAD
+=======
+		
+>>>>>>> aedbd25d2431cf5b8eb4cee52c666e484adfb6c5
 		label = new JLabel("");
 		label.setSize(540,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		
+<<<<<<< HEAD
 		
 		
+=======
+		try {
+			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
+			String DBName = "MirimGuideBook";
+			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
+			String SQL = "select * from subject;";
+			//Class.forName(driverName); // 드라이버 로드
+			
+			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
+			System.out.println("디비연결완료");
+			Statement stmt = con.createStatement();
+			
+			stmt.execute("use "+DBName+";");
+			ResultSet result = stmt.executeQuery(SQL);
+			while(result.next()) {
+				for(int i=1;i<8;i++) {
+					str[i] = result.getString(i);
+					//System.out.println(str[i]);
+				}
+				
+			}
+			result.close();
+			stmt.close();
+			con.close();
+			
+		}catch(SQLException sqle) {
+			System.out.println("SQLException: "+sqle.getMessage());
+			System.out.println("SQLState: "+sqle.getSQLState());
+		}
+>>>>>>> aedbd25d2431cf5b8eb4cee52c666e484adfb6c5
 	}
 	
 	public static void main(String[] args) {

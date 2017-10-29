@@ -9,9 +9,13 @@
 <fullyQualifiedTypeName name="com.mysql.jdbc.Statement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowEvent"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
+=======
+<fullyQualifiedTypeName name="java.awt.Font"/>
+>>>>>>> aedbd25d2431cf5b8eb4cee52c666e484adfb6c5
 </qualifiedTypeNameHistroy>

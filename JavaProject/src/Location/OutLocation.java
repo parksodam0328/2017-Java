@@ -43,7 +43,7 @@ public class OutLocation extends JFrame{
 		getContentPane().add(contentPane);
 		label = new JLabel("");
 		label_img = new JLabel("");
-		label_img.setLocation(50, 150);
+		label_img.setLocation(120, 150);
 		hymnList.setBounds(600,100,500,500);
 		label.add(hymnList);
 		Image intro_img = new ImageIcon(this.getClass().getResource("/public_location.png")).getImage();
