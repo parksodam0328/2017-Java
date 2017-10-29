@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import static Subject.firstSubject.pri_key;
 
 public class introSub extends JFrame{
 	private JLabel label;
@@ -24,14 +24,21 @@ public class introSub extends JFrame{
 	private Image[] introImg = new Image[6];
 	private String[] img = {"/introSub_1.png", "/introSub_2.png","/introSub_3.png",
 			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
+<<<<<<< HEAD
 	private JLabel introTitle;
+=======
+>>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 	String str[]=new String[6];
 	public introSub() {
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+<<<<<<< HEAD
 			String SQL = "select name_sub, intro_sub, teacher, major, grade, room from subject where grade=1 and name_sub='수학I' and major='인터랙티브미디어';";
+=======
+			String SQL = "select name_sub, intro_sub, teacher, major, grade, room from subject where id=id;";
+>>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 			//Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -76,7 +83,10 @@ public class introSub extends JFrame{
 			intro[i].setBounds(10, 100*(i+1), 140, 70);
 			contentPane.add(intro[i]);
 		}
+<<<<<<< HEAD
 		int cnt=0;
+=======
+>>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 		for(int i=0;i<6;i++) {
 			dbIntro[i]=new JLabel(str[i]);
 			//System.out.println(str[i]);
@@ -94,8 +104,11 @@ public class introSub extends JFrame{
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 	}
 	
 	public static void main(String[] args) {

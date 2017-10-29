@@ -30,7 +30,6 @@ public class SchoolRule extends JFrame{
 	private JLabel dbShow;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
 	public SchoolRule(){
 		//mbutton.setVisible(false);
 		setTitle("학교 내 규정");

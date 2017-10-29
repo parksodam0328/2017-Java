@@ -20,18 +20,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.mysql.jdbc.ResultSetMetaData;
+
 import Subject.MirimSubject;
 import Main.SelectMenu;
 
 public class firstSubject extends JFrame{
+	public static int pri_key=0;
+	private int key[];
 	private JLabel label, label_img, infor;
 	private JButton[] gradebtn = new JButton[3];
-	private JButton[] subjectBtn = new JButton[66];//수 다
+	private JButton[] subjectBtn;
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	private String[] sub = new String[66]; //과목 이름
+	private String[] sub; //과목 이름
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -99,8 +103,8 @@ public class firstSubject extends JFrame{
 	try {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
-		String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
-		String SQL = "select * from subject";
+		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+		String SQL = "select * from subject where grade=1 and major='인터랙티브미디어'";
 		//Class.forName(driverName); // 드라이버 로드
 		
 		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -109,13 +113,20 @@ public class firstSubject extends JFrame{
 		
 		stmt.execute("use "+DBName+";");
 		ResultSet result = stmt.executeQuery(SQL);
+		java.sql.ResultSetMetaData rsmd = result.getMetaData();
+		result.last();
+		int row = result.getRow();
+		result.beforeFirst();
+		sub = new String[row];
+		subjectBtn = new JButton[row];
+		key = new int[row];
 		
 		int i=0;
 		while(result.next()) {
+			key[i]=result.getInt("id");
 			sub[i]=result.getString("name_sub");
-			for(int j=0;j<66;j++) {
+			System.out.println(sub[i]);
 			subjectBtn[i] = new JButton(sub[i]);
-			}
 			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
 	        label.add(subjectBtn[i]);
               //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
@@ -134,10 +145,26 @@ public class firstSubject extends JFrame{
 	subjectBtn[0].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
     	subjectBtn[0].setVisible(true);
+    	setVisible(true);
+//    	JFrame fr = new JFrame();
+//    	fr.setVisible(true);
+//    	fr.setSize(620, 580);
+//    	fr.setTitle(subjectBtn[0].getText());
+//    	JLabel label = new JLabel();
+//    	label.setSize(500,400);
+//    	fr.add(label);
+//    	fr.setLocationRelativeTo(null);
+//    	fr.addWindowListener(new WindowAdapter() {
+//    		public void WindowClosing(WindowEvent e) {
+//    			fr.setVisible(false);
+//    			fr.dispose();
+//    		}
+//    	});
     	//setVisible(true);
 		introSub is = new introSub();
 		is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		is.setTitle(subjectBtn[0].getText());
+		pri_key=key[0];
 		is.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
     			is.setVisible(false);
