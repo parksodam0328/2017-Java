@@ -67,7 +67,7 @@ public class MirimLocation extends JFrame{
 		//버튼에 클릭 이벤트 넣어주기
 		locationbtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				locationbtn[0].setVisible(false);
+				locationbtn[0].setVisible(false); 
 				setVisible(false);
 				OutLocation ol = new OutLocation();
 				ol.setVisible(true);
