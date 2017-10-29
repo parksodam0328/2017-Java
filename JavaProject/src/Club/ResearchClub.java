@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,16 +27,22 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
+import Subject.introSub;
 
-public class ResearchClub extends JFrame{
+public class ResearchClub extends JFrame implements ActionListener{
+	private int id=0;
+	public static int key[];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String SQL=null;
-	private JButton clubBtn[]=new JButton[25];
+	private JButton clubBtn[];
 	private JLabel clubLabel=new JLabel("");
+	private String[] str; //동아리 이름
+	int i=0;
+	int row;
 	public ResearchClub(){
 		//mbutton.setVisible(false);
-		setTitle("동아리 - Research");
+		setTitle("Research 동아리");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -54,11 +62,6 @@ public class ResearchClub extends JFrame{
 		getContentPane().add(p);
 
 		setBackbtn(backbtn, p);
-
-//		subjectLabel.setBounds(180,250,900,300);
-	//	subjectLabel.setLayout(new GridLayout(3,4));
-		//p.add(subjectLabel); 
-		
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
@@ -72,17 +75,24 @@ public class ResearchClub extends JFrame{
 			
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
-			//String all="";
-			String[] str=new String[96];
+			java.sql.ResultSetMetaData rsmd = result.getMetaData();
+			result.last();
+			row = result.getRow();
+			result.beforeFirst();
+			str = new String[row];
+			clubBtn = new JButton[row];
+			key = new int[row];
 			int i=0;
 			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
 			while(result.next()) {
+				id=result.getInt("id");
 				str[i] = result.getString("club_name");
 				clubBtn[i]=new JButton(str[i]);
 				clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
-				clubBtn[i].setFont(new Font("맑은 고딕", Font.BOLD, 20));
+				clubBtn[i].addActionListener(this);
 				clubLabel.add(clubBtn[i]);
+				key[i]=id;
 				i++;
 			}
 			
@@ -94,8 +104,8 @@ public class ResearchClub extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(180,80,900,500);
-		clubLabel.setLayout(new GridLayout(3,3));
+		clubLabel.setBounds(150,80,980,650);
+		clubLabel.setLayout(new GridLayout(4,1));
 		p.add(clubLabel); 
 	}
 	public void setBackbtn(JButton j, JPanel p) {
@@ -121,4 +131,21 @@ public class ResearchClub extends JFrame{
 		// TODO Auto-generated method stub
 
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for(int j=0;j<row;j++)
+			if(e.getSource()==clubBtn[j]){
+			introClub ic = new introClub(key[j], str[j]);
+			System.out.println(str[j]);
+			  ic.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			  ic.setTitle(clubBtn[j].getText());
+			  ic.addWindowListener(new WindowAdapter() {
+				  public void windowClosing(WindowEvent e) {
+					  ic.setVisible(false);
+					  ic.dispose();	
+				  }
+			  });
+			  
+		 }
+		}
 }

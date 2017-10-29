@@ -3,7 +3,6 @@ package Rule;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -25,10 +24,13 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-
+ 
 public class SchoolRule extends JFrame{
 	private JLabel label;
-	private JLabel dbShow;
+	private JTextArea dbShow;
+	int row;
+	private String[] str; //규정 내용
+	private int[] num; //규정 번호
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	public SchoolRule(){
@@ -54,17 +56,18 @@ public class SchoolRule extends JFrame{
 		};
 		p.setBorder(new EmptyBorder(0, 0, 0, 0));
 		p.setLayout(null);
-		dbShow=new JLabel("");
+		dbShow=new JTextArea();
 	    JScrollPane scroll = new JScrollPane(dbShow);
 	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	    p.add(scroll);
 		getContentPane().add(BorderLayout.CENTER,p);
-		scroll.setBounds(150,60,980,600);
+		scroll.setBounds(136,60,980,600);
 		//p.add(dbShow);
 		getContentPane().add(p);
 		setBackbtn(backbtn, p);
-		dbShow.setBackground(Color.BLUE);
+		dbShow.setBackground(Color.WHITE);
+		dbShow.setEditable(false);
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
@@ -78,17 +81,21 @@ public class SchoolRule extends JFrame{
 			
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
-			//String all="";
-			String[] str=new String[96];
-			
-			int i=1;
+			java.sql.ResultSetMetaData rsmd = result.getMetaData();
+			result.last();
+			row = result.getRow();
+			result.beforeFirst();
+			str = new String[row];
+			num = new int[row];
+			int i=0;
 			while(result.next()) {
-				str[i] = result.getString("number");
+				num[i] = result.getInt("number");
 				str[i] = result.getString("content");
-				dbShow.setText(str[i]+"\n");
 			//	dbShow.setContentAreaFilled(false);
 				i++;
 			}
+			
+			
 			result.close();
 			stmt.close();
 			con.close();
@@ -97,6 +104,10 @@ public class SchoolRule extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
+		for(int j=0;j<row;j++){
+				dbShow.append(num[j]+"번\n"+str[j]+"\n\n");
+				System.out.println(dbShow.getText());
+			}
 	}
 	
 	public void setBackbtn(JButton j, JPanel p) {

@@ -21,7 +21,7 @@ public class introClub extends JFrame{
 	private JLabel[] intro=new JLabel[5];
 	private JLabel[] dbIntro=new JLabel[5];
 	private Image[] introImg = new Image[5];
-	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png", "/introClub_4.png","/introClub_5.png"};
+	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png", "/introClub_4.png"};
 	String str[]=new String[5];
 	int id;
 	String name_sub;
@@ -32,7 +32,7 @@ public class introClub extends JFrame{
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-			String SQL = "select grade ,major, name_sub, intro_sub, teacher, room from subject where id="+id+"";
+			String SQL = "select club_name, club_room, teacher, intro from club where id="+id+"";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -43,7 +43,7 @@ public class introClub extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 
 			while(result.next()) {
-				for(int i=0;i<6;i++) {
+				for(int i=0;i<5;i++) {
 				str[i] = result.getString(i+1);
 				}
 			}
@@ -67,17 +67,17 @@ public class introClub extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<4; i++) {
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 100*(i+1), 140, 70);
+			intro[i].setBounds(10, 135*(i+1), 260, 70);
 			contentPane.add(intro[i]);
 		}
-		for(int i=0;i<5;i++) {
+		for(int i=0;i<4;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
+			dbIntro[i].setBounds(230, 135*(i+1), 300, 70);
 			contentPane.add(dbIntro[i]);
 		}
 		introTitle=new JLabel("");
