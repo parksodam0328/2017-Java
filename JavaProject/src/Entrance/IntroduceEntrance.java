@@ -1,5 +1,7 @@
+//년도마다 입학설명회 일정이 다를 수 있으므로 몇회하는지 db에서 값 가져오기!!
 package Entrance;
 
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,17 +38,22 @@ public class IntroduceEntrance extends JFrame{
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		
+		JLabel button=new JLabel("");
+		button.setBounds(250,200,800,400);
+		button.setLayout(new GridLayout(2,3));
+		
 		notice = new JLabel("");
 		notice.setBounds(300,35,700,140);
 		Image img2 = new ImageIcon(this.getClass().getResource("/entrance_notice.png")).getImage();
 		
 		//버튼위치 다시 조절하기
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<6; i++) {
 			Introducing[i]=new JButton((i+1)+"회");
-			Introducing[i].setBounds(10*i,50,50,50);
-			contentPane.add(Introducing[i]);
+			//Introducing[i].setBounds(100*i,50,50,50);
+			button.add(Introducing[i]);
 		}
 		contentPane.add(notice);
+		contentPane.add(button);
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		notice.setIcon(new ImageIcon(img2));
