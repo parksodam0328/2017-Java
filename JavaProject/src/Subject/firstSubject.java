@@ -35,7 +35,7 @@ public class firstSubject extends JFrame implements ActionListener{
 	int row;
 	public firstSubject() {
 		//mbutton.setVisible(false);
-		setTitle("1학년 과목");
+		setTitle("1학년 과목"); 
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
