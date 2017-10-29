@@ -20,7 +20,7 @@ public class DesignExper extends JFrame{
 	
 	public DesignExper(){
 		//mbutton.setVisible(false);
-		setTitle("디자인");
+		setTitle("체험 - 디자인");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);

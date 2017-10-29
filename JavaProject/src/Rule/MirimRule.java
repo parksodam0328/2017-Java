@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.MirimSubject;
 
 public class MirimRule extends JFrame {
 	private JLabel label;

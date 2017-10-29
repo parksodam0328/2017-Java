@@ -11,17 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Location.MirimLocation;
 import Main.SelectMenu;
 
-public class SolutionExper extends JFrame{
+public class SoftwareExper extends JFrame{
 	private JLabel label;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
-	public SolutionExper(){
+	public SoftwareExper(){
 		//mbutton.setVisible(false);
-		setTitle("솔루션");
+		setTitle("체험 - 소프트웨어과");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
