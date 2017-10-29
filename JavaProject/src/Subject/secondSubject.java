@@ -35,10 +35,9 @@ public class secondSubject extends JFrame{
 	private String SQL=null;
 	private JButton subjectBtn[]=new JButton[12];
 	private JLabel subjectLabel=new JLabel("");
-	private String subjectImg ="/buttonWall.png";
-	private Image subImg;
+//	private String subjectImg ="/buttonWall.png";
+//	private Image subImg;
 	public secondSubject(){
-		//mbutton.setVisible(false);
 		setTitle("과목 - 2학년");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +91,7 @@ public class secondSubject extends JFrame{
 	    });
 		subjectLabel.setBounds(180,250,900,300);
 		subjectLabel.setLayout(new GridLayout(3,4));
-		p.add(subjectLabel);
+		p.add(subjectLabel); 
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";

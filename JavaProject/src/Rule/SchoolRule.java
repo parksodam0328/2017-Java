@@ -3,6 +3,7 @@ package Rule;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -67,7 +68,7 @@ public class SchoolRule extends JFrame{
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
+			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
 			String SQL = "select * from rule where division_number=1;";
 			//Class.forName(driverName); // 드라이버 로드
 			
@@ -83,12 +84,9 @@ public class SchoolRule extends JFrame{
 			int i=1;
 			while(result.next()) {
 				str[i] = result.getString("number");
-				System.out.println(str[i]);
-				//dbShow.setText(str[i]);
 				str[i] = result.getString("content");
-			//	dbShow.setText(str[i]);
-			//	all+=str[i]+"\t";
-			//	dbShow.setText(all);
+				dbShow.setText(str[i]+"\n");
+			//	dbShow.setContentAreaFilled(false);
 				i++;
 			}
 			result.close();

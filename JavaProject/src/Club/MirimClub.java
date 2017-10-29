@@ -22,7 +22,7 @@ public class MirimClub extends JFrame {
 	private JLabel label_img;
 	private JButton[] clubbtn = new JButton[3];
 	private String[] img = {"/club_1.png", "/club_2.png","/club_3.png"};
-	Image[] btnimg = new Image[3];
+	Image[] btnimg = new Image[3]; 
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
