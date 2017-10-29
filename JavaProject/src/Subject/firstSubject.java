@@ -24,7 +24,7 @@ public class firstSubject extends JFrame implements ActionListener{
 	private int id=0;
 	public static int key[];
 	private JLabel label, label_img, infor;
-	private JButton[] gradebtn = new JButton[3];
+	private JButton[] gradebtn = new JButton[3]; // 학과 버튼
 	private JButton[] subjectBtn;
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
@@ -33,7 +33,10 @@ public class firstSubject extends JFrame implements ActionListener{
 	private String[] sub; //과목 이름
 	int i=0;
 	int row;
-	public firstSubject() {
+	int grade_num;
+	String major[] = new String[] { "인터랙티브미디어","뉴미디어디자인","뉴미디어솔루션"};
+	public firstSubject(int grade_num) {
+		this.grade_num = grade_num;
 		//mbutton.setVisible(false);
 		setTitle("1학년 과목");
 		setResizable(false);
@@ -76,7 +79,7 @@ public class firstSubject extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent e) {
         	gradebtn[0].setVisible(false);
             setVisible(false);
-            firstSubject fs = new firstSubject();
+            firstSubject fs = new firstSubject(0);
             fs.setVisible(true);
             
         }
@@ -85,25 +88,25 @@ public class firstSubject extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent e) {
         	gradebtn[1].setVisible(false);
             setVisible(false);
-            secondSubject ss = new secondSubject();
-            ss.setVisible(true);
+            firstSubject fs = new firstSubject(1);
+            fs.setVisible(true);
         }
     });
 	gradebtn[2].addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
         	gradebtn[2].setVisible(false);
             setVisible(false);
-            thirdSubject ts = new thirdSubject();
-            ts.setVisible(true);
+            firstSubject fs = new firstSubject(2);
+            fs.setVisible(true);
         }
     });
 	try {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
 		String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-		String SQL = "select * from subject where grade=1 and major='인터랙티브미디어'";
+		String SQL = "select id, name_sub from subject where grade=1 and major='"+major[grade_num]+"';";
 		//Class.forName(driverName); // 드라이버 로드
-		
+		System.out.println(SQL);
 		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 		System.out.println("디비연결완료");
 		Statement stmt = con.createStatement();
@@ -174,7 +177,6 @@ public class firstSubject extends JFrame implements ActionListener{
         }); 
 }
 	public static void main(String[] args) {
-		new firstSubject();
 	}
 
 	

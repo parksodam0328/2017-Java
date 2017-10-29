@@ -22,7 +22,6 @@ public class MirimSubject extends JFrame {
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
 	public MirimSubject() {
 		//mbutton.setVisible(false);
 		setTitle("°ú¸ñ");
@@ -68,7 +67,7 @@ public class MirimSubject extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	gradebtn[0].setVisible(false);
                 setVisible(false);
-                firstSubject fs = new firstSubject();
+                firstSubject fs = new firstSubject(0);
                 fs.setVisible(true);
             }
         });
