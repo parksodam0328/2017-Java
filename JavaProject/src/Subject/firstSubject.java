@@ -1,37 +1,39 @@
 package Subject;
 
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.mysql.jdbc.ResultSetMetaData;
+
 import Subject.MirimSubject;
 import Main.SelectMenu;
 
-public class firstSubject extends JFrame {
-	private JLabel label;
-	private JLabel label_img;
+public class firstSubject extends JFrame{
+	private JLabel label, label_img, infor;
 	private JButton[] gradebtn = new JButton[3];
-	private JButton[] subjectBtn=new JButton[13];
+	private JButton[] subjectBtn = new JButton[36];
 	private String[] img = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	private String[] sub = new String[13]; //과목 이름
-	private JLabel infor;
+	private String[] sub; //과목 이름
 	public firstSubject() {
 		//mbutton.setVisible(false);
 		setTitle("인터랙티브미디어 과목");
@@ -39,10 +41,10 @@ public class firstSubject extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
 		setLocationRelativeTo(null); //창 중앙에 띄우기
-		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		contentPane.setLayout(null);
-		getContentPane().add(contentPane);
+		JPanel p = new JPanel();
+		p.setBorder(new EmptyBorder(0, 0, 0, 0));
+		p.setLayout(null);
+		getContentPane().add(p);
 		label = new JLabel("");
 		label_img = new JLabel("");
 
@@ -53,8 +55,8 @@ public class firstSubject extends JFrame {
 		}
 		label.setSize(1280,720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
-		contentPane.add(label_img);
-		contentPane.add(label);
+		p.add(label_img);
+		p.add(label);
 		
 		label.setIcon(new ImageIcon(img));
 		//mbutton.addActionListener(this);
@@ -100,7 +102,7 @@ public class firstSubject extends JFrame {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
 		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
-		String SQL = "select * from subject";
+		String SQL = "select * from subject where grade=1";
 		//Class.forName(driverName); // 드라이버 로드
 		
 		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -109,22 +111,22 @@ public class firstSubject extends JFrame {
 		
 		stmt.execute("use "+DBName+";");
 		ResultSet result = stmt.executeQuery(SQL);
+		/*java.sql.ResultSetMetaData rsmd = result.getMetaData();
+		int columnCount = rsmd.getColumnCount();*/
+		sub = new String[36];
 		
 		int i=0;
 		while(result.next()) {
 			sub[i]=result.getString("name_sub");
-			  for(int j=0;j<13;j++) {
-				  subjectBtn[j] = new JButton(sub[j]);
-	          }
-			  subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
-              label.add(subjectBtn[i]);
+			System.out.println(sub[i]);
+			subjectBtn[i] = new JButton(sub[i]);
+			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+	        label.add(subjectBtn[i]);
               //infor = new JLabel("<html>" +result.getString("intro_sub") +"<br>"+"</html>");
               //infor.setBounds(400,75,500,660);
               //label.add(infor);
               i++;
-              
-            
-
+              //System.out.println(i);
 		}
 		result.close();
 		stmt.close();
@@ -133,7 +135,29 @@ public class firstSubject extends JFrame {
 		System.out.println("SQLException: "+sqle.getMessage());
 		System.out.println("SQLState: "+sqle.getSQLState());
 	}
-}
+	subjectBtn[0].addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+    	subjectBtn[0].setVisible(true);
+    	setVisible(true);
+//    	JFrame fr = new JFrame();
+//    	fr.setVisible(true);
+//    	fr.setSize(620, 580);
+//    	fr.setTitle(subjectBtn[0].getText());
+//    	JLabel label = new JLabel();
+//    	label.setSize(500,400);
+//    	fr.add(label);
+//    	fr.setLocationRelativeTo(null);
+//    	fr.addWindowListener(new WindowAdapter() {
+//    		public void WindowClosing(WindowEvent e) {
+//    			fr.setVisible(false);
+//    			fr.dispose();
+//    		}
+//    	});
+		introSub is = new introSub();
+		is.setTitle(subjectBtn[0].getText());
+    }
+});
+	}
 
 	public void setBackbtn(JButton j) {
 		
@@ -151,12 +175,9 @@ public class firstSubject extends JFrame {
                 MirimSubject ms = new MirimSubject();
                 ms.setVisible(true);
             }
-        });
-
-
-	
+        }); 
 }
 	public static void main(String[] args) {
+		//new firstSubject();
 	}
-
 }
