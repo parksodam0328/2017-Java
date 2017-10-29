@@ -35,10 +35,6 @@ public class MajorEntrance extends JFrame{
 	private JButton majorbtn[]=new JButton[3];
 	private String[] majorImg = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	private Image[] btnimg = new Image[3];
-<<<<<<< HEAD
-
-=======
->>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 	public MajorEntrance(){
 		//mbutton.setVisible(false);
 		setTitle("입학 - 학과 소개");
@@ -107,16 +103,10 @@ public class MajorEntrance extends JFrame{
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName; // URL 지정
-<<<<<<< HEAD
-			String SQL = "select * from entrance where id=1;";
-			//Class.forName(driverName); // 드라이버 로드
-			
-=======
+			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			String SQL = "select * from entrance1 where id=2;";
 			//Class.forName(driverName); // 드라이버 로드
 
->>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
 			Statement stmt = con.createStatement();
@@ -126,21 +116,12 @@ public class MajorEntrance extends JFrame{
 			//String all="";
 			String[] str=new String[96];
 			
-<<<<<<< HEAD
-			int i=1;
-			while(result.next()) {
-				str[i] = result.getString("number");
-				System.out.println(str[i]);
-				//dbShow.setText(str[i]);
-				str[i] = result.getString("content");
-=======
-			int i=;
+			int i=0;
 			while(result.next()) {
 				str[i] = result.getString("major");
 				System.out.println(str[i]);
 				//dbShow.setText(str[i]);
 				str[i] = result.getString("major_intro");
->>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b
 			//	dbShow.setText(str[i]);
 			//	all+=str[i]+"\t";
 			//	dbShow.setText(all);
@@ -177,14 +158,6 @@ public class MajorEntrance extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-
-	}
-
-
-}
-=======
 
 	}
 }
->>>>>>> c8fa47adcdb9180287854cf3e4c18d6bd908f34b

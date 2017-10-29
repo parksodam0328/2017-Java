@@ -11,16 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Location.MirimLocation;
 import Main.SelectMenu;
 
-public class DesignExper extends JFrame{
+public class SolutionExper extends JFrame{
 	private JLabel label;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
-	public DesignExper(){
+	public SolutionExper(){
 		//mbutton.setVisible(false);
-		setTitle("디자인");
+		setTitle("솔루션");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -36,6 +37,7 @@ public class DesignExper extends JFrame{
 		label.setIcon(new ImageIcon(img));
 		setBackbtn(backbtn);
 	}
+	
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));

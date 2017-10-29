@@ -26,7 +26,7 @@ import Subject.MirimSubject;
 import Main.SelectMenu;
 
 public class firstSubject extends JFrame{
-	public static int pri_key=0;
+	public static int id=0;
 	private int key[];
 	private JLabel label, label_img, infor;
 	private JButton[] gradebtn = new JButton[3];
@@ -126,6 +126,7 @@ public class firstSubject extends JFrame{
 			key[i]=result.getInt("id");
 			sub[i]=result.getString("name_sub");
 			System.out.println(sub[i]);
+			System.out.println(key[i]);
 			subjectBtn[i] = new JButton(sub[i]);
 			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
 	        label.add(subjectBtn[i]);
@@ -164,7 +165,8 @@ public class firstSubject extends JFrame{
 		introSub is = new introSub();
 		is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		is.setTitle(subjectBtn[0].getText());
-		pri_key=key[0];
+		id=key[0];
+		System.out.println(id);
 		is.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
     			is.setVisible(false);

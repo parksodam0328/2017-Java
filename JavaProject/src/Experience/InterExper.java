@@ -13,14 +13,14 @@ import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
 
-public class DesignExper extends JFrame{
+public class InterExper extends JFrame{
 	private JLabel label;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
-	public DesignExper(){
+	public InterExper(){
 		//mbutton.setVisible(false);
-		setTitle("디자인");
+		setTitle("인미");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
@@ -36,6 +36,7 @@ public class DesignExper extends JFrame{
 		label.setIcon(new ImageIcon(img));
 		setBackbtn(backbtn);
 	}
+	
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));
