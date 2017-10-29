@@ -23,12 +23,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.firstSubject;
-import Subject.secondSubject;
-import Subject.thirdSubject;
 
 public class MajorEntrance extends JFrame{
-	private JLabel label;
 	private JLabel dbShow;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();

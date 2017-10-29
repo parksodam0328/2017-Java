@@ -103,7 +103,7 @@ public class firstSubject extends JFrame{
 	try {
 		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 		String DBName = "MirimGuideBook";
-		String dbURL = "jdbc:mysql://localhost:3306/"+DBName; // URL 지정
+		String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 		String SQL = "select * from subject where grade=1 and major='인터랙티브미디어'";
 		//Class.forName(driverName); // 드라이버 로드
 		
@@ -160,7 +160,7 @@ public class firstSubject extends JFrame{
 //    			fr.setVisible(false);
 //    			fr.dispose();
 //    		}
-//    	});
+//		});
     	//setVisible(true);
 		introSub is = new introSub();
 		is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
