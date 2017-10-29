@@ -1,7 +1,6 @@
 package Subject;
 
 import java.awt.Image;
-import java.awt.Label;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +30,6 @@ public class introSub extends JFrame{
 		this.id=key;
 		this.name_sub=sub;
 		try {
-
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
@@ -82,7 +79,6 @@ public class introSub extends JFrame{
 		for(int i=0;i<6;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			//System.out.println(str[i]);
 			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
 			contentPane.add(dbIntro[i]);
 		}
