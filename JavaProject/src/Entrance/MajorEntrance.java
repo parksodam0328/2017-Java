@@ -100,7 +100,7 @@ public class MajorEntrance extends JFrame{
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
-			String SQL = "select * from entrance1 where id=2;";
+			String SQL = "select * from entrance1 where major='"+major[]+"';";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
