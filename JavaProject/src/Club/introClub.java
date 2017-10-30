@@ -71,18 +71,18 @@ public class introClub extends JFrame{
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 135*(i+1), 260, 70);
+			intro[i].setBounds(10, 135*(i+1), 200, 10);
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<4;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 135*(i+1), 300, 70);
+			dbIntro[i].setBounds(230, 135*(i+1), 320, 70);
 			contentPane.add(dbIntro[i]);
 		}
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
-		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();
+		Image title = new ImageIcon(this.getClass().getResource("/clubIntro.png")).getImage();
 		contentPane.add(introTitle);
 		introTitle.setIcon(new ImageIcon(title));
 		

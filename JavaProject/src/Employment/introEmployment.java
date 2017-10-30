@@ -21,7 +21,7 @@ public class introEmployment extends JFrame{
 	private JLabel[] intro=new JLabel[4];
 	private JLabel[] dbIntro=new JLabel[4];
 	private Image[] introImg = new Image[4];
-	private String[] img = {"/introClub_1.png", "/introClub_2.png"};
+	private String[] img = {"/introEmploy_1.png", "/introEmploy_2.png"};
 	String str[]=new String[2];
 	int year[]=new int[2];
 	int id;
@@ -72,7 +72,7 @@ public class introEmployment extends JFrame{
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 120*(i+1), 260, 70);
+			intro[i].setBounds(10, 120*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<2;i++) {
@@ -83,7 +83,7 @@ public class introEmployment extends JFrame{
 		}
 		introTitle=new JLabel("");
 		introTitle.setBounds(100,8,200,100);
-		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();
+		Image title = new ImageIcon(this.getClass().getResource("/employIntro.png")).getImage();
 		contentPane.add(introTitle);
 		introTitle.setIcon(new ImageIcon(title));
 		

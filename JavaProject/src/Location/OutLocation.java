@@ -27,10 +27,12 @@ public class OutLocation extends JFrame{
 	private JLabel label_img;
 	private JButton[] locationbtn = new JButton[3];
 	private String[] img = {"/location_1.png", "/location_2.png"};
-	Image[] btnimg = new Image[3];
+	private Image[] btnimg = new Image[3];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	private List hymnList = new List();
+	private JLabel[] menuLabel=new JLabel[3];
+	private JLabel[] dbShow=new JLabel[3];
+	private Image intro_img;
 	public OutLocation(){
 		setTitle("외부위치");
 		setResizable(false);
@@ -44,23 +46,23 @@ public class OutLocation extends JFrame{
 		label = new JLabel("");
 		label_img = new JLabel("");
 		label_img.setLocation(120, 150);
-		hymnList.setBounds(600,100,500,500);
-		label.add(hymnList);
-		Image intro_img = new ImageIcon(this.getClass().getResource("/public_location.png")).getImage();
 		label.setSize(1280,720);
 		label_img.setSize(457,370);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
 		contentPane.add(label_img);
-		contentPane.add(label);
-		label.setIcon(new ImageIcon(img));
-		label_img.setIcon(new ImageIcon(intro_img));
-		setBackbtn(backbtn);
-		
+		Image[] menuImg=new Image[3];
+		for(int i=0; i<3; i++) {
+			menuImg[i]= new ImageIcon(this.getClass().getResource("/outLocation_"+(i+1)+".png")).getImage();
+			menuLabel[i]=new JLabel("");
+			menuLabel[i].setBounds(640,150*(i+1),225,100);
+			menuLabel[i].setIcon(new ImageIcon(menuImg[i]));
+			contentPane.add(menuLabel[i]);
+		}
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
-			String SQL = "select * from location1;";
+			String SQL = "select address, subway, bus, image_location from location1;";
 			Connection con = null;
 			con = DriverManager.getConnection(dbURL,"root","mirim546");
 			java.sql.Statement st = null;
@@ -68,7 +70,6 @@ public class OutLocation extends JFrame{
 			st = con.createStatement();
 			st.execute("use mirimguidebook;");
 			result = st.executeQuery(SQL);
-			hymnList.setBounds(700,120,300,300);
 			
 			//Class.forName(driverName); // 드라이버 로드
 			
@@ -78,12 +79,20 @@ public class OutLocation extends JFrame{
 			
 			stmt.execute("use "+DBName+";");
 			result = stmt.executeQuery(SQL);
-
+			String str=null;
+			int i=0; 
 			while(result.next()) {
-				for(int i=1;i<=10;i++) {
-				String str = result.getString(i);
-				hymnList.add(str);
-				}
+				str = result.getString("address");
+				dbShow[i++]=new JLabel(str);
+				str = result.getString("subway");
+				dbShow[i++]=new JLabel(str);
+				str = result.getString("bus");
+				dbShow[i++]=new JLabel(str);
+				str = result.getString("image_location");
+				System.out.println(str);
+				str="10.96.122.177/upload/location1/"+str;
+				System.out.println(str);
+				intro_img = new ImageIcon(this.getClass().getResource(str)).getImage();
 			}
 			result.close();
 			stmt.close();
@@ -92,8 +101,16 @@ public class OutLocation extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}	
+		for(int i=0; i<3; i++) {
+			dbShow[i].setBounds(900,150*(i+1),225,100);
+			contentPane.add(dbShow[i]);
+		}
+		contentPane.add(label);
+		label.setIcon(new ImageIcon(img));
+		label_img.setIcon(new ImageIcon(intro_img));
+		
+		setBackbtn(backbtn);
 	}
-	
 	public void setBackbtn(JButton j) {
 		j.setIcon(new ImageIcon(back_img));
 		j.setBounds(5,5,100,70);

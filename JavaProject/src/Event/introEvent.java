@@ -71,7 +71,7 @@ public class introEvent extends JFrame{
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 110*(i+1), 260, 70);
+			intro[i].setBounds(10, 110*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<3;i++) {

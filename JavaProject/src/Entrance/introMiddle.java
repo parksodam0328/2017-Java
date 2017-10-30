@@ -72,7 +72,7 @@ public class introMiddle extends JFrame{
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 100*(i+1), 140, 70);
+			intro[i].setBounds(10, 100*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<4;i++) {
