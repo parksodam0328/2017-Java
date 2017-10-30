@@ -19,13 +19,14 @@ public class introEvent extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
 	private JLabel introTitle;
-	private JLabel[] intro=new JLabel[4];
+	private JLabel[] intro=new JLabel[3];
 	private JLabel[] dbIntro=new JLabel[4];
 	private Image[] introImg = new Image[3];
 	private String[] img = {"/introEvent_1.png", "/introEvent_2.png","/introClub_3.png"};
-	String str[]=new String[5];
+	String str[]=new String[4];
 	int id;
 	String name_sub;
+	private Image image;
 	public introEvent(int key, String sub) {
 		this.id=key;
 		this.name_sub=sub;
@@ -44,7 +45,7 @@ public class introEvent extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 
 			while(result.next()) {
-				for(int i=0;i<3;i++) {
+				for(int i=0;i<4;i++) {
 				str[i] = result.getString(i+1);
 				}
 			}
@@ -82,6 +83,11 @@ public class introEvent extends JFrame{
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 			contentPane.add(dbIntro[i]);
 		}
+		image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
+		dbIntro[3]=new JLabel(str[3]);
+		dbIntro[3].setIcon(new ImageIcon(image));
+		dbIntro[3].setBounds(125, 110*(3+1), 300, 230);
+		contentPane.add(dbIntro[3]);
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/eventIntro.png")).getImage();
