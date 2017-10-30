@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import static Subject.firstSubject.key;
 
@@ -20,7 +21,7 @@ public class introClub extends JFrame{
 	private JPanel contentPane;
 	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[5];
-	private JLabel[] dbIntro=new JLabel[5];
+	private JTextArea[] dbIntro=new JTextArea[5];
 	private Image[] introImg = new Image[5];
 	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png", "/introClub_4.png"};
 	String str[]=new String[5];
@@ -44,7 +45,7 @@ public class introClub extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 
 			while(result.next()) {
-				for(int i=0;i<5;i++) {
+				for(int i=0;i<4;i++) {
 				str[i] = result.getString(i+1);
 				}
 			}
@@ -60,7 +61,7 @@ public class introClub extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(540, 720);
-		setVisible(true);
+		setVisible(true); 
 		setLocationRelativeTo(null); //Ã¢ Áß¾Ó¿¡ ¶ç¿ì±â
 		
 		contentPane = new JPanel();
@@ -77,11 +78,17 @@ public class introClub extends JFrame{
 		}
 		for(int i=0;i<4;i++) {
 			System.out.println(str[i]);
-			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 135*(i+1), 320, 100);
+			dbIntro[i]=new JTextArea(str[i]);
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,15));
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
 			contentPane.add(dbIntro[i]);
 		}
+		dbIntro[0].setBounds(230, 175, 300, 100);
+		dbIntro[1].setBounds(230, 302, 300, 100);
+		dbIntro[2].setBounds(230, 440, 300, 100);
+		dbIntro[3].setBounds(230, 565, 300, 100);
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/clubIntro.png")).getImage();

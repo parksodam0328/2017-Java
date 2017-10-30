@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import static Subject.firstSubject.key;
 
@@ -20,7 +21,8 @@ public class introSub extends JFrame{
 	private JPanel contentPane;
 	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[6];
-	private JLabel[] dbIntro=new JLabel[6];
+	//private JLabel[] dbIntro=new JLabel[6];
+	private JTextArea[] dbIntro=new JTextArea[6];
 	private Image[] introImg = new Image[6];
 	private String[] img = {"/introSub_1.png", "/introSub_2.png","/introSub_3.png",
 			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
@@ -79,11 +81,21 @@ public class introSub extends JFrame{
 		}
 		for(int i=0;i<6;i++) {
 			System.out.println(str[i]);
-			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20));
-			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
+			//dbIntro[i]=new JLabel(str[i]);
+			dbIntro[i]=new JTextArea(str[i]);
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,15));
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
 			contentPane.add(dbIntro[i]);
 		}
+		dbIntro[0].setBounds(200, 115, 260, 70);
+		dbIntro[1].setBounds(200, 220, 260, 70);
+		dbIntro[2].setBounds(200, 315, 260, 70);
+		dbIntro[3].setBounds(200, 410, 260, 70);
+		dbIntro[4].setBounds(200, 520, 260, 70);
+		dbIntro[5].setBounds(200, 618, 260, 70);
+
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();

@@ -67,7 +67,8 @@ public class CostumeRule extends JFrame{
 		//p.add(dbShow);
 		getContentPane().add(p);
 		setBackbtn(backbtn, p);
-		dbShow.setBackground(Color.WHITE);
+		dbShow.setLineWrap(true);
+		//dbShow.setBackground(Color.WHITE);
 		dbShow.setEditable(false);
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
@@ -81,13 +82,13 @@ public class CostumeRule extends JFrame{
 			Statement stmt = con.createStatement();
 			
 			stmt.execute("use "+DBName+";");
-			ResultSet result = stmt.executeQuery(SQL);
+			ResultSet result = stmt.executeQuery(SQL); 
 			java.sql.ResultSetMetaData rsmd = result.getMetaData();
 			result.last();
 			row = result.getRow();
 			result.beforeFirst();
 			str = new String[row];
-			num = new int[row];
+			num = new int[row]; 
 			int i=0;
 			while(result.next()) {
 				num[i] = result.getInt("number");
@@ -108,6 +109,7 @@ public class CostumeRule extends JFrame{
 		for(int j=0;j<row;j++){
 				dbShow.append(num[j]+"번\n"+str[j]+"\n\n");
 				dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
+				//dbShow.setOpaque(false);
 			//	System.out.println(dbShow.getText());
 			}
 	}

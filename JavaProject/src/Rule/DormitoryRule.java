@@ -68,6 +68,7 @@ public class DormitoryRule extends JFrame{
 		getContentPane().add(p);
 		setBackbtn(backbtn, p);
 		dbShow.setBackground(Color.WHITE);
+		dbShow.setLineWrap(true);
 		dbShow.setEditable(false);
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정

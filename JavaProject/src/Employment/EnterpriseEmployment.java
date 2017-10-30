@@ -57,14 +57,14 @@ public class EnterpriseEmployment extends JFrame{
 			}
 		};
 		p.setBorder(new EmptyBorder(0, 0, 0, 0));
-		p.setLayout(null);
+		p.setLayout(null); 
 		dbShow=new JTextArea();
 	    JScrollPane scroll = new JScrollPane(dbShow);
 	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	    p.add(scroll);
 		getContentPane().add(BorderLayout.CENTER,p);
-		scroll.setBounds(136,60,980,600);
+		scroll.setBounds(325,100,650,500);
 		//p.add(dbShow);
 		getContentPane().add(p);
 		setBackbtn(backbtn, p);

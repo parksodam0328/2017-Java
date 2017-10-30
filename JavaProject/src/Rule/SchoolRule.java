@@ -69,6 +69,7 @@ public class SchoolRule extends JFrame{
 		setBackbtn(backbtn, p);
 		dbShow.setBackground(Color.WHITE);
 		dbShow.setEditable(false);
+		dbShow.setLineWrap(true);
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
