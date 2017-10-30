@@ -1,5 +1,6 @@
 package Subject;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -79,6 +80,7 @@ public class introSub extends JFrame{
 		for(int i=0;i<6;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20));
 			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
 			contentPane.add(dbIntro[i]);
 		}

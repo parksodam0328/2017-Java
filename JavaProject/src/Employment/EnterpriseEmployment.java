@@ -3,6 +3,7 @@ package Employment;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -99,7 +100,7 @@ public class EnterpriseEmployment extends JFrame{
 			}
 			
 			
-			result.close();
+			result.close(); 
 			stmt.close();
 			con.close();
 			
@@ -109,7 +110,8 @@ public class EnterpriseEmployment extends JFrame{
 		}
 		for(int j=0;j<row;j++){
 				dbShow.append("회사명 : "+str1[j]+"\t분야 : "+str2[j]+"\n"+str3[j]+"\n\n");
-				System.out.println(dbShow.getText());
+				dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
+				//System.out.println(dbShow.getText());
 			}
 	}
 	

@@ -1,5 +1,6 @@
 package Subject;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -129,6 +130,7 @@ public class firstSubject extends JFrame implements ActionListener{
 			sub[i]=result.getString("name_sub");
 			subjectBtn[i] = new JButton(sub[i]);
 			subjectBtn[i].setBounds(60, 75*(3+i), 200, 50);
+			subjectBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,15));
 			subjectBtn[i].addActionListener(this);
 			subjectLabel.add(subjectBtn[i]);
 	        key[i]=id;

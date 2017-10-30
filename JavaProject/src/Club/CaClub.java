@@ -54,7 +54,7 @@ public class CaClub extends JFrame implements ActionListener{
 			     Dimension d = getSize();
 			    g.drawImage(img, 0, 0, d.width, d.height, null);
 			    setOpaque(false);
-			    super.paintComponent(g);
+			    super.paintComponent(g); 
 			}
 		};
 		p.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -91,6 +91,7 @@ public class CaClub extends JFrame implements ActionListener{
 				clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
+				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;

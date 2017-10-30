@@ -3,6 +3,7 @@ package Rule;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -72,7 +73,7 @@ public class SchoolRule extends JFrame{
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-			String SQL = "select * from rule where division_number=1;";
+			String SQL = "select * from rule where division_number=1 order by number asc;";
 			//Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -106,7 +107,7 @@ public class SchoolRule extends JFrame{
 		}
 		for(int j=0;j<row;j++){
 				dbShow.append(num[j]+"번\n"+str[j]+"\n\n");
-				System.out.println(dbShow.getText());
+				dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
 			}
 	}
 	

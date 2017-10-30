@@ -89,6 +89,7 @@ public class SchoolEvent extends JFrame implements ActionListener{
 				clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
+				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;

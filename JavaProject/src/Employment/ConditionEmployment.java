@@ -36,7 +36,7 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String SQL=null;
 	private JButton employBtn[];
-	private JLabel clubLabel=new JLabel("");
+	private JLabel EmployLabel=new JLabel("");
 	private String[] str;
 	int i=0;
 	int row;
@@ -66,7 +66,7 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
-			SQL = "select * from employment1;";
+			SQL = "select * from employment1 order by year asc;";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -89,9 +89,10 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 				str[i] = result.getString("year");
 				employBtn[i]=new JButton(str[i]);
 				employBtn[i].setContentAreaFilled(false);
+				employBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,25));
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				employBtn[i].addActionListener(this);
-				clubLabel.add(employBtn[i]);
+				EmployLabel.add(employBtn[i]);
 				key[i]=id;
 				i++;
 			}
@@ -104,9 +105,9 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(150,80,980,650);
-		clubLabel.setLayout(new GridLayout(6,4));
-		p.add(clubLabel); 
+		EmployLabel.setBounds(360,200,600,300);
+		EmployLabel.setLayout(new GridLayout(2,3));
+		p.add(EmployLabel); 
 	}
 	public void setBackbtn(JButton j, JPanel p) {
 		

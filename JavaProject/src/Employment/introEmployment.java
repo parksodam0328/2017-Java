@@ -1,5 +1,6 @@
 package Employment;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -75,10 +76,12 @@ public class introEmployment extends JFrame{
 			intro[i].setBounds(10, 120*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
+		
 		for(int i=0;i<2;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 120*(i+1), 300, 70);
+			dbIntro[i].setBounds(230, 120*(i+1), 200, 100);
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20)); 
 			contentPane.add(dbIntro[i]);
 		}
 		introTitle=new JLabel("");

@@ -1,5 +1,6 @@
 package Event;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -77,7 +78,8 @@ public class introEvent extends JFrame{
 		for(int i=0;i<3;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 110*(i+1), 300, 70);
+			dbIntro[i].setBounds(230, 110*(i+1), 300, 100);
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 			contentPane.add(dbIntro[i]);
 		}
 		introTitle=new JLabel("");

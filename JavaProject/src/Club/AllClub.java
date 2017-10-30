@@ -91,6 +91,7 @@ public class AllClub extends JFrame implements ActionListener{
 				clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
+				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;
@@ -104,7 +105,7 @@ public class AllClub extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(150,80,980,550);
+		clubLabel.setBounds(250,110,800,450);
 		clubLabel.setLayout(new GridLayout(2,4));
 		p.add(clubLabel); 
 	}
