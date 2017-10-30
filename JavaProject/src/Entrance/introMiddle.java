@@ -21,7 +21,7 @@ public class introMiddle extends JFrame{
 	private JPanel contentPane;
 	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[3];
-	private JLabel[] dbIntro=new JLabel[3];
+	private JTextArea[] dbIntro=new JTextArea[3];
 	private Image[] introImg = new Image[3];
 	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png"};
 	String str[]=new String[4];
@@ -78,8 +78,12 @@ public class introMiddle extends JFrame{
 		
 		for(int i=0;i<3;i++) {
 			System.out.println(str[i]);
-			dbIntro[i]=new JLabel(str[i]);
+			dbIntro[i]=new JTextArea(str[i]);
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
+			dbIntro[i].setBounds(230, 135*(i+1), 200, 100);
 			contentPane.add(dbIntro[i]);
 		}
 		JLabel event_img = new JLabel("");
