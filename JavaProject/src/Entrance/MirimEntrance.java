@@ -29,7 +29,7 @@ public class MirimEntrance extends JFrame {
 	Image[] btnimg = new Image[4];
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
-	
+	public int key[];
 	public MirimEntrance() {
 		//mbutton.setVisible(false);
 		setTitle("¿‘«–");

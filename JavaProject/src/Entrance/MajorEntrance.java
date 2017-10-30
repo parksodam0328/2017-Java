@@ -3,10 +3,13 @@ package Entrance;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,18 +22,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
+import Subject.introSub;
 
 public class MajorEntrance extends JFrame{
-	private JLabel dbShow;
+	private JTextArea dbShow;
+	private int id=0;
+	private JLabel []dbIntro;
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private JButton majorbtn[]=new JButton[3];
 	private String[] majorImg = {"/experience_1.png", "/experience_2.png","/experience_3.png"};
 	private Image[] btnimg = new Image[3];
+	String major[] = new String[] { "인터랙티브미디어","뉴미디어디자인","뉴미디어솔루션"};
+	private String image_name[];
+	int row;
+	private String[] sub;
+	private String[] sub2;
+	private String[] str; //규정 내용
+	private JLabel majorLabel=new JLabel("");
 	public MajorEntrance(){
 		//mbutton.setVisible(false);
 		setTitle("입학 - 학과 소개");
@@ -58,7 +72,7 @@ public class MajorEntrance extends JFrame{
 		}
 		p.setBorder(new EmptyBorder(0, 0, 0, 0));
 		p.setLayout(null);
-		dbShow=new JLabel("");
+		dbShow=new JTextArea();
 	    JScrollPane scroll = new JScrollPane(dbShow);
 	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -78,29 +92,17 @@ public class MajorEntrance extends JFrame{
 			p.add(majorbtn[i]);
 		}
 		setBackbtn(backbtn, p);
-		dbShow.setBackground(Color.BLUE);
-		majorbtn[0].addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	//db쿼리문바꾸기
-	            
-	        }
-	    });
-		majorbtn[1].addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	//db쿼리문바꾸기
-	        }
-	    });
-		majorbtn[2].addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	//db쿼리문바꾸기
-	        }
-	    });
+		dbShow.setBackground(Color.WHITE);
+		dbShow.setEditable(false);
+		dbShow.setLineWrap(true);
+		
+		
 		
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
-			String SQL = "select * from entrance1 where major='"+major[]+"';";
+			String SQL = "select major, major_intro, imgae_location from entrance1 where major='"+major[0]+"';";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -110,19 +112,28 @@ public class MajorEntrance extends JFrame{
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
 			//String all="";
-			String[] str=new String[96];
-			
+			java.sql.ResultSetMetaData rsmd = result.getMetaData();
+			result.last();
+			row = result.getRow();
+			result.beforeFirst();
+			sub = new String[row];
+			sub2 = new String[row];
+			image_name = new String[row];
+			dbIntro = new JLabel[row];
+
 			int i=0;
 			while(result.next()) {
-				str[i] = result.getString("major");
-				System.out.println(str[i]);
-				//dbShow.setText(str[i]);
-				str[i] = result.getString("major_intro");
-			//	dbShow.setText(str[i]);
-			//	all+=str[i]+"\t";
-			//	dbShow.setText(all);
-				i++;
-			}
+				sub[i]=result.getString("major");
+				sub2[i]=result.getString("major_intro");
+				image_name[i]=result.getString("imgae_location");
+				
+				majorbtn[i] = new JButton(sub[i]);
+				majorbtn[i].setBounds(60, 75*(3+i), 200, 50);
+				majorbtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,30));
+				//majorbtn[i].addActionListener(this);
+				majorLabel.add(majorbtn[i]);
+			i++;
+			}   
 			result.close();
 			stmt.close();
 			con.close();
@@ -131,6 +142,16 @@ public class MajorEntrance extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
+		for(int j=0;j<row;j++){
+			dbShow.append("학과 : "+sub[j]+"\n\n학과 소개 : "+sub2[j]+"\n");
+			dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
+			Image image = new ImageIcon(this.getClass().getResource("/"+image_name[j])).getImage();
+			dbIntro[j]=new JLabel(sub[j]);
+			dbIntro[j].setIcon(new ImageIcon(image));
+			dbIntro[j].setBounds(50, 240*(j+1), 500, 481);
+			p.add(dbIntro[j]);
+		}
+		
 	}
 	
 	public void setBackbtn(JButton j, JPanel p) {
@@ -151,7 +172,6 @@ public class MajorEntrance extends JFrame{
             }
         });
 	}
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

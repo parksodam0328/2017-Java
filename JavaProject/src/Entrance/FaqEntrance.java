@@ -30,6 +30,7 @@ import Main.SelectMenu;
 public class FaqEntrance extends JFrame{
 	private JLabel label;
 	private JTextArea dbShow;
+	int row;
 	private int[] str1; //규정 내용
 	private String[] str2; //규정 내용
 	private String[] str3; //규정 내용
@@ -111,7 +112,7 @@ public class FaqEntrance extends JFrame{
 		}
 
 		for(int j=0;j<row;j++){
-				dbShow.append("\n번호 : "+str1[j]+"\t제목 : "+str2[j]+"\n\n내용 : "+str3[j]+"\n");
+				dbShow.append("번호 : "+str1[j]+"\t제목 : "+str2[j]+"\n내용 : "+str3[j]+"\n\n");
 				dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
 				//System.out.println(dbShow.getText());
 			}
