@@ -88,10 +88,11 @@ public class CaClub extends JFrame implements ActionListener{
 				id=result.getInt("id");
 				str[i] = result.getString("club_name");
 				clubBtn[i]=new JButton(str[i]);
-				clubBtn[i].setContentAreaFilled(false);
+			//	clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
 				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
+				clubBtn[i].setBackground(new Color(166,165,160));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;

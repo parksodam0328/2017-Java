@@ -27,6 +27,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
+import Subject.firstSubject;
 import Subject.introSub;
 
 public class MajorEntrance extends JFrame{
@@ -45,7 +46,9 @@ public class MajorEntrance extends JFrame{
 	private String[] sub2;
 	private String[] str; //규정 내용
 	private JLabel majorLabel=new JLabel("");
-	public MajorEntrance(){
+	int grade_num;
+	public MajorEntrance(int grade_num) {
+		this.grade_num = grade_num;
 		//mbutton.setVisible(false);
 		setTitle("입학 - 학과 소개");
 		setResizable(false);
@@ -78,7 +81,7 @@ public class MajorEntrance extends JFrame{
 	    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	    p.add(scroll);
 		getContentPane().add(BorderLayout.CENTER,p);
-		scroll.setBounds(650,210,500,450);
+		scroll.setBounds(650,200,500,481);
 		//p.add(dbShow);
 		getContentPane().add(p);
 		majorbtn[0].setBounds(250, 70, 214, 93);
@@ -91,18 +94,41 @@ public class MajorEntrance extends JFrame{
 			majorbtn[i].setFocusPainted(false);
 			p.add(majorbtn[i]);
 		}
+		majorbtn[0].addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	majorbtn[0].setVisible(false);
+	            setVisible(false);
+	            MajorEntrance fs = new MajorEntrance(0);
+	            fs.setVisible(true);
+	            
+	        }
+	    });
+		majorbtn[1].addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	majorbtn[1].setVisible(false);
+	            setVisible(false);
+	            MajorEntrance fs = new MajorEntrance(1);
+	            fs.setVisible(true);
+	        }
+	    });
+		majorbtn[2].addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	majorbtn[2].setVisible(false);
+	            setVisible(false);
+	            MajorEntrance fs = new MajorEntrance(2);
+	            fs.setVisible(true);
+	        }
+	    });
 		setBackbtn(backbtn, p);
 		dbShow.setBackground(Color.WHITE);
 		dbShow.setEditable(false);
 		dbShow.setLineWrap(true);
 		
-		
-		
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
-			String SQL = "select major, major_intro, imgae_location from entrance1 where major='"+major[0]+"';";
+			String SQL = "select major, major_intro, imgae_location from entrance1 where major='"+major[grade_num]+"';";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -143,12 +169,12 @@ public class MajorEntrance extends JFrame{
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
 		for(int j=0;j<row;j++){
-			dbShow.append("학과 : "+sub[j]+"\n\n학과 소개 : "+sub2[j]+"\n");
+			dbShow.append("\n\n학과 : "+sub[j]+"\n\n학과 소개 : "+sub2[j]+"\n");
 			dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
 			Image image = new ImageIcon(this.getClass().getResource("/"+image_name[j])).getImage();
 			dbIntro[j]=new JLabel(sub[j]);
 			dbIntro[j].setIcon(new ImageIcon(image));
-			dbIntro[j].setBounds(50, 240*(j+1), 500, 481);
+			dbIntro[j].setBounds(70, 200*(j+1), 500, 481);
 			p.add(dbIntro[j]);
 		}
 		

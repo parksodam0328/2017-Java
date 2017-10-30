@@ -112,7 +112,7 @@ public class FaqEntrance extends JFrame{
 		}
 
 		for(int j=0;j<row;j++){
-				dbShow.append("번호 : "+str1[j]+"\t제목 : "+str2[j]+"\n내용 : "+str3[j]+"\n\n");
+				dbShow.append("번호 : "+str1[j]+"\t제목 : "+str2[j]+"\n\n내용 : "+str3[j]+"\n\n");
 				dbShow.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
 				//System.out.println(dbShow.getText());
 			}

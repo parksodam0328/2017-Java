@@ -78,7 +78,7 @@ public class MirimEntrance extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	entrancebtn[0].setVisible(false);
                 setVisible(false);
-                MajorEntrance me = new  MajorEntrance();
+                MajorEntrance me = new  MajorEntrance(0);
                 me.setVisible(true);
             }
         });

@@ -79,16 +79,16 @@ public class introClub extends JFrame{
 		for(int i=0;i<4;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JTextArea(str[i]);
-			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,15));
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 			dbIntro[i].setOpaque(false);
 			dbIntro[i].setEditable(false);
 			dbIntro[i].setLineWrap(true);
 			contentPane.add(dbIntro[i]);
 		}
-		dbIntro[0].setBounds(230, 175, 300, 100);
-		dbIntro[1].setBounds(230, 302, 300, 100);
-		dbIntro[2].setBounds(230, 440, 300, 100);
-		dbIntro[3].setBounds(230, 565, 300, 100);
+		dbIntro[0].setBounds(230, 175, 280, 100);
+		dbIntro[1].setBounds(230, 302, 280, 100);
+		dbIntro[2].setBounds(230, 440, 280, 100);
+		dbIntro[3].setBounds(230, 565, 280, 100);
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/clubIntro.png")).getImage();

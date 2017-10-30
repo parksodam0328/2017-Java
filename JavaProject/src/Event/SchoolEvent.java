@@ -86,10 +86,11 @@ public class SchoolEvent extends JFrame implements ActionListener{
 				id=result.getInt("id");
 				str[i] = result.getString("event_name");
 				clubBtn[i]=new JButton(str[i]);
-				clubBtn[i].setContentAreaFilled(false);
+			//	clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
 				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
+				clubBtn[i].setBackground(new Color(166,165,160));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;
@@ -103,7 +104,7 @@ public class SchoolEvent extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(150,100,980,650);
+		clubLabel.setBounds(220,150,840,540);
 		clubLabel.setLayout(new GridLayout(5,3));
 		p.add(clubLabel); 
 	}

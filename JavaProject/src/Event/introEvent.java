@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import static Subject.firstSubject.key;
 
@@ -20,13 +21,12 @@ public class introEvent extends JFrame{
 	private JPanel contentPane;
 	private JLabel introTitle;
 	private JLabel[] intro=new JLabel[3];
-	private JLabel[] dbIntro=new JLabel[4];
+	private JTextArea[] dbIntro=new JTextArea[3];
 	private Image[] introImg = new Image[3];
 	private String[] img = {"/introEvent_1.png", "/introEvent_2.png","/introClub_3.png"};
-	String str[]=new String[4];
+	String str[]=new String[5];
 	int id;
 	String name_sub;
-	private Image image;
 	public introEvent(int key, String sub) {
 		this.id=key;
 		this.name_sub=sub;
@@ -76,18 +76,25 @@ public class introEvent extends JFrame{
 			intro[i].setBounds(10, 110*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
+		
+		
 		for(int i=0;i<3;i++) {
 			System.out.println(str[i]);
-			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 110*(i+1), 300, 100);
+			dbIntro[i]=new JTextArea(str[i]);
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 			contentPane.add(dbIntro[i]);
 		}
-		image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
-		dbIntro[3]=new JLabel(str[3]);
-		dbIntro[3].setIcon(new ImageIcon(image));
-		dbIntro[3].setBounds(125, 110*(3+1), 300, 230);
-		contentPane.add(dbIntro[3]);
+		JLabel event_img = new JLabel("");
+		Image event_image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
+		event_img.setIcon(new ImageIcon(event_image));
+		event_img.setBounds(100, 460, 300, 210);contentPane.add(event_img);
+		dbIntro[0].setBounds(230, 145, 280, 100);
+		dbIntro[1].setBounds(230, 257, 280, 100);
+		dbIntro[2].setBounds(230, 350, 280, 100);
+		
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/eventIntro.png")).getImage();

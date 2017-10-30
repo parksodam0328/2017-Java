@@ -80,10 +80,10 @@ public class introSub extends JFrame{
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<6;i++) {
-			System.out.println(str[i]);
+			//System.out.println(str[i]);
 			//dbIntro[i]=new JLabel(str[i]);
 			dbIntro[i]=new JTextArea(str[i]);
-			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,15));
+			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,17));
 			dbIntro[i].setOpaque(false);
 			dbIntro[i].setEditable(false);
 			dbIntro[i].setLineWrap(true);

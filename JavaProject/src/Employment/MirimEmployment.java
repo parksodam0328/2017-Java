@@ -52,8 +52,8 @@ public class MirimEmployment extends JFrame{
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		//mbutton.addActionListener(this);
-		employmentbtn[0].setBounds(300, 565, 214, 93);
-		employmentbtn[1].setBounds(800, 565, 214, 93);
+		employmentbtn[0].setBounds(410, 565, 214, 93);
+		employmentbtn[1].setBounds(660, 565, 214, 93);
 		
 		for(int i=0;i<2;i++) {
 			employmentbtn[i].setIcon(new ImageIcon(btnimg[i]));

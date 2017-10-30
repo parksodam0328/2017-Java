@@ -1,5 +1,6 @@
 package Entrance;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import static Subject.firstSubject.key;
 
@@ -18,11 +20,11 @@ public class introMiddle extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
 	private JLabel introTitle;
-	private JLabel[] intro=new JLabel[4];
-	private JLabel[] dbIntro=new JLabel[4];
-	private Image[] introImg = new Image[4];
-	private String[] img = {"/introMiddle_1.png", "/introMiddle_2.png","/introMiddle_3.png","/introMiddle_4.png"};
-	String str[]=new String[6];
+	private JLabel[] intro=new JLabel[3];
+	private JLabel[] dbIntro=new JLabel[3];
+	private Image[] introImg = new Image[3];
+	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png"};
+	String str[]=new String[4];
 	int id;
 	String name_sub;
 	public introMiddle(int key, String sub) {
@@ -32,7 +34,7 @@ public class introMiddle extends JFrame{
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-			String SQL = "select grade ,major, name_sub, intro_sub, teacher, room from subject where id="+id+"";
+			String SQL = "select date, apply, room, image_location from entrance2 where id="+id+";";
 			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
@@ -43,11 +45,10 @@ public class introMiddle extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 
 			while(result.next()) {
-				for(int i=0;i<6;i++) {
+				for(int i=0;i<4;i++) {
 				str[i] = result.getString(i+1);
 				}
 			}
-			
 			result.close();
 			stmt.close();
 			con.close();	
@@ -55,7 +56,6 @@ public class introMiddle extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		for(int i=0;i<6;i++)
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,19 +68,25 @@ public class introMiddle extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		
-		for(int i=0; i<4; i++) {
+		for(int i=0; i<3; i++) {
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 100*(i+1), 200, 100);
+			intro[i].setBounds(10, 135*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
-		for(int i=0;i<4;i++) {
+		
+		for(int i=0;i<3;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
-			dbIntro[i].setBounds(200, 100*(i+1), 300, 70);
+			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
 			contentPane.add(dbIntro[i]);
 		}
+		JLabel event_img = new JLabel("");
+		Image event_image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
+		event_img.setIcon(new ImageIcon(event_image));
+		event_img.setBounds(100, 460, 300, 230);contentPane.add(event_img);
+		
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();

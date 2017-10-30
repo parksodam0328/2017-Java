@@ -1,10 +1,19 @@
 //년도마다 입학설명회 일정이 다를 수 있으므로 몇회하는지 db에서 값 가져오기!!
 package Entrance;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,12 +23,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
+import Subject.introSub;
+import static Subject.firstSubject.key;
 
-public class IntroduceEntrance extends JFrame{
+public class IntroduceEntrance extends JFrame implements ActionListener{
+	private int id=0;
 	private JPanel contentPane;
 	private JLabel label;
 	private JButton backbtn;
 	private JLabel notice;
+	int i=0;
+	int row;
+	private String[] sub; //과목 이름
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private JButton Introducing[]=new JButton[6];
 	public IntroduceEntrance(){
@@ -46,12 +61,6 @@ public class IntroduceEntrance extends JFrame{
 		notice.setBounds(300,35,700,140);
 		Image img2 = new ImageIcon(this.getClass().getResource("/entrance_notice.png")).getImage();
 		
-		//버튼위치 다시 조절하기
-		for(int i=0; i<6; i++) {
-			Introducing[i]=new JButton((i+1)+"회");
-			//Introducing[i].setBounds(100*i,50,50,50);
-			button.add(Introducing[i]);
-		}
 		contentPane.add(notice);
 		contentPane.add(button);
 		contentPane.add(label);
@@ -60,6 +69,64 @@ public class IntroduceEntrance extends JFrame{
 		
 		backbtn = new JButton("");
 		setBackbtn(backbtn);
+	try {
+		String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
+		String DBName = "MirimGuideBook";
+		String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
+		String number;
+		String SQL = "select id, date, apply, image_location from entrance2;";
+		//Class.forName(driverName); // 드라이버 로드
+		System.out.println(SQL);
+		Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
+		System.out.println("디비연결완료");
+		Statement stmt = con.createStatement();
+		
+		stmt.execute("use "+DBName+";");
+		ResultSet result = stmt.executeQuery(SQL);
+		java.sql.ResultSetMetaData rsmd = result.getMetaData();
+		result.last();
+		row = result.getRow();
+		result.beforeFirst();
+		sub = new String[row];
+		Introducing = new JButton[row];
+		key = new int[row];
+		while(result.next()) {
+			id=result.getInt("id");
+			sub[i]=result.getString("date");
+			Introducing[i] = new JButton((i+1)+"회");
+			Introducing[i].setBounds(60, 75*(3+i), 200, 50);
+			Introducing[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,15));
+			Introducing[i].addActionListener(this);
+			Introducing[i].setBackground(new Color(166,165,160));
+			button.add(Introducing[i]);
+	        key[i]=id;
+		i++;
+		}   
+		result.close();
+		stmt.close();
+		con.close();
+		
+	}catch(SQLException sqle) {
+		System.out.println("SQLException: "+sqle.getMessage());
+		System.out.println("SQLState: "+sqle.getSQLState());
+	}
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for(int j=0;j<row;j++)
+		if(e.getSource()==Introducing[j]){
+		introMiddle is = new introMiddle(key[j], sub[j]);
+		System.out.println(sub[j]);
+		  is.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		  is.setTitle(Introducing[j].getText());
+		  is.addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent e) {
+				  is.setVisible(false);
+				  is.dispose();	
+			  }
+		  });
+		  
+	 }
 	}
 	
 public void setBackbtn(JButton j) {

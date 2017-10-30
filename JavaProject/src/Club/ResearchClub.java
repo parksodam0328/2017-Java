@@ -88,10 +88,11 @@ public class ResearchClub extends JFrame implements ActionListener{
 				id=result.getInt("id");
 				str[i] = result.getString("club_name");
 				clubBtn[i]=new JButton(str[i]);
-				clubBtn[i].setContentAreaFilled(false);
+			//	clubBtn[i].setContentAreaFilled(false);
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
-				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,25));
+				clubBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20));
+				clubBtn[i].setBackground(new Color(166,165,160));
 				clubLabel.add(clubBtn[i]);
 				key[i]=id;
 				i++;
@@ -105,7 +106,7 @@ public class ResearchClub extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(150,100,980,650);
+		clubLabel.setBounds(240,200,810,360);
 		clubLabel.setLayout(new GridLayout(4,1));
 		p.add(clubLabel); 
 	}

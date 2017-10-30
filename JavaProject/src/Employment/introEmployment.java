@@ -78,7 +78,7 @@ public class introEmployment extends JFrame{
 		}
 		
 		for(int i=0;i<2;i++) {
-			System.out.println(str[i]);
+			//System.out.println(str[i]);
 			dbIntro[i]=new JLabel(str[i]);
 			dbIntro[i].setBounds(230, 120*(i+1), 200, 100);
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,20)); 

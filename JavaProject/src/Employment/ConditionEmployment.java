@@ -88,8 +88,9 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 				id=result.getInt("id");
 				str[i] = result.getString("year");
 				employBtn[i]=new JButton(str[i]);
-				employBtn[i].setContentAreaFilled(false);
+			//	employBtn[i].setContentAreaFilled(false);
 				employBtn[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN,25));
+				employBtn[i].setBackground(new Color(166,165,160));
 			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				employBtn[i].addActionListener(this);
 				EmployLabel.add(employBtn[i]);
