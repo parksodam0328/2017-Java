@@ -1,6 +1,5 @@
 package Club;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,16 +21,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-
 import Main.SelectMenu;
-import Subject.introSub;
 
 public class ResearchClub extends JFrame implements ActionListener{
-	private int id=0;
-	public static int key[];
+	private int id=0; //기본키
+	public static int key[]; //동아리를 분류해주는 키 담음
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String SQL=null;
@@ -41,7 +36,6 @@ public class ResearchClub extends JFrame implements ActionListener{
 	int i=0;
 	int row;
 	public ResearchClub(){
-		//mbutton.setVisible(false);
 		setTitle("Research 동아리");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +57,9 @@ public class ResearchClub extends JFrame implements ActionListener{
 
 		setBackbtn(backbtn, p);
 		try {
-			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from club where number=2;";
-			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -79,17 +71,16 @@ public class ResearchClub extends JFrame implements ActionListener{
 			result.last();
 			row = result.getRow();
 			result.beforeFirst();
+			//db레코드 수에따라서 저장공간
 			str = new String[row];
 			clubBtn = new JButton[row];
 			key = new int[row];
 			int i=0;
-			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
+			//db에서 값 가져오기
 			while(result.next()) {
 				id=result.getInt("id");
 				str[i] = result.getString("club_name");
 				clubBtn[i]=new JButton(str[i]);
-			//	clubBtn[i].setContentAreaFilled(false);
-			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				clubBtn[i].addActionListener(this);
 				clubBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,20));
 				clubBtn[i].setBackground(new Color(166,165,160));
@@ -133,11 +124,12 @@ public class ResearchClub extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 
 	}
+	//각 버튼마다 이벤트 처리
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int j=0;j<row;j++)
 			if(e.getSource()==clubBtn[j]){
-			introClub ic = new introClub(key[j], str[j]);
+			IntroClub ic = new IntroClub(key[j], str[j]);
 			System.out.println(str[j]);
 			  ic.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			  ic.setTitle(clubBtn[j].getText());

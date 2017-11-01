@@ -1,4 +1,4 @@
-package Event;
+package Club;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -14,28 +14,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-import static Subject.firstSubject.key;
 
-public class introEvent extends JFrame{
+public class IntroClub extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
 	private JLabel introTitle;
-	private JLabel[] intro=new JLabel[3];
-	private JTextArea[] dbIntro=new JTextArea[3];
-	private Image[] introImg = new Image[3];
-	private String[] img = {"/introEvent_1.png", "/introEvent_2.png","/introClub_3.png"};
+	private JLabel[] intro=new JLabel[5];
+	private JTextArea[] dbIntro=new JTextArea[5];
+	private Image[] introImg = new Image[5];
+	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png", "/introClub_4.png"};
 	String str[]=new String[5];
 	int id;
 	String name_sub;
-	public introEvent(int key, String sub) {
+	public IntroClub(int key, String sub) {
 		this.id=key;
 		this.name_sub=sub;
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-			String SQL = "select event_name, date, content, event_image from event where id="+id+"";
-			//Class.forName(driverName); // 드라이버 로드
+			String SQL = "select club_name, club_room, teacher, intro from club where id="+id+"";
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -43,7 +41,8 @@ public class introEvent extends JFrame{
 			
 			stmt.execute("use "+DBName+";");
 			ResultSet result = stmt.executeQuery(SQL);
-
+			
+			//db컬럼 값들 가져오기
 			while(result.next()) {
 				for(int i=0;i<4;i++) {
 				str[i] = result.getString(i+1);
@@ -61,7 +60,7 @@ public class introEvent extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(540, 720);
-		setVisible(true);
+		setVisible(true); 
 		setLocationRelativeTo(null); //창 중앙에 띄우기
 		
 		contentPane = new JPanel();
@@ -69,35 +68,33 @@ public class introEvent extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		
-		for(int i=0; i<3; i++) {
+		//db필드명
+		for(int i=0; i<4; i++) {
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 110*(i+1), 200, 100);
+			intro[i].setBounds(10, 135*(i+1), 200, 100);
 			contentPane.add(intro[i]);
 		}
 		
-		
-		for(int i=0;i<3;i++) {
+		//db내용 가져오기
+		for(int i=0;i<4;i++) {
 			System.out.println(str[i]);
 			dbIntro[i]=new JTextArea(str[i]);
+			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
 			dbIntro[i].setOpaque(false);
 			dbIntro[i].setEditable(false);
 			dbIntro[i].setLineWrap(true);
-			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
 			contentPane.add(dbIntro[i]);
 		}
-		JLabel event_img = new JLabel("");
-		Image event_image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
-		event_img.setIcon(new ImageIcon(event_image));
-		event_img.setBounds(100, 460, 300, 210);contentPane.add(event_img);
-		dbIntro[0].setBounds(230, 145, 280, 100);
-		dbIntro[1].setBounds(230, 257, 280, 100);
-		dbIntro[2].setBounds(230, 350, 280, 100);
-		
+		//위치조정
+		dbIntro[0].setBounds(230, 175, 280, 100);
+		dbIntro[1].setBounds(230, 302, 280, 100);
+		dbIntro[2].setBounds(230, 440, 280, 100);
+		dbIntro[3].setBounds(230, 565, 280, 100);
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
-		Image title = new ImageIcon(this.getClass().getResource("/eventIntro.png")).getImage();
+		Image title = new ImageIcon(this.getClass().getResource("/clubIntro.png")).getImage();
 		contentPane.add(introTitle);
 		introTitle.setIcon(new ImageIcon(title));
 		

@@ -1,4 +1,4 @@
-package Entrance;
+package Subject;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -14,28 +14,27 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-import static Subject.firstSubject.key;
 
-public class introMiddle extends JFrame{
+public class IntroSub extends JFrame{
 	private JLabel label;
 	private JPanel contentPane;
 	private JLabel introTitle;
-	private JLabel[] intro=new JLabel[3];
-	private JTextArea[] dbIntro=new JTextArea[3];
-	private Image[] introImg = new Image[3];
-	private String[] img = {"/introClub_1.png", "/introClub_2.png","/introClub_3.png"};
-	String str[]=new String[4];
+	private JLabel[] intro=new JLabel[6];
+	//private JLabel[] dbIntro=new JLabel[6];
+	private JTextArea[] dbIntro=new JTextArea[6];
+	private Image[] introImg = new Image[6];
+	private String[] img = {"/introSub_1.png", "/introSub_2.png","/introSub_3.png",
+			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
+	String str[]=new String[6];
 	int id;
 	String name_sub;
-	public introMiddle(int key, String sub) {
+	public IntroSub(int key, String sub) {
 		this.id=key;
 		this.name_sub=sub;
 		try {
-			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
-			String SQL = "select date, apply, room, image_location from entrance2 where id="+id+";";
-			//Class.forName(driverName); // 드라이버 로드
+			String SQL = "select grade ,major, name_sub, intro_sub, teacher, room from subject where id="+id+"";
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -45,10 +44,11 @@ public class introMiddle extends JFrame{
 			ResultSet result = stmt.executeQuery(SQL);
 
 			while(result.next()) {
-				for(int i=0;i<4;i++) {
+				for(int i=0;i<6;i++) {
 				str[i] = result.getString(i+1);
 				}
 			}
+			
 			result.close();
 			stmt.close();
 			con.close();	
@@ -56,6 +56,7 @@ public class introMiddle extends JFrame{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
+		for(int i=0;i<6;i++)
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,29 +69,30 @@ public class introMiddle extends JFrame{
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 		
-		for(int i=0; i<3; i++) {
+		for(int i=0; i<6; i++) {
 			intro[i]=new JLabel("");
 			introImg[i] = new ImageIcon(this.getClass().getResource(img[i])).getImage();
 			intro[i].setIcon(new ImageIcon(introImg[i]));
-			intro[i].setBounds(10, 135*(i+1), 200, 100);
+			intro[i].setBounds(10, 100*(i+1), 140, 70);
 			contentPane.add(intro[i]);
 		}
-		
-		for(int i=0;i<3;i++) {
-			System.out.println(str[i]);
+		for(int i=0;i<6;i++) {
 			dbIntro[i]=new JTextArea(str[i]);
-			dbIntro[i].setOpaque(false);
-			dbIntro[i].setEditable(false);
-			dbIntro[i].setLineWrap(true);
 			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
-			dbIntro[i].setBounds(230, 135*(i+1), 200, 100);
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false); //글자입력 제한
+			dbIntro[i].setLineWrap(true); // 자동줄바꿈
 			contentPane.add(dbIntro[i]);
 		}
-		JLabel event_img = new JLabel("");
-		Image event_image = new ImageIcon(this.getClass().getResource("/"+str[3])).getImage();
-		event_img.setIcon(new ImageIcon(event_image));
-		event_img.setBounds(100, 460, 300, 230);contentPane.add(event_img);
 		
+		// 위치 조정
+		dbIntro[0].setBounds(200, 115, 260, 70);
+		dbIntro[1].setBounds(200, 220, 260, 70);
+		dbIntro[2].setBounds(200, 315, 260, 70);
+		dbIntro[3].setBounds(200, 410, 260, 70);
+		dbIntro[4].setBounds(200, 520, 260, 70);
+		dbIntro[5].setBounds(200, 618, 260, 70);
+
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/subIntro.png")).getImage();
@@ -106,7 +108,7 @@ public class introMiddle extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		
+
 	}
 
 }

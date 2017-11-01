@@ -15,11 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Employment.ConditionEmployment;
-import Employment.EnterpriseEmployment;
 import Main.SelectMenu;
-import Main.StartMain;
-import Subject.MirimSubject;
 import java.awt.Desktop;
 public class MirimEntrance extends JFrame {
 	private JLabel label;
@@ -31,7 +27,6 @@ public class MirimEntrance extends JFrame {
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	public int key[];
 	public MirimEntrance() {
-		//mbutton.setVisible(false);
 		setTitle("입학");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,13 +52,13 @@ public class MirimEntrance extends JFrame {
 		
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
-		
-		//mbutton.addActionListener(this);
+
 		entrancebtn[0].setBounds(165, 565, 214, 93);
 		entrancebtn[1].setBounds(415, 565, 214, 93);
 		entrancebtn[2].setBounds(665, 565, 214, 93);
 		entrancebtn[3].setBounds(915, 565, 214, 93);
 		
+		//컬럼명 이미지 버튼
 		for(int i=0;i<4;i++) {
 			entrancebtn[i].setIcon(new ImageIcon(btnimg[i]));
 			entrancebtn[i].setBorderPainted(false);
@@ -93,8 +88,6 @@ public class MirimEntrance extends JFrame {
 		//파일다운로드받게하기
 		entrancebtn[2].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//entrancebtn[2].setVisible(false);
-                //setVisible(false);
                 try { 
                 	Desktop.getDesktop().browse(new URI("https://e-mirim.hs.kr/renewal/admission/down/2018/2018%20sungjuk%20program.zip"));
                 } catch (IOException ioioe) {

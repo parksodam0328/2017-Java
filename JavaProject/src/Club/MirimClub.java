@@ -10,12 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Location.MirimLocation;
 import Main.SelectMenu;
-import Rule.CostumeRule;
-import Rule.DormitoryRule;
-import Rule.SchoolRule;
 
 public class MirimClub extends JFrame {
 	private JLabel label;
@@ -27,7 +22,6 @@ public class MirimClub extends JFrame {
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
 	public MirimClub() {
-		//mbutton.setVisible(false);
 		setTitle("동아리");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +48,7 @@ public class MirimClub extends JFrame {
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		
-		//mbutton.addActionListener(this);
+		//동아리 분류 버튼 
 		clubbtn[0].setBounds(250, 565, 214, 93);
 		clubbtn[1].setBounds(550, 565, 214, 93);
 		clubbtn[2].setBounds(850, 565, 214, 93);
@@ -95,7 +89,7 @@ public class MirimClub extends JFrame {
 			}
 		});
 	}
-	
+	//뒤로가기 버튼
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));

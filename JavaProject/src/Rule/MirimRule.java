@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.MirimSubject;
 
 public class MirimRule extends JFrame {
 	private JLabel label;
@@ -24,7 +23,6 @@ public class MirimRule extends JFrame {
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
 	public MirimRule() {
-		//mbutton.setVisible(false);
 		setTitle("규정");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,8 +48,6 @@ public class MirimRule extends JFrame {
 		
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
-		
-		//mbutton.addActionListener(this);
 		rulebtn[0].setBounds(250, 565, 214, 93);
 		rulebtn[1].setBounds(550, 565, 214, 93);
 		rulebtn[2].setBounds(850, 565, 214, 93);
@@ -65,7 +61,7 @@ public class MirimRule extends JFrame {
 		}
 		setBackbtn(backbtn);
 		//버튼에 클릭 이벤트 넣어주기
-		rulebtn[0].addActionListener(new ActionListener() {
+		rulebtn[0].addActionListener(new ActionListener() { //학교생활
 			public void actionPerformed(ActionEvent e) {
 				rulebtn[0].setVisible(false);
 				setVisible(false);
@@ -74,7 +70,7 @@ public class MirimRule extends JFrame {
 			}
 		});
 		
-		rulebtn[1].addActionListener(new ActionListener() {
+		rulebtn[1].addActionListener(new ActionListener() { //용의복장
 			public void actionPerformed(ActionEvent e) {
 				rulebtn[1].setVisible(false);
 				setVisible(false);
@@ -83,7 +79,7 @@ public class MirimRule extends JFrame {
 			}
 		});
 		
-		rulebtn[2].addActionListener(new ActionListener() {
+		rulebtn[2].addActionListener(new ActionListener() { // 기숙사
 			public void actionPerformed(ActionEvent e) {
 				rulebtn[2].setVisible(false);
 				setVisible(false);

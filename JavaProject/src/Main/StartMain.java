@@ -1,10 +1,7 @@
 package Main;
 
-import java.awt.BorderLayout;
 import java.awt.Desktop;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,20 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Subject.MirimSubject;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
-
 
 public class StartMain extends JFrame{
 	private JPanel contentPane;
 	private JLabel wallpaper;
 	private JButton main;
 	private JButton admin;
-	//private JLabel label;
 	public StartMain() {
 		setTitle("미림가이드북");
 		setResizable(false);
@@ -62,14 +55,11 @@ public class StartMain extends JFrame{
 		main.setContentAreaFilled(false);
 		main.setFocusPainted(false);
 		main.setIcon(new ImageIcon(mainImg));
-		//main.addActionListener(this);
 		
 		admin.setBorderPainted(false);
 		admin.setContentAreaFilled(false);
 		admin.setFocusPainted(false);
 		admin.setIcon(new ImageIcon(adminImg));
-		//admin.addActionListener(this);
-	
 
 		main.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -84,10 +74,6 @@ public class StartMain extends JFrame{
 		//관리자모드페이지로 이동하게 수정하기
 		admin.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            //admin.setVisible(false);
-	            //setVisible(false);
-	           // SelectMenu sm = new SelectMenu();
-	           // sm.setVisible(true);
 	            try { 
                 	Desktop.getDesktop().browse(new URI("http://10.96.122.177/php_admin.php"));
                 } catch (IOException ioioe) {

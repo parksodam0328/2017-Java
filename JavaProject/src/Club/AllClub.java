@@ -1,6 +1,5 @@
 package Club;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,12 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.introSub;
 
 public class AllClub extends JFrame implements ActionListener{
 	private int id=0;
@@ -41,7 +37,6 @@ public class AllClub extends JFrame implements ActionListener{
 	int i=0;
 	int row;
 	public AllClub(){
-		//mbutton.setVisible(false);
 		setTitle("CA+Research 동아리");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +58,9 @@ public class AllClub extends JFrame implements ActionListener{
 
 		setBackbtn(backbtn, p);
 		try {
-			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from club where number=3;";
-			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -83,13 +76,10 @@ public class AllClub extends JFrame implements ActionListener{
 			clubBtn = new JButton[row];
 			key = new int[row];
 			int i=0;
-			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
 			while(result.next()) {
-				id=result.getInt("id");
-				str[i] = result.getString("club_name");
-				clubBtn[i]=new JButton(str[i]);
-			//	clubBtn[i].setContentAreaFilled(false);
-			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
+				id=result.getInt("id"); //분류번호
+				str[i] = result.getString("club_name"); //동아리명
+				clubBtn[i]=new JButton(str[i]); 
 				clubBtn[i].addActionListener(this);
 				clubBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,20));
 				clubBtn[i].setBackground(new Color(166,165,160));
@@ -133,11 +123,12 @@ public class AllClub extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 
 	}
+	//각 버튼마다 클릭이벤트
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int j=0;j<row;j++)
 			if(e.getSource()==clubBtn[j]){
-			introClub ic = new introClub(key[j], str[j]);
+			IntroClub ic = new IntroClub(key[j], str[j]);
 			System.out.println(str[j]);
 			  ic.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			  ic.setTitle(clubBtn[j].getText());

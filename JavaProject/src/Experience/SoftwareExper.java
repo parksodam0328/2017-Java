@@ -1,6 +1,5 @@
 package Experience;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,13 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.introSub;
 
 public class SoftwareExper extends JFrame implements ActionListener{
 	private int id=0;
@@ -36,14 +31,12 @@ public class SoftwareExper extends JFrame implements ActionListener{
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String SQL=null;
-	private JLabel dbLabel;
-	private JTextArea dbQues;
-	private JButton viewBtn;
-	private String str; //동아리 이름
-	int i=0;
+	private JButton sBtn[];
+	private JLabel ExperLabel=new JLabel("");
+	private String[] str;
+	int i=0; 
 	int row;
 	public SoftwareExper (){
-		//mbutton.setVisible(false);
 		setTitle("소프트웨어과 체험");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +52,6 @@ public class SoftwareExper extends JFrame implements ActionListener{
 			    super.paintComponent(g);
 			}
 		};
-		dbLabel=new JLabel("");
 		p.setBorder(new EmptyBorder(0, 0, 0, 0));
 		p.setLayout(null);
 		getContentPane().add(p);
@@ -82,21 +74,23 @@ public class SoftwareExper extends JFrame implements ActionListener{
 			result.last();
 			row = result.getRow();
 			result.beforeFirst();
-			str = null;
+			str = new String[row];
+			sBtn = new JButton[row];
 			key = new int[row];
 			int i=0;
 			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
 			while(result.next()) {
-				//랜덤값 내기
 				id=result.getInt("id");
-				str=result.getString("coding");
-				dbQues=new JTextArea(str);
-			//	QuestionBtn[i].addActionListener(this);
-				dbQues.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,20));
-				dbLabel.add(dbQues);
+				str[i] = result.getString("result");
+				sBtn[i]=new JButton(str[i]);
+			//	clubBtn[i].setContentAreaFilled(false);
+			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
+				sBtn[i].addActionListener(this);
+				sBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,20));
+				sBtn[i].setBackground(new Color(166,165,160));
+				ExperLabel.add(sBtn[i]);
 				key[i]=id;
 				i++;
-				break;
 			}
 			
 			result.close();
@@ -107,13 +101,9 @@ public class SoftwareExper extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		viewBtn=new JButton("결과보기");
-		viewBtn.setBounds(490,520,100,50);
-		viewBtn.setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
-		viewBtn.setBackground(new Color(166,165,160));
-		dbLabel.add(viewBtn);
-		dbLabel.setBounds(100,100,800,800);
-		p.add(dbLabel); 
+		ExperLabel.setBounds(250,210,800,250);
+		ExperLabel.setLayout(new GridLayout(2,4));
+		p.add(ExperLabel); 
 	}
 	public void setBackbtn(JButton j, JPanel p) {
 		
@@ -141,15 +131,15 @@ public class SoftwareExper extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int j=0;j<row;j++)
-			if(e.getSource()==QuestionBtn[j]){
-			introExper ic = new introExper(key[j], str[j]);
+			if(e.getSource()==sBtn[j]){
+			IntroExper2 ic2 = new IntroExper2(key[j], str[j]);
 			System.out.println(str[j]);
-			  ic.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			  ic.setTitle(QuestionBtn[j].getText());
-			  ic.addWindowListener(new WindowAdapter() {
+			  ic2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			  ic2.setTitle(sBtn[j].getText());
+			  ic2.addWindowListener(new WindowAdapter() {
 				  public void windowClosing(WindowEvent e) {
-					  ic.setVisible(false);
-					  ic.dispose();	
+					  ic2.setVisible(false);
+					  ic2.dispose();	
 				  }
 			  });
 			  

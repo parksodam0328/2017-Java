@@ -11,9 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Location.InLocation;
-import Location.MirimLocation;
-import Location.OutLocation;
 import Main.SelectMenu;
 
 public class MirimEmployment extends JFrame{
@@ -26,7 +23,6 @@ public class MirimEmployment extends JFrame{
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
 	public MirimEmployment() {
-		//mbutton.setVisible(false);
 		setTitle("취업");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +47,6 @@ public class MirimEmployment extends JFrame{
 		contentPane.add(label);
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
-		//mbutton.addActionListener(this);
 		employmentbtn[0].setBounds(410, 565, 214, 93);
 		employmentbtn[1].setBounds(660, 565, 214, 93);
 		
@@ -82,6 +77,7 @@ public class MirimEmployment extends JFrame{
 			}
 		});
 	}		
+	//뒤로가기 버튼
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));

@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Employment.ConditionEmployment;
 import Main.SelectMenu;
 
 public class MirimEvent extends JFrame {
@@ -23,7 +22,6 @@ public class MirimEvent extends JFrame {
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	
 	public MirimEvent() {
-		//mbutton.setVisible(false);
 		setTitle("행사");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +49,6 @@ public class MirimEvent extends JFrame {
 		label.setIcon(new ImageIcon(img));
 		label_img.setIcon(new ImageIcon(title_img));
 		
-		//mbutton.addActionListener(this);
 		eventbtn.setBounds(530, 565, 214, 93);
 
 		eventbtn.setIcon(new ImageIcon(btnimg));
@@ -71,7 +68,7 @@ public class MirimEvent extends JFrame {
 		});
 		
 	}
-	
+	// 뒤로가기 버튼
 	public void setBackbtn(JButton j) {
 		
 		j.setIcon(new ImageIcon(back_img));

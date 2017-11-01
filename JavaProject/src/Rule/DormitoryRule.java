@@ -27,7 +27,6 @@ import javax.swing.border.EmptyBorder;
 import Main.SelectMenu;
  
 public class DormitoryRule extends JFrame{
-	private JLabel label;
 	private JTextArea dbShow;
 	int row;
 	private String[] str; //규정 내용
@@ -35,22 +34,17 @@ public class DormitoryRule extends JFrame{
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	public DormitoryRule(){
-		//mbutton.setVisible(false); 
-		setTitle("학교 내 규정");
+		setTitle("기숙사 내 규정");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 750);
 		setLocationRelativeTo(null); //창 중앙에 띄우기
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();
-		JPanel p = new JPanel() {
+		JPanel p = new JPanel() { // 판넬의 배경이미지
 			public void paintComponent(Graphics g) {
 			    g.drawImage(img, 0, 0, null);
-			    // Approach 2: Scale image to size of component
 			     Dimension d = getSize();
 			    g.drawImage(img, 0, 0, d.width, d.height, null);
-			    // Approach 3: Fix the image position in the scroll pane
-			    // Point p = scrollPane.getViewport().getViewPosition();
-			    // g.drawImage(icon.getImage(), p.x, p.y, null);
 			    setOpaque(false);
 			    super.paintComponent(g);
 			}
@@ -64,18 +58,15 @@ public class DormitoryRule extends JFrame{
 	    p.add(scroll);
 		getContentPane().add(BorderLayout.CENTER,p);
 		scroll.setBounds(136,60,980,600);
-		//p.add(dbShow);
 		getContentPane().add(p);
 		setBackbtn(backbtn, p);
 		dbShow.setBackground(Color.WHITE);
 		dbShow.setLineWrap(true);
 		dbShow.setEditable(false);
 		try {
-			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
 			String SQL = "select * from rule where division_number=3 order by number asc;";
-			//Class.forName(driverName); // 드라이버 로드
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -93,7 +84,6 @@ public class DormitoryRule extends JFrame{
 			while(result.next()) {
 				num[i] = result.getInt("number");
 				str[i] = result.getString("content");
-			//	dbShow.setContentAreaFilled(false);
 				i++;
 			}
 			

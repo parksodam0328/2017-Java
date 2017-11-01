@@ -1,6 +1,5 @@
 package Event;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,8 +21,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
@@ -33,13 +30,12 @@ public class SchoolEvent extends JFrame implements ActionListener{
 	private JButton backbtn = new JButton("");
 	private Image back_img = new ImageIcon(SelectMenu.class.getResource("/back_white.png")).getImage();
 	private String SQL=null;
-	private JButton clubBtn[];
-	private JLabel clubLabel=new JLabel("");
+	private JButton eventBtn[];
+	private JLabel eventLabel=new JLabel("");
 	private String[] str; //동아리 이름
 	int i=0;
 	int row;
 	public SchoolEvent(){
-		//mbutton.setVisible(false);
 		setTitle("학교 행사");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +61,6 @@ public class SchoolEvent extends JFrame implements ActionListener{
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from event;";
-			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -78,20 +73,17 @@ public class SchoolEvent extends JFrame implements ActionListener{
 			row = result.getRow();
 			result.beforeFirst();
 			str = new String[row];
-			clubBtn = new JButton[row];
+			eventBtn = new JButton[row];
 			key = new int[row];
 			int i=0;
-			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
 			while(result.next()) {
 				id=result.getInt("id");
 				str[i] = result.getString("event_name");
-				clubBtn[i]=new JButton(str[i]);
-			//	clubBtn[i].setContentAreaFilled(false);
-			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
-				clubBtn[i].addActionListener(this);
-				clubBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
-				clubBtn[i].setBackground(new Color(166,165,160));
-				clubLabel.add(clubBtn[i]);
+				eventBtn[i]=new JButton(str[i]);
+				eventBtn[i].addActionListener(this);
+				eventBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
+				eventBtn[i].setBackground(new Color(166,165,160));
+				eventLabel.add(eventBtn[i]);
 				key[i]=id;
 				i++;
 			}
@@ -104,9 +96,9 @@ public class SchoolEvent extends JFrame implements ActionListener{
 			System.out.println("SQLException: "+sqle.getMessage());
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
-		clubLabel.setBounds(220,150,840,540);
-		clubLabel.setLayout(new GridLayout(5,3));
-		p.add(clubLabel); 
+		eventLabel.setBounds(220,150,840,540);
+		eventLabel.setLayout(new GridLayout(5,3));
+		p.add(eventLabel); 
 	}
 	public void setBackbtn(JButton j, JPanel p) {
 		
@@ -134,11 +126,11 @@ public class SchoolEvent extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int j=0;j<row;j++)
-			if(e.getSource()==clubBtn[j]){
-			introEvent ie = new introEvent(key[j], str[j]);
+			if(e.getSource()==eventBtn[j]){
+			IntroEvent ie = new IntroEvent(key[j], str[j]);
 			System.out.println(str[j]);
 			  ie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			  ie.setTitle(clubBtn[j].getText());
+			  ie.setTitle(eventBtn[j].getText());
 			  ie.addWindowListener(new WindowAdapter() {
 				  public void windowClosing(WindowEvent e) {
 					  ie.setVisible(false);

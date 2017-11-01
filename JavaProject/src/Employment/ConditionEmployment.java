@@ -1,6 +1,5 @@
 package Employment;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,12 +21,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+
 import javax.swing.border.EmptyBorder;
 
 import Main.SelectMenu;
-import Subject.introSub;
 
 public class ConditionEmployment extends JFrame implements ActionListener{
 	private int id=0;
@@ -41,7 +38,6 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 	int i=0;
 	int row;
 	public ConditionEmployment(){
-		//mbutton.setVisible(false);
 		setTitle("취업현황");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +59,9 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 
 		setBackbtn(backbtn, p);
 		try {
-			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
 			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from employment1 order by year asc;";
-			//Class.forName(driverName); // 드라이버 로드
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결
 			System.out.println("디비연결완료");
@@ -79,19 +73,18 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 			result.last();
 			row = result.getRow();
 			result.beforeFirst();
-			str = new String[row];
+			str = new String[row]; // 레코드 수
 			employBtn = new JButton[row];
 			key = new int[row];
 			int i=0;
-			//subImg = new ImageIcon(this.getClass().getResource(subjectImg)).getImage();
+			
+			// 디비의 값들 불러오기
 			while(result.next()) {
 				id=result.getInt("id");
 				str[i] = result.getString("year");
 				employBtn[i]=new JButton(str[i]);
-			//	employBtn[i].setContentAreaFilled(false);
 				employBtn[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,25));
 				employBtn[i].setBackground(new Color(166,165,160));
-			//	subjectBtn[i].setIcon(new ImageIcon(subImg));
 				employBtn[i].addActionListener(this);
 				EmployLabel.add(employBtn[i]);
 				key[i]=id;
@@ -107,7 +100,7 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 			System.out.println("SQLState: "+sqle.getSQLState());
 		}
 		EmployLabel.setBounds(360,200,600,300);
-		EmployLabel.setLayout(new GridLayout(2,3));
+		EmployLabel.setLayout(new GridLayout(2,3)); //버튼들 그리드로 레이아웃
 		p.add(EmployLabel); 
 	}
 	public void setBackbtn(JButton j, JPanel p) {
@@ -133,11 +126,13 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 
 	}
+	
+	//각 버튼마다 이벤트
 	@Override
 	public void actionPerformed(ActionEvent e) { 
 		for(int j=0;j<row;j++)
 			if(e.getSource()==employBtn[j]){
-			introEmployment ic = new introEmployment(key[j], str[j]);
+			IntroEmployment ic = new IntroEmployment(key[j], str[j]);
 			System.out.println(str[j]);
 			  ic.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			  ic.setTitle(employBtn[j].getText());
