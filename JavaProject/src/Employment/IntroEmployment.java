@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 public class IntroEmployment extends JFrame {
@@ -19,7 +22,8 @@ public class IntroEmployment extends JFrame {
 	private JPanel contentPane;
 	private JLabel introTitle;
 	private JLabel[] intro = new JLabel[4];
-	private JLabel[] dbIntro = new JLabel[4];
+	private JTextArea[] dbIntro = new JTextArea[4];
+	private JScrollPane scroll[] = new JScrollPane[4];
 	private Image[] introImg = new Image[4];
 	private String[] img = { "/introEmploy_1.png", "/introEmploy_2.png" };
 	String str[] = new String[2];
@@ -76,11 +80,23 @@ public class IntroEmployment extends JFrame {
 		}
 
 		for (int i = 0; i < 2; i++) {
-			dbIntro[i] = new JLabel(str[i]);
-			dbIntro[i].setBounds(230, 120 * (i + 1), 200, 100);
-			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN, 20));
+			dbIntro[i] = new JTextArea(str[i]);
+			dbIntro[i].setOpaque(false);
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
+			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN, 17));
 			contentPane.add(dbIntro[i]);
+			scroll[i] = new JScrollPane(dbIntro[i]);
+			scroll[i].setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll[i].setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			contentPane.add(scroll[i]);
+			scroll[i].setOpaque(false);
+			scroll[i].getViewport().setOpaque(false);
 		}
+		
+		scroll[0].setBounds(230, 140, 100, 30);
+		scroll[1].setBounds(230, 240, 150, 70);
+
 		// 컬럼명 이미지
 		introTitle = new JLabel("");
 		introTitle.setBounds(100, 8, 200, 100);

@@ -1,5 +1,6 @@
 package Event;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
@@ -12,8 +13,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.SoftBevelBorder;
 
 public class IntroEvent extends JFrame {
 	private JLabel label;
@@ -26,7 +30,7 @@ public class IntroEvent extends JFrame {
 	String str[] = new String[5];
 	int id;
 	String name_sub;
-
+	private JScrollPane scroll[] = new JScrollPane[3];
 	public IntroEvent(int key, String sub) {
 		this.id = key;
 		this.name_sub = sub;
@@ -83,6 +87,12 @@ public class IntroEvent extends JFrame {
 			dbIntro[i].setLineWrap(true);
 			dbIntro[i].setFont(new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN, 17));
 			contentPane.add(dbIntro[i]);
+			scroll[i] = new JScrollPane(dbIntro[i]);
+			scroll[i].setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll[i].setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			contentPane.add(scroll[i]);
+			scroll[i].setOpaque(false);
+			scroll[i].getViewport().setOpaque(false);
 		}
 		
 		
@@ -92,16 +102,16 @@ public class IntroEvent extends JFrame {
 		event_img.setIcon(new ImageIcon(event_image));
 		event_img.setBounds(100, 460, 300, 210);
 		contentPane.add(event_img);
-		dbIntro[0].setBounds(230, 145, 280, 100);
-		dbIntro[1].setBounds(230, 257, 280, 100);
-		dbIntro[2].setBounds(230, 350, 280, 100);
+		scroll[0].setBounds(230, 145, 280, 70);
+		scroll[1].setBounds(230, 257, 280, 70);
+		scroll[2].setBounds(230, 350, 280, 70);
 
 		introTitle = new JLabel("");
 		introTitle.setBounds(170, 8, 200, 100);
 		Image title = new ImageIcon(this.getClass().getResource("/eventIntro.png")).getImage();
 		contentPane.add(introTitle);
 		introTitle.setIcon(new ImageIcon(title));
-
+		
 		label = new JLabel("");
 		label.setSize(540, 720);
 		Image img = new ImageIcon(this.getClass().getResource("/Wallpaper.png")).getImage();

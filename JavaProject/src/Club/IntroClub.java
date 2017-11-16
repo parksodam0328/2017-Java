@@ -12,7 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 public class IntroClub extends JFrame{
@@ -26,6 +28,7 @@ public class IntroClub extends JFrame{
 	String str[]=new String[5];
 	int id;
 	String name_sub;
+	private JScrollPane scroll[] = new JScrollPane[5];
 	public IntroClub(int key, String sub) {
 		this.id=key;
 		this.name_sub=sub;
@@ -79,19 +82,25 @@ public class IntroClub extends JFrame{
 		
 		//db내용 가져오기
 		for(int i=0;i<4;i++) {
-			System.out.println(str[i]);
-			dbIntro[i]=new JTextArea(str[i]);
-			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
+			dbIntro[i] = new JTextArea(str[i]);
 			dbIntro[i].setOpaque(false);
 			dbIntro[i].setEditable(false);
 			dbIntro[i].setLineWrap(true);
+			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN, 17));
 			contentPane.add(dbIntro[i]);
+			scroll[i] = new JScrollPane(dbIntro[i]);
+			scroll[i].setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll[i].setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			contentPane.add(scroll[i]);
+			scroll[i].setOpaque(false);
+			scroll[i].getViewport().setOpaque(false);
 		}
+
 		//위치조정
-		dbIntro[0].setBounds(230, 175, 280, 100);
-		dbIntro[1].setBounds(230, 302, 280, 100);
-		dbIntro[2].setBounds(230, 440, 280, 100);
-		dbIntro[3].setBounds(230, 565, 280, 100);
+		scroll[0].setBounds(230, 155, 280, 70);
+		scroll[1].setBounds(230, 282, 280, 70);
+		scroll[2].setBounds(230, 420, 280, 70);
+		scroll[3].setBounds(230, 545, 280, 70);
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
 		Image title = new ImageIcon(this.getClass().getResource("/clubIntro.png")).getImage();

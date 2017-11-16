@@ -12,7 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 public class IntroSub extends JFrame{
@@ -27,6 +29,7 @@ public class IntroSub extends JFrame{
 			"/introSub_4.png","/introSub_5.png","/introSub_6.png"};
 	String str[]=new String[6];
 	int id;
+	private JScrollPane scroll[] = new JScrollPane[6];
 	String name_sub;
 	public IntroSub(int key, String sub) {
 		this.id=key;
@@ -77,21 +80,27 @@ public class IntroSub extends JFrame{
 			contentPane.add(intro[i]);
 		}
 		for(int i=0;i<6;i++) {
-			dbIntro[i]=new JTextArea(str[i]);
-			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN,17));
+			dbIntro[i] = new JTextArea(str[i]);
 			dbIntro[i].setOpaque(false);
-			dbIntro[i].setEditable(false); //글자입력 제한
-			dbIntro[i].setLineWrap(true); // 자동줄바꿈
+			dbIntro[i].setEditable(false);
+			dbIntro[i].setLineWrap(true);
+			dbIntro[i].setFont(new Font("KoPub돋움체 Medium", Font.PLAIN, 17));
 			contentPane.add(dbIntro[i]);
+			scroll[i] = new JScrollPane(dbIntro[i]);
+			scroll[i].setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll[i].setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			contentPane.add(scroll[i]);
+			scroll[i].setOpaque(false);
+			scroll[i].getViewport().setOpaque(false);
 		}
 		
 		// 위치 조정
-		dbIntro[0].setBounds(200, 115, 260, 70);
-		dbIntro[1].setBounds(200, 220, 260, 70);
-		dbIntro[2].setBounds(200, 315, 260, 70);
-		dbIntro[3].setBounds(200, 410, 260, 70);
-		dbIntro[4].setBounds(200, 520, 260, 70);
-		dbIntro[5].setBounds(200, 618, 260, 70);
+		scroll[0].setBounds(200, 115, 260, 50);
+		scroll[1].setBounds(200, 220, 260, 50);
+		scroll[2].setBounds(200, 315, 260, 50);
+		scroll[3].setBounds(200, 410, 260, 50);
+		scroll[4].setBounds(200, 520, 260, 50);
+		scroll[5].setBounds(200, 618, 260, 50);
 
 		introTitle=new JLabel("");
 		introTitle.setBounds(170,8,200,100);
