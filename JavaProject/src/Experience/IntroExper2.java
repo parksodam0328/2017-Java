@@ -29,7 +29,7 @@ public class IntroExper2 extends JFrame {
 		this.name_sub = sub;
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select coding from experience2 where id=" + id + ";";
 
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // ¿¬°á

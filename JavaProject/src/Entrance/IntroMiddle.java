@@ -32,7 +32,7 @@ public class IntroMiddle extends JFrame {
 		this.name_sub = sub;
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select date, apply, room, image_location from entrance2 where id=" + id + ";";
 			// Class.forName(driverName); // 드라이버 로드
 

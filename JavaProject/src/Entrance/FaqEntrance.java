@@ -67,7 +67,7 @@ public class FaqEntrance extends JFrame {
 		dbShow.setLineWrap(true); // 텍스트에어리어 자동 줄바꿈
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select number, title, content from entrance3;";
 
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // 연결

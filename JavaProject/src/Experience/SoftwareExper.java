@@ -60,7 +60,7 @@ public class SoftwareExper extends JFrame implements ActionListener{
 		try { 
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from experience2;";
 			//Class.forName(driverName); // 드라이버 로드
 

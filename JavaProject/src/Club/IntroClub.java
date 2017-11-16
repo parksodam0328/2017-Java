@@ -32,7 +32,7 @@ public class IntroClub extends JFrame{
 		try {
 			String driverName = "com.mysql.jdbc.Driver"; // 드라이버 이름 지정
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false";
 			String SQL = "select club_name, club_room, teacher, intro from club where id="+id+"";
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결

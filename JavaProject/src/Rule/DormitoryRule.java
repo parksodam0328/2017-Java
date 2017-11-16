@@ -65,7 +65,7 @@ public class DormitoryRule extends JFrame{
 		dbShow.setEditable(false);
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false";
 			String SQL = "select * from rule where division_number=3 order by number asc;";
 			
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // ¿¬°á

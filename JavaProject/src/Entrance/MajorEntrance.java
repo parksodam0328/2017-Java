@@ -115,7 +115,7 @@ public class MajorEntrance extends JFrame{
 		
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			String SQL = "select major, major_intro, imgae_location from entrance1 where major='"+major[grade_num]+"';";
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결

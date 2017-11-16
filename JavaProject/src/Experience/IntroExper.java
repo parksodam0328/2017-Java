@@ -33,7 +33,7 @@ public class IntroExper extends JFrame {
 		try {
 
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select word, means from experience1 where id=" + id + "";
 
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // ¿¬°á

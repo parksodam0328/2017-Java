@@ -75,7 +75,7 @@ public class StartMain extends JFrame{
 		admin.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            try { 
-                	Desktop.getDesktop().browse(new URI("http://10.96.122.177/php_admin.php"));
+                	Desktop.getDesktop().browse(new URI("http://localhost/php_admin.php"));
                 } catch (IOException ioioe) {
                 	ioioe.printStackTrace(); 
                 	} catch (URISyntaxException ue){ 

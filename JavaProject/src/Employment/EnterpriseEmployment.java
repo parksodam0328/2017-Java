@@ -65,7 +65,7 @@ public class EnterpriseEmployment extends JFrame {
 		dbShow.setEditable(false); // 글자 입력 제한
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select * from employment2;";
 
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // 연결

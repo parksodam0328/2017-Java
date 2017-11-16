@@ -70,7 +70,7 @@ public class OutLocation extends JFrame{
 		
 		try { 
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			String SQL = "select address, subway, bus,image_location from location1;";
 			//Class.forName(driverName); // 드라이버 로드
 

@@ -60,7 +60,7 @@ public class ConditionEmployment extends JFrame implements ActionListener{
 		setBackbtn(backbtn, p);
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
+			String dbURL = "jdbc:mysql://localhost:3306/"+DBName+"?autoReconnect=true&useSSL=false"; // URL 지정
 			SQL = "select * from employment1 order by year asc;";
 
 			Connection con  = DriverManager.getConnection(dbURL,"root","mirim546"); // 연결

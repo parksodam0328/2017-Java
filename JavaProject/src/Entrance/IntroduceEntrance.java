@@ -69,7 +69,7 @@ public class IntroduceEntrance extends JFrame implements ActionListener {
 		setBackbtn(backbtn);
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select id, date, apply, image_location from entrance2;";
 			System.out.println(SQL);
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // ¿¬°á

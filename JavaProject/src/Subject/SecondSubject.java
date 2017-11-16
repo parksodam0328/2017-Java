@@ -107,7 +107,7 @@ public class SecondSubject extends JFrame implements ActionListener {
 		});
 		try {
 			String DBName = "MirimGuideBook";
-			String dbURL = "jdbc:mysql://10.96.122.177:3306/" + DBName + "?autoReconnect=true&useSSL=false";
+			String dbURL = "jdbc:mysql://localhost:3306/" + DBName + "?autoReconnect=true&useSSL=false";
 			String SQL = "select id, name_sub from subject where grade=2 and major='" + major[grade_num] + "';";
 			System.out.println(SQL);
 			Connection con = DriverManager.getConnection(dbURL, "root", "mirim546"); // ¿¬°á
